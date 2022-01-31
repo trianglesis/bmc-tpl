@@ -1,0 +1,25 @@
+{
+    "name": "bmc-tpl",
+    "displayName": "BMC-tpl",
+    "description": "BMC TPL (language) Support",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.63.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "tpl",
+            "aliases": ["tpl", "tpl"],
+            "extensions": [".tpl",".tplpre"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "tpl",
+            "scopeName": "source.tplpre",
+            "path": "./syntaxes/tpl.tmLanguage.json"
+        }]
+    }
+}
