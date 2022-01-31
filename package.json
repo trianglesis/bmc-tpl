@@ -10,16 +10,34 @@
         "Programming Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "tpl",
-            "aliases": ["tpl", "tpl"],
-            "extensions": [".tpl",".tplpre"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "tpl",
-            "scopeName": "source.tplpre",
-            "path": "./syntaxes/tpl.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "tpl",
+                "aliases": [
+                    "tpl",
+                    "tplpre"
+                ],
+                "extensions": [
+                    ".tpl",
+                    ".tplpre"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "tpl",
+                "scopeName": "source.tpl",
+                "path": "./syntaxes/tpl.tmLanguage.json"
+            },
+            {
+                "language": "tplpre",
+                "scopeName": "source.tplpre",
+                "path": "./syntaxes/tpl.tmLanguage.json"
+            }
+        ]
+    },
+    "devDependencies": {
+        "js-yaml": "^4.1.0"
     }
 }

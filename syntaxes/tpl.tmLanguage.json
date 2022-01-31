@@ -1,12 +1,22 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "tpl",
+	"scopeName": "source.tplpre",
+	"fileTypes": [
+		"tplpre",
+		"tpl"
+	],
+	"firstLineMatch": ".*",
 	"patterns": [
 		{
 			"include": "#keywords"
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"match": "MongoDB",
+      		"name": "keyword.letter"
 		}
 	],
 	"repository": {
@@ -27,6 +37,5 @@
 				}
 			]
 		}
-	},
-	"scopeName": "source.tplpre"
+	}
 }
