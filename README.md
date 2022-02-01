@@ -1,65 +1,63 @@
-# bmc-tpl README
+# BMC tpl or tplpre language support in VS Code
 
-This is the README for your extension "bmc-tpl". After writing up a brief description, we recommend including the following sections.
+Adds syntax highlighting and snippets The Pattern Language TPL: [tpl](https://docs.bmc.com/docs/discovery/213/the-pattern-language-tpl-1024739589.html) in VS Code.
 
-## Features
+Originally re-made from the [Atom bundle](https://github.com/trianglesis/language-tplpre).
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Installation:
 
-For example if there is an image subfolder under your extension project workspace:
+- Go to your VS Code Extensions and type "bmc-tpl" in search!
 
-\!\[feature X\]\(images/feature-x.png\)
+## Use:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+####  Set syntax: Ctrl+Shift+P -> "Change language mode" type 'tpl' or 'tplpre'
 
-## Requirements
+#### Syntax highlighting:
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+Most of constructions are also checking on integrity,
+so if some code will be written on wrong place, highlighting can be broken.
 
-## Extension Settings
+Example (currently based on Atom, and maybe will be refreshed):
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Pattern from Community Edition:
+- ![blocks](https://trianglesis.github.io/Atom_language_tpl_pics/TPL_Syntax_example_1.png)
 
-For example:
+Documentation block and tasks highlighted:
+- ![docs](https://trianglesis.github.io/Atom_language_tpl_pics/TPL_Syntax_example_2.png)
 
-This extension contributes the following settings:
+Triggers:
+- ![regexes](https://trianglesis.github.io/Atom_language_tpl_pics/TPL_Syntax_example_3.png)
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+Regex expressions:
+(uses python regex grammar from "language-python")
+- ![more_regexes](https://trianglesis.github.io/Atom_language_tpl_pics/TPL_Syntax_example_4.png)
 
-## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Syntax broken
+(highlighting will show it)
+- ![syntax_broken](https://trianglesis.github.io/Atom_language_tpl_pics/tpl_syntax_broken.gif)
 
-## Release Notes
 
-Users appreciate release notes as you update your extension.
+#### Autocomplete and Doc links:
 
-### 1.0.0
+For common code blocks and usual constructions autocompletion is available.
+It also provide links to reffering documentaion for each function or block on official BMC Doc portal.
 
-Initial release of ...
+Pattern draft example:
+- ![pattern_blocks](https://trianglesis.github.io/Atom_language_tpl_pics/tpl_autocomplete_pattern.gif)
 
-### 1.0.1
+Code constructions usually used:
+- ![common_code](https://trianglesis.github.io/Atom_language_tpl_pics/tpl_autocomplete_versions.gif)
 
-Fixed issue #.
+Link to BMC official docs:
+- ![docs](https://trianglesis.github.io/Atom_language_tpl_pics/tpl_autocomplete_model_docs.gif)
 
-### 1.1.0
+Extra developers helping code:
+- ![dev_examples](https://trianglesis.github.io/Atom_language_tpl_pics/tpl_autocomplete_debug.gif)
 
-Added features X, Y, and Z.
 
------------------------------------------------------------------------------------------------------------
+####  Automation, syntax check, upload pattern, etc:
 
-## Working with Markdown
+To be added, maybe.
 
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Contributions are greatly appreciated. Please fork this repository and open a pull request to add snippets, make grammar tweaks, etc.
