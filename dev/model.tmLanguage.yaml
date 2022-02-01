@@ -1,10 +1,9 @@
 %YAML 1.2
 ---
-# http://www.sublimetext.com/docs/3/syntax.html
-# Alexander Danylchenko
-# BMC model syntax file highligh.
-# 2017-08-14 - Latest version.
-# Will be used also to convert in Atom CSON format
+# Olexander Danylchenko
+# .model test files better formatting
+# Will be used also to convert in VS Code JSON format
+
 name: model
 file_extensions:
   - model

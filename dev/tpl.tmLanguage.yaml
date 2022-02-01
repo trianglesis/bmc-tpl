@@ -5,10 +5,9 @@
 # Will be used also to convert in VS Code JSON format
 
 name: TPL
-scope: source.tplpre
-scopeName: source.tplpre
+scope: source.tpl
+scopeName: source.tpl
 file_extensions:
-  - tplpre
   - tpl
 patterns:
 # AT FIRST
@@ -31,44 +30,44 @@ patterns:
   - match: (tpl)\s+(\$\$TPLVERSION\$\$|\d+\.\d+)\s+(module)\s(.*);
     captures:
       '1':
-        name: support.class.tplpre
+        name: support.class.tpl
       '2':
-        name: variable.parameter.tplpre
+        name: variable.parameter.tpl
       '3':
-        name: support.class.tplpre
+        name: support.class.tpl
       '4':
-        name: constant.character.tplpre
+        name: constant.character.tpl
 
   # pattern import section
   - match: '(from)\s(\w+)(?:.(\w+))?(?:.(\w+))?\s+(import)\s(\S+)\s(\d+(?:.\d+)+);'
     captures:
       '1':
-        name: support.class.tplpre
+        name: support.class.tpl
       '2':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '3':
-        name: storage.type.tplpre
+        name: storage.type.tpl
       '4':
-        name: variable.parameter.tplpre
+        name: variable.parameter.tpl
       '5':
-        name: support.class.tplpre
+        name: support.class.tpl
       '6':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '7':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
   # Highlight configuration sections
   - begin: ^(configuration)\s(\S+)\s(\d+\.\d+)
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '3':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
     end: ^(end\sconfiguration;)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#comment_line'
       - include: '#doc_strings'
@@ -79,17 +78,17 @@ patterns:
   - begin: '^(table)\s(\S+)\s(\d+(?:\.\d+)+)'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
         name: entity.name.function
       '3':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
       '4':
-        name: comment.block.documentation.tplpre
+        name: comment.block.documentation.tpl
     end: ^(end\stable;)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#comment_line'
       - include: '#main'
@@ -104,16 +103,16 @@ patterns:
   - match: ^(definitions)\s(\S+)\s(\d+(?:\.\d+)+)
     captures:
       1: 
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       2: 
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       3: 
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
     push:
       - match: ^(end\sdefinitions;)
         captures:
           1: 
-            name: keyword.control.tplpre
+            name: keyword.control.tpl
         pop: true
       - include: '#comment_line'
       - include: '#doc_strings'
@@ -126,17 +125,17 @@ patterns:
   - begin: '^(enumeration)\s(\S+)\s(\d+(?:\.\d+)+)'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
         name: entity.name.function
       '3':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
       '4':
-        name: comment.block.documentation.tplpre
+        name: comment.block.documentation.tpl
     end: ^(end\senumeration;)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#doc_strings'
       - include: '#comment_line'
@@ -153,15 +152,15 @@ patterns:
     begin: '^(definitions)\s(\S+)\s(\d+(?:\.\d+)+)'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
         name: entity.name.function
       '3':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
     end: ^(end\sdefinitions;)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#define'
       - include: '#alt_define'
@@ -174,15 +173,15 @@ patterns:
   - begin: '^\b(pattern)\s+(\w+)\s(\d+(?:\.\d+)+)\s+$'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
       '3':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
     end: \b(end\spattern;)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#comment_TODO_line'
       - include: '#comment_WARNING_line'
@@ -205,15 +204,15 @@ patterns:
   - begin: '^\b(syncmapping)\s+(\w+)\s(\d+(?:\.\d+)+)\s+$'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
       '3':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
     end: \b(end\s+syncmapping;)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#comment_TODO_line'
       - include: '#comment_WARNING_line'
@@ -238,22 +237,22 @@ repository:
   tags:
     comment: Tags
     match: tags
-    name: keyword.control.import.tplpre
+    name: keyword.control.import.tpl
   tags_TKU:
     comment: Tags TKU
     match: (TKU_\d+_\d+_\d+)
-    name: constant.other.tplpre
+    name: constant.other.tpl
 
 # Highlight metadata sections
   metadata:
     begin: '^\s{4}(metadata)\s+?$'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     end: '^\s{4}(end\smetadata;)\s+?$'
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#comment_line'
       - include: '#lines'
@@ -262,11 +261,11 @@ repository:
     begin: ^(metadata)\s+?$
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     end: ^(end\smetadata;)\s+?$
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#lines'
       - include: '#comment_line'
@@ -277,11 +276,11 @@ repository:
     begin: '^\s{4}(overview)\s+?$'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     end: '^\s{4}(end\soverview;)\s+?$'
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#comment_line'
       - include: '#tags_TKU'
@@ -293,11 +292,11 @@ repository:
     begin: \b(constants)\s+?$
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     end: \b(end\sconstants;)\s+?$
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#lines'
       - include: '#all_functions'
@@ -308,11 +307,11 @@ repository:
     begin: '^\s{4}(triggers)\s+?$'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     end: '^\s{4}(end\striggers;)\s+?$'
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#lines'
       - include: '#all_functions'
@@ -325,11 +324,11 @@ repository:
     begin: '^\s{4}(body)$'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     end: '^\s{4}(end\sbody;)$'
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#dev_keys'
       - include: '#doc_strings'
@@ -343,11 +342,11 @@ repository:
     begin: '^\s{4}(removal)'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     end: '^\s{4}(end\sremoval;)'
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#lines'
       - include: '#all_functions'
@@ -358,7 +357,7 @@ repository:
   
   # // THIS LINE
   comment_line:
-    name: comment.line.tplpre
+    name: comment.line.tpl
     match: (?<!\'|"|\(|\w)(//).*\n
   
   # TODO: This line
@@ -366,53 +365,53 @@ repository:
     begin: '(//)\s?(TO(\s+|)DO\:)'
     beginCaptures:
       '1':
-        name: comment.line.tplpre
+        name: comment.line.tpl
       '2':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     end: (.*)
     endCaptures:
       '1':
-        name: variable.parameter.function.tplpre
+        name: variable.parameter.function.tpl
 
   # ERROR: This line
   comment_ERROR_line:
     begin: '(//)\s?(ERROR\:)'
     beginCaptures:
       '1':
-        name: comment.line.tplpre
+        name: comment.line.tpl
       '2':
-        name: invalid.illegal.tplpre
+        name: invalid.illegal.tpl
     end: (.*)
     endCaptures:
       '1':
-        name: keyword.other.tplpre
+        name: keyword.other.tpl
   comment_WARNING_line:
     begin: '(//)\s?(WARNING\:)'
     beginCaptures:
       '1':
-        name: comment.line.tplpre
+        name: comment.line.tpl
       '2':
-        name: invalid.deprecated.tplpre
+        name: invalid.deprecated.tpl
     end: (.*)
     endCaptures:
       '1':
-        name: constant.other.tplpre
+        name: constant.other.tpl
   comment_INFO_line:
     begin: '(//)\s?(INFO\:)'
     beginCaptures:
       '1':
-        name: comment.line.tplpre
+        name: comment.line.tpl
       '2':
-        name: support.constant.tplpre
+        name: support.constant.tpl
     end: (.*)
     endCaptures:
       '1':
-        name: support.constant.tplpre
+        name: support.constant.tpl
   comment_DEBUG_line:
     begin: '(//)\s?(DEBUG\:)'
     beginCaptures:
       '1':
-        name: comment.line.tplpre
+        name: comment.line.tpl
       '2':
         name: entity.name.function
     end: (.*)
@@ -426,12 +425,12 @@ repository:
       I got a problem here. two %% in one string - break coloring. This should
       use some more logic.
     match: '(\%((?:[^\%]|\\\\|\\%)*)\%)'
-    name: keyword.control.tplpre
+    name: keyword.control.tpl
     captures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: string.quoted.single.tplpre
+        name: string.quoted.single.tpl
   
   # 'THIS LINE'
   qouted_line:
@@ -439,21 +438,21 @@ repository:
     comment: Still cannot match string like with empty or double quotes
     captures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: string.quoted.single.tplpre
+        name: string.quoted.single.tpl
       '4':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
   qouted_line_empty:
     match: (?<!')(')(('))(?!')
     comment: Still cannot match string like with empty or double quotes
     captures:
       '1':
-        name: punctuation.definition.string.begin.tplpre
+        name: punctuation.definition.string.begin.tpl
       '2':
-        name: punctuation.definition.string.end.tplpre
+        name: punctuation.definition.string.end.tpl
       '3':
-        name: meta.empty-string.single.tplpre
+        name: meta.empty-string.single.tpl
   
   # "THIS LINE"
   double_qouted_line:
@@ -461,9 +460,9 @@ repository:
     comment: Still cannot match string like with empty or single quotes
     captures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: string.quoted.single.tplpre
+        name: string.quoted.single.tpl
   
   # [THIS]
   square_brackets_line_empty:
@@ -471,28 +470,28 @@ repository:
     comment: Still cannot match string like with empty or double quotes
     captures:
       '1':
-        name: punctuation.definition.string.begin.tplpre
+        name: punctuation.definition.string.begin.tpl
       '2':
-        name: punctuation.definition.string.end.tplpre
+        name: punctuation.definition.string.end.tpl
       '3':
-        name: meta.empty-string.single.tplpre
+        name: meta.empty-string.single.tpl
   square_brackets_line_word:
     match: '\[(\w*?[^\d+?])\]'
     captures:
       '1':
-        name: variable.parameter.tplpre
+        name: variable.parameter.tpl
   square_brackets_line_int:
     match: '\[(-?\d+)\]'
     captures:
       '1':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
 
   # Additional:
   drdc_jira:
     match: \((DRDC1-\S+)\)
     captures:
       '1':
-        name: variable.other.tplpre
+        name: variable.other.tpl
   sql_query:
     begin: (?="""(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER|WITH))
     end: (?=""";)
@@ -523,54 +522,54 @@ repository:
   # plus +
   plus:
     match: \+
-    name: keyword.operator.assignment.tplpre
+    name: keyword.operator.assignment.tpl
   # var :=
   var_assign:
     match: '\:\='
-    name: keyword.operator.assignment.tplpre
+    name: keyword.operator.assignment.tpl
   # var := ""
   double_q:
     match: '(\"\"){1}'
-    name: comment.tplpre
+    name: comment.tpl
   # var := ''
   single_q:
     match: '(\''\''){1}'
-    name: comment.tplpre
+    name: comment.tpl
   # var1 = var2
   equal:
     match: \=
-    name: keyword.operator.assignment.tplpre
+    name: keyword.operator.assignment.tpl
   # var1 < var2
   less:
     match: \<
-    name: keyword.operator.tplpre
+    name: keyword.operator.tpl
   # var2 > var1
   more:
     match: \>
-    name: keyword.operator.tplpre
+    name: keyword.operator.tpl
   # var2 >= var1
   more_equal:
     match: \>\=
-    name: keyword.operator.tplpre
+    name: keyword.operator.tpl
   # var1 <= var2
   less_equal:
     match: \<\=
-    name: keyword.operator.tplpre
+    name: keyword.operator.tpl
   # 5 - currenly can't work
   decimal:
     match: \s\-\d+\s
-    name: constant.numeric.integer.tplpre
+    name: constant.numeric.integer.tpl
   # -5 - currenly can't work
   minus_decimal:
     match: \s\-\d+\s
-    name: constant.numeric.integer.tplpre
+    name: constant.numeric.integer.tpl
   # just dot "."
   just_do:
     match: (\.)
-    name: punctuation.accessor.tplpre
+    name: punctuation.accessor.tpl
     captures:
       '1':
-        name: keyword.operator.tplpre
+        name: keyword.operator.tpl
   all_keys:
     patterns:
       - include: '#var_assign'
@@ -590,13 +589,13 @@ repository:
     begin: (regex)\s+?(?=')(.+?)
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: support.function.tplpre
+        name: support.function.tpl
     end: (')
     endCaptures:
       '1':
-        name: support.function.tplpre
+        name: support.function.tpl
     patterns:
       - include: '#regular_expressions'
   
@@ -605,13 +604,13 @@ repository:
     begin: (regex)\s+?(?=")(.+?)
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: support.function.tplpre
+        name: support.function.tpl
     end: (")
     endCaptures:
       '1':
-        name: support.function.tplpre
+        name: support.function.tpl
     patterns:
       - include: '#regular_expressions'
   
@@ -620,13 +619,13 @@ repository:
     begin: '(regex)\s+?(''{3})(.+?)'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: support.function.tplpre
+        name: support.function.tpl
     end: '(''{3})'
     endCaptures:
       '1':
-        name: support.function.tplpre
+        name: support.function.tpl
     patterns:
       - include: '#regular_expressions'
 
@@ -635,13 +634,13 @@ repository:
     begin: '(regex)\s+?("{3})(.+?)'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: support.function.tplpre
+        name: support.function.tpl
     end: '("{3})'
     endCaptures:
       '1':
-        name: support.function.tplpre
+        name: support.function.tpl
     patterns:
       - include: '#regular_expressions'
 
@@ -660,15 +659,15 @@ repository:
       (discovery)(\.)(fileGet|fileInfo|getNames|listDirectory|listRegistry|registryKey|wmiQuery|wbemQuery|wbemEnumInstances|runCommand|snmpGet|snmpGetTable|restfulGet|restfulPost|vSphereFindObjects|vSphereTraverseToObjects|vSphereGetProperties|vSphereGetPropertyTable)
     beginCaptures:
       '1':
-        name: storage.type.tplpre
+        name: storage.type.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: support.constant.tplpre
+        name: support.constant.tpl
     end: \;
     endCaptures:
       '1':
-        name: disabled.tplpre
+        name: disabled.tpl
     patterns:
       - include: '#lines'
       - include: '#all_controls'
@@ -679,15 +678,15 @@ repository:
     begin: (Future)(\.)(runCommand)
     beginCaptures:
       '1':
-        name: storage.type.tplpre
+        name: storage.type.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: support.constant.tplpre
+        name: support.constant.tpl
     end: \;
     endCaptures:
       '1':
-        name: disabled.tplpre
+        name: disabled.tpl
     patterns:
       - include: '#lines'
       - include: '#all_controls'
@@ -700,17 +699,17 @@ repository:
       ((model)(\.)(addDisplayAttribute|removeDisplayAttribute|addContainment|setContainment|destroy|withdraw|setRemovalGroup|anchorRemovalGroup|suppressRemovalGroup|host|hosts|findPackages|addDisplayAttribute|removeDisplayAttribute|kind))
     beginCaptures:
       '1':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '2':
-        name: support.function.tplpre
+        name: support.function.tpl
       '3':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '4':
-        name: support.constant.tplpre
+        name: support.constant.tpl
     end: \;
     endCaptures:
       '1':
-        name: disabled.tplpre
+        name: disabled.tpl
     patterns:
       - include: '#lines'
       - include: '#all_controls'
@@ -722,17 +721,17 @@ repository:
       ((model)(\.)(rel|uniquerel)(\.)(Communication|Containment|Dependency|Detail|HostContainment|HostedFile|HostedSoftware|Management|RelatedFile|SoftwareService|SoftwareContainment|StorageUse))
     beginCaptures:
       '1':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '2':
-        name: support.function.tplpre
+        name: support.function.tpl
       '3':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '4':
-        name: support.constant.tplpre
+        name: support.constant.tpl
     end: \;
     endCaptures:
       '1':
-        name: disabled.tplpre
+        name: disabled.tpl
     patterns:
       - include: '#lines'
       - include: '#all_controls'
@@ -745,17 +744,17 @@ repository:
     begin: ((model)(\.)(SoftwareInstance|SoftwareCluster))
     beginCaptures:
       '1':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '2':
-        name: support.function.tplpre
+        name: support.function.tpl
       '3':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '4':
-        name: support.constant.tplpre
+        name: support.constant.tpl
     end: \;
     endCaptures:
       '1':
-        name: disabled.tplpre
+        name: disabled.tpl
     patterns:
       - include: '#lines'
       - include: '#all_controls'
@@ -767,130 +766,130 @@ repository:
     match: '(log\.(?:debug|info|warn|error|critical))'
     captures:
       '1':
-        name: storage.type.tplpre
+        name: storage.type.tpl
 
   number_functions:
     match: >-
       (text)(\.)(lower|upper|toNumber|replace|join|split|strip|leftStrip|rightStrip|hash|ordinal)
     captures:
       '1':
-        name: support.function.tplpre
+        name: support.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: support.constant.tplpre
+        name: support.constant.tpl
 
   regex_functions:
     match: (regex)(\.)(extract|extractAll)
     captures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: variable.parameter.tplpre
+        name: variable.parameter.tpl
 
   xpath_functions:
     match: (xpath)(\.)(evaluate|openDocument|closeDocument)
     captures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: variable.parameter.tplpre
+        name: variable.parameter.tpl
 
   discovery_manipulation_functions:
     match: (discovery)(\.)(process|children|descendents|parent|allProcesses|access)
     captures:
       '1':
-        name: support.function.tplpre
+        name: support.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: support.constant.tplpre
+        name: support.constant.tpl
 
   binary_functions:
     match: >-
       (binary)(\.)(toHexString|toIPv4|toIPv4z|toIPv6|toIPv6z|toMACAddress|toValue|toWWN)
     captures:
       '1':
-        name: support.function.tplpre
+        name: support.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: support.constant.tplpre
+        name: support.constant.tpl
 
   json_functions:
     match: (json)(\.)(encode|decode)
     captures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: variable.parameter.tplpre
+        name: variable.parameter.tpl
 
   related_functions:
     match: (related)(\.)(detailContainer|host\b|hostingNode)
     captures:
       '1':
-        name: support.function.tplpre
+        name: support.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: support.constant.tplpre
+        name: support.constant.tpl
 
   mail_functions:
     match: (mail)(\.)(send)
     captures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: variable.parameter.tplpre
+        name: variable.parameter.tpl
 
   time_functions:
     match: >-
       (time)(\.)(current|delta|parseLocal|parseUTC|formatLocal|formatUTC|toTicks|fromTicks)
     captures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: variable.parameter.tplpre
+        name: variable.parameter.tpl
 
   inference_functions:
     match: (inference)(\.)(associate|contributor|primary|relation|withdrawal|destruction)
     captures:
       '1':
-        name: support.function.tplpre
+        name: support.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: support.constant.tplpre
+        name: support.constant.tpl
 
   text_functions:
     - match: (text)(\.)(lower|upper|toNumber|replace|join|split|strip|leftStrip|rightStrip|hash|ordinal)
       captures:
         '1': 
-          name: support.function.tplpre
+          name: support.function.tpl
         '2': 
-          name: punctuation.accessor.tplpre
+          name: punctuation.accessor.tpl
         '3': 
-          name: support.constant.tplpre
+          name: support.constant.tpl
 
   list_append:
     match: (list)(\.)(append)
     captures:
       '1':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
 
   # TPL Functions:
   ConversionFunctions:
@@ -898,78 +897,78 @@ repository:
       (ConversionFunctions)(\.)(isValidSerialNumber|convertToCharString|convertToBytes)
     captures:
       '1':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
 
   DiscoveryFunctions:
     match: >-
       (DiscoveryFunctions)(\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes)
     captures:
       '1':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '4':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
 
   RDBMSFunctions:
     match: >-
       (RDBMSFunctions)(\.)(oracleOraFileParser|performRdbmsSisSearch|oracleNetServiceNameSearch|dsnRdbmsServers|parseJDBC)
     captures:
       '1':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
 
   rdbms_functions:
     match: >-
       (rdbms_functions)(\.)(oracle_ora_file_parser|perform_rdbms_sis_search|related_rdbms_sis_search|related_rdbms_sis_search_extended|oracle_net_service_name_search|dsn_rdbms_servers|parseJDBC|jdbc_search|find_db_server)
     captures:
       '1':
-        name: invalid.deprecated.tplpre
+        name: invalid.deprecated.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: invalid.deprecated.tplpre
+        name: invalid.deprecated.tpl
 
   SearchFunctions:
     match: >-
       (SearchFunctions)(\.)(getNodeIp|getHostingNodes|getSoftwareNodes|getSI|identifyHostWithUuid|relatedSisSearchOnMultipleHosts)
     captures:
       '1':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
 
   common_functions:
     match: >-
       (functions)(\.)(validate_host_address_format|domain_lookup|identify_host_perform_search|identify_host_perform_search_in_scope|identify_host|identify_host_extended|related_sis_search\b|related_sis_search_on_multiple_hosts|related_sis_search_on_multiple_hosts_extended|related_sis_search_extended|related_si_types_search|path_normalization|links_management|get_cleanedup_path|get_max_version|get_exe_cwd_path|sort_list|run_priv_cmd|has_process|isValidSerialNumber|convertToCharString|wmiFollowAssociations|checkForDecimal|convertToBytes|identify_host_with_uuid|locateCommands|find_server|checkCommandList)
     captures:
       '1':
-        name: invalid.deprecated.tplpre
+        name: invalid.deprecated.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: invalid.deprecated.tplpre
+        name: invalid.deprecated.tpl
 
   local_functions:
     match: (local_functions|localFunctions)(\.)(\w+)
     captures:
       '1':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '2':
-        name: punctuation.accessor.tplpre
+        name: punctuation.accessor.tpl
       '3':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
 
   all_functions:
     patterns:
@@ -1010,11 +1009,11 @@ repository:
     begin: (?!end if;|then)(\bif)
     beginCaptures:
       '1':
-        name: keyword.control.conditional.tplpre
+        name: keyword.control.conditional.tpl
     end: (\bthen)
     endCaptures:
       '1':
-        name: keyword.control.conditional.tplpre
+        name: keyword.control.conditional.tpl
     patterns:
       - include: '#all_controls'
       - include: '#regexes'
@@ -1030,11 +1029,11 @@ repository:
     begin: (?!end if;|then)(\belif)
     beginCaptures:
       '1':
-        name: keyword.control.conditional.tplpre
+        name: keyword.control.conditional.tpl
     end: (\bthen)
     endCaptures:
       '1':
-        name: keyword.control.conditional.tplpre
+        name: keyword.control.conditional.tpl
     patterns:
       - include: '#all_controls'
       - include: '#regexes'
@@ -1045,22 +1044,22 @@ repository:
 
   else_statement:
     match: \belse\b
-    name: keyword.control.conditional.tplpre
+    name: keyword.control.conditional.tpl
   
   end_if_statement:
     match: (?!;|if|else\w)\bend\b\s\bif\b;
-    name: keyword.control.conditional.tplpre
+    name: keyword.control.conditional.tpl
   
   for_statement:
     comment: Improve this with some logic. Now only works when 4 spaces before it.
     begin: '\s{4}(for\b)(?!;)'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     end: (\bdo\b)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#regex'
       - include: '#lines'
@@ -1069,48 +1068,48 @@ repository:
   
   end_for_statement:
     match: \bend\sfor;\s+?
-    name: keyword.control.tplpre
+    name: keyword.control.tpl
   
   keywords_all:
     match: >-
       \b(size|in|aged|and|as|at|break|by|configuration|continue|created|default|desc|deleted|do|enumeration|exists|expand|explode|false|flags|from|has|in|is|locale|matches|modified|nodes|nodecount|none|not|on|or|order|out|overrides|processwith|relationship|removal|requires|search|show|step|stop|substring|subword|summary|tags|taxonomy|traverse|true|unconfirmed|where|with|void|has|substring)\b
-    name: storage.type.class.tplpre
+    name: storage.type.class.tpl
   
   keywords_cmd:
     match: \b(unix_cmd|windows_cmd)
     captures:
       '1':
-        name: keyword.operator.tplpre
+        name: keyword.operator.tpl
   
   keywords_cmd_indentify_trigger:
     match: \b(unix_cmd|windows_cmd|cmd|args)
     captures:
       '1':
-        name: keyword.operator.tplpre
+        name: keyword.operator.tpl
   
   if_ADDM_statement:
     match: (#IFADDM)\s+(\d+.\d+)
     captures:
       '1':
-        name: keyword.control.conditional.tplpre
+        name: keyword.control.conditional.tpl
       '2':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
   
   elif_ADDM_statement:
     match: (#ELIFADDM)\s+(\d+.\d+)
     captures:
       '1':
-        name: keyword.control.conditional.tplpre
+        name: keyword.control.conditional.tpl
       '2':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
   
   else_ADDM_statement:
     match: '#ELSE\s+?'
-    name: keyword.control.conditional.tplpre
+    name: keyword.control.conditional.tpl
   
   end_if_ADDM_statement:
     match: '#ENDIFADDM\s+?'
-    name: keyword.control.conditional.tplpre
+    name: keyword.control.conditional.tpl
   
   if_addm:
     patterns:
@@ -1144,38 +1143,38 @@ repository:
     begin: '(\"{3})'
     beginCaptures:
       '1':
-        name: comment.block.documentation.tplpre
+        name: comment.block.documentation.tpl
     end: '(\"{3})'
-    contentName: comment.block.documentation.tplpre
+    contentName: comment.block.documentation.tpl
     endCaptures:
       '1':
-        name: comment.block.documentation.tplpre
+        name: comment.block.documentation.tpl
     patterns:
-      - name: variable.parameter.tplpre
+      - name: variable.parameter.tpl
         match: '(\d{2,4}\-\d{2,4}\-\d{2,4}).*?(\d{2,4}\-\d{2,4}\-\d{2,4})?'
         captures:
           '1':
-            name: variable.other.tplpre
-      - name: variable.parameter.tplpre
+            name: variable.other.tpl
+      - name: variable.parameter.tpl
         match: \((QM\d+)\)
         captures:
           '1':
-            name: variable.other.tplpre
-      - name: variable.parameter.tplpre
+            name: variable.other.tpl
+      - name: variable.parameter.tpl
         match: \((DRDC1-\d+)\)
         captures:
           '1':
-            name: variable.other.tplpre
-      - name: variable.parameter.tplpre
+            name: variable.other.tpl
+      - name: variable.parameter.tpl
         match: \((TKU-\d+)\)
         captures:
           '1':
-            name: variable.other.tplpre
-      - name: variable.parameter.tplpre
+            name: variable.other.tpl
+      - name: variable.parameter.tpl
         match: \((esc\s+?\d+)\)
         captures:
           '1':
-            name: variable.other.tplpre
+            name: variable.other.tpl
       - include: '#if_addm'
 
   # '''
@@ -1186,51 +1185,51 @@ repository:
     begin: '(''{3})'
     beginCaptures:
       '1':
-        name: comment.block.documentation.tplpre
+        name: comment.block.documentation.tpl
     end: '(''{3})'
-    contentName: comment.block.documentation.tplpre
+    contentName: comment.block.documentation.tpl
     endCaptures:
       '1':
-        name: comment.block.documentation.tplpre
+        name: comment.block.documentation.tpl
     patterns:
-      - name: variable.parameter.tplpre
+      - name: variable.parameter.tpl
         match: '(\d{2,4}\-\d{2,4}\-\d{2,4}).*?(\d{2,4}\-\d{2,4}\-\d{2,4})?'
         captures:
           '1':
-            name: variable.other.tplpre
-      - name: variable.parameter.tplpre
+            name: variable.other.tpl
+      - name: variable.parameter.tpl
         match: \((QM\d+)\)
         captures:
           '1':
-            name: variable.other.tplpre
-      - name: variable.parameter.tplpre
+            name: variable.other.tpl
+      - name: variable.parameter.tpl
         match: \((DRDC1-\d+)\)
         captures:
           '1':
-            name: variable.other.tplpre
-      - name: variable.parameter.tplpre
+            name: variable.other.tpl
+      - name: variable.parameter.tpl
         match: \((TKU-\d+)\)
         captures:
           '1':
-            name: variable.other.tplpre
-      - name: variable.parameter.tplpre
+            name: variable.other.tpl
+      - name: variable.parameter.tpl
         match: \((esc\s+?\d+)\)
         captures:
           '1':
-            name: variable.other.tplpre
+            name: variable.other.tpl
       - include: '#if_addm'
   # ''' THIS STRING '''
   doc_strings_single_simple:
     comment: 'Adding SQL support via #lines'
-    name: comment.block.documentation.tplpre
+    name: comment.block.documentation.tpl
     match: '(''{3}([^'']+?)''{3})'
     captures:
       '1':
-        name: string.quoted.triple.tplpre
+        name: string.quoted.triple.tpl
       '2':
-        name: string.quoted.triple.tplpre
+        name: string.quoted.triple.tpl
       '3':
-        name: string.quoted.triple.tplpre
+        name: string.quoted.triple.tpl
   doc_strings:
     patterns:
       - include: '#doc_strings_block_doulbe_q'
@@ -1243,17 +1242,17 @@ repository:
     begin: \s+(define)\s+(\S+)\((.*?)\)(\s\S+\s(.*))?
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '3':
-        name: variable.parameter.tplpre
+        name: variable.parameter.tpl
       '4':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
     end: \s+(end\sdefine;\s+?$)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#doc_strings'
       - include: '#all_functions'
@@ -1268,15 +1267,15 @@ repository:
     begin: \s+(define)\s+(\S+)(\s\S+\s(.*))?
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '3':
-        name: variable.parameter.tplpre
+        name: variable.parameter.tpl
     end: \s+(end\sdefine;)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#doc_strings'
       - include: '#all_functions'
@@ -1290,15 +1289,15 @@ repository:
     begin: '\b(identify)\s+(\w+)\s(\d+(?:\.\d+)+)'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
         name: entity.name.function
       '3':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
     end: (end\sidentify;)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#lines'
       - include: '#keywords_cmd'
@@ -1312,19 +1311,19 @@ repository:
     begin: \b(mapping)\s+(\w+)\s+(\w+\.\w+)\s+(\w+)\s+(\w+)
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
       '2':
         name: entity.name.function.model
       '3':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
       '4':
         name: entity.name.function.model
       '5':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
     end: (end\smapping;)
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#lines'
       - include: '#keywords_cmd'
@@ -1337,11 +1336,11 @@ repository:
     begin: '^\s{4}(body)$'
     beginCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     end: '^\s{4}(end\sbody;)$'
     endCaptures:
       '1':
-        name: keyword.control.tplpre
+        name: keyword.control.tpl
     patterns:
       - include: '#dev_keys'
       - include: '#doc_strings'
@@ -1357,15 +1356,15 @@ repository:
     begin: '(sync)(?:\.)(rel|shared|external|)(?:\.|)(BMC_\w+|)'
     beginCaptures:
       '1':
-        name: entity.name.function.tplpre
+        name: entity.name.function.tpl
       '2':
-        name: support.function.tplpre
+        name: support.function.tpl
       '3':
-        name: constant.numeric.tplpre
+        name: constant.numeric.tpl
     end: \;
     endCaptures:
       '1':
-        name: disabled.tplpre
+        name: disabled.tpl
     patterns:
       - include: '#lines'
       - include: '#all_controls'
@@ -1383,7 +1382,7 @@ repository:
       \b(key_group|key|name|type|version|short_name|install_root|listening_ports|product_version|full_version)\b
     captures:
       '1':
-        name: storage.type.tplpre
+        name: storage.type.tpl
 
   traverse:
     name: entity.name.function.model
@@ -1395,7 +1394,7 @@ repository:
   regular_expressions:
     comment: Changed disabled to 1 to turn off syntax highlighting in “r” strings.
     patterns:
-      - include: source.regexp.tplpre
+      - include: source.regexp.tpl
 
   dev_keys:
     patterns:
@@ -1412,7 +1411,7 @@ repository:
   #   push: brackets
   # bracket_close:
   # - match: (\))
-  #   scope: invalid.illegal.stray-bracket-end.tplpre
+  #   scope: invalid.illegal.stray-bracket-end.tpl
   #   captures:
   #     1: 
   #       name: keyword.control.model
