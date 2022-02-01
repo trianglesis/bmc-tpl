@@ -17,7 +17,7 @@ Originally re-made from the [Atom bundle](https://github.com/trianglesis/languag
 Most of constructions are also checking on integrity,
 so if some code will be written on wrong place, highlighting can be broken.
 
-Example (currently based on Atom, and maybe will be refreshed):
+Examples (currently based on Atom, and maybe will be refreshed):
 
 Pattern from Community Edition:
 - ![blocks](https://trianglesis.github.io/Atom_language_tpl_pics/TPL_Syntax_example_1.png)
