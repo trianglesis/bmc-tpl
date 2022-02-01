@@ -1,27 +1,15 @@
-%YAML 1.2
----
-# Olexander Danylchenko
-# .model test files better formatting
-# Will be used also to convert in VS Code JSON format
-
+scopeName: source.model.tplpre
 name: model
-scope: source.model
-scopeName: source.model
 fileTypes:
   - model
-file_extensions:
-  - model
-
+firstLineMatch: .
 patterns:
   - include: '#keywords_attributes'
   - include: '#traverse'
   - include: '#all_keys'
   - include: '#errors'
   - include: '#lines'
-  
 repository:
-
-# Keywords
   keywords_attrs:
     comment: Changed disabled to 1 to turn off DEV highlighting.
     disabled: 0
@@ -37,8 +25,6 @@ repository:
   keywords_attributes:
     patterns:
       - include: '#keywords_attrs'
-
-# REGEX
   regex_token_s_quote:
     comment: Catch regex in single quotes
     begin: (regex)\s+?(?=')(.+?)
@@ -53,7 +39,6 @@ repository:
         name: support.function.model
     patterns:
       - include: '#regular_expressions'
-  
   regex_token_d_quote:
     comment: Catch regex in double qoutes
     begin: (regex)\s+?(?=")(.+?)
@@ -68,17 +53,13 @@ repository:
         name: support.function.model
     patterns:
       - include: '#regular_expressions'
-
   regexes:
     patterns:
       - include: '#regex_token_s_quote'
       - include: '#regex_token_d_quote'
-
-# COMMENTS
   comment_line:
     name: comment.line.model
     match: (?<!\'|"|\(|\w)(//).*\n
-  # TODO:
   comment_TODO_line:
     comment: variable.parameter.model
     begin: '(//)\s?(TO(\s+|)DO\:)'
@@ -91,8 +72,6 @@ repository:
     endCaptures:
       '1':
         name: variable.parameter.function.model
-        
-  # QUOTED ''
   qouted_line:
     match: '(?<!'')('')([^'']*)((''))(?!'')'
     comment: Still cannot match string like with empty or double quotes
@@ -103,7 +82,6 @@ repository:
         name: string.quoted.single.model
       '4':
         name: keyword.control.model
-
   qouted_line_empty:
     match: (?<!')(')(('))(?!')
     comment: Still cannot match string like with empty or double quotes
@@ -114,7 +92,6 @@ repository:
         name: punctuation.definition.string.end.model
       '3':
         name: meta.empty-string.single.model
-
   double_qouted_line:
     match: '(\"((?:[^\"]|\\\\|\\")*)\")'
     comment: Still cannot match string like with empty or single quotes
@@ -123,8 +100,6 @@ repository:
         name: keyword.control.model
       '2':
         name: string.quoted.single.model
-
-# Percent
   percent_line:
     comment: >-
       I got a problem here. two %% in one string - break coloring. This should
@@ -136,8 +111,6 @@ repository:
         name: keyword.control.model
       '2':
         name: string.quoted.single.model
-
-# []
   square_brackets_line_empty:
     match: '(?<!\[)(\[)((\]))(?!\])'
     comment: Still cannot match string like with empty or double quotes
@@ -148,21 +121,16 @@ repository:
         name: punctuation.definition.string.end.model
       '3':
         name: meta.empty-string.single.model
-
-# [0-9]
   square_brackets_line_int:
     match: '\[(-?\d+)\]'
     captures:
       '1':
         name: constant.numeric.model
-
-# [abc]
   square_brackets_line_word:
     match: '\[(\w*?[^\d+?])\]'
     captures:
       '1':
         name: variable.parameter.model
-# All lines
   lines:
     patterns:
       - include: '#qouted_line'
@@ -177,13 +145,11 @@ repository:
       - include: '#square_brackets_line_word'
       - include: '#square_brackets_line_int'
       - include: '#all_keys'
-# None
   none_attr:
     match: \b(None)
     captures:
       '1':
         name: invalid.illegal.model
-# #Attr
   hash_attr:
     match: '(#)\s+"(\S+)":\s+(None)'
     captures:
@@ -193,13 +159,10 @@ repository:
         name: keyword.control.model
       '3':
         name: invalid.illegal.model
-# Errors
   errors:
     patterns:
       - include: '#none_attr'
       - include: '#hash_attr'
-
-# Common operators
   plus:
     match: \+
     name: keyword.operator.assignment.model
@@ -239,7 +202,6 @@ repository:
     captures:
       '1':
         name: keyword.operator.model
-
   all_keys:
     patterns:
       - include: '#var_assign'
@@ -252,8 +214,6 @@ repository:
       - include: '#decimal'
       - include: '#minus_decimal'
       - include: '#just_do'
-
-# Traversals
   traverse:
     match: '\"(\#(?:(\w+)(:|\.))+(\w+))\"\:\s\['
     captures:
