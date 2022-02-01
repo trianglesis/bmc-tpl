@@ -1,6 +1,7 @@
 {
   "comment": "Copied from: https://github.com/atom/language-python.git Matches Python's regular expression syntax.",
-  "scopeName": "source.regexp.tplpre",
+  "scopeName": "regexp.injection",
+  "injectionSelector": "L:source.tplpre",
   "fileTypes": [
     "re"
   ],
