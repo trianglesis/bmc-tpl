@@ -1,11 +1,12 @@
 {
-  "name": "tplpre",
+  "name": "TPL",
+  "scope": "source.tplpre",
+  "scopeName": "source.tplpre",
   "file_extensions": [
     "tplpre",
     "tpl"
   ],
-  "scope": "source.tplpre",
-  "contexts": {
+  "patterns": {
     "main": [
       {
         "include": "doc_strings"
@@ -183,7 +184,9 @@
           }
         ]
       }
-    ],
+    ]
+  },
+  "repository": {
     "tags": [
       {
         "match": "\\s+(tags)\\s+(.*?);",
