@@ -5,6 +5,12 @@
         // symbols used for start and end a block comment. Remove this entry if your language does not support block comments
         "blockComment": [ "/*", "*/" ]
     },
+	"align_indent": true,
+	"alignment_chars":
+	[
+		":=",
+		"->"
+	],
     // symbols used as brackets
     "brackets": [
         ["{", "}"],
@@ -27,4 +33,16 @@
         ["\"", "\""],
         ["'", "'"]
     ]
+    // ,
+    // "indentationRules": {
+    //     "increaseIndentPattern": "(for).*(\\S+\\s+do)\\b.*$",
+    //     "decreaseIndentPattern": "(end\\sif;|end\\sfor;)$",
+    //     "decreaseNextIndentPattern": "^\\s*(pass;|break;)\\b.*$"
+    //   },
+    //   "folding": {
+    //     "markers": {
+    //       "start": "^\\s*//\\s*#?region\\b",
+    //       "end": "^\\s*//\\s*#?endregion\\b"
+    //     }
+    //   },
 }

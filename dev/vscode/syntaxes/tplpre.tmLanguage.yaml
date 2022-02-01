@@ -100,24 +100,25 @@ patterns:
       - include: '#if_addm'
 
   # Highlight definitions sections
-  - match: ^(definitions)\s(\S+)\s(\d+(?:\.\d+)+)
-    captures:
-      1: 
+  # SQL Support?
+  - comment: 'Adding SQL support via #lines'
+    begin: '^(definitions)\s(\S+)\s(\d+(?:\.\d+)+)'
+    beginCaptures:
+      '1':
         name: keyword.control.tplpre
-      2: 
-        name: entity.name.function.tplpre
-      3: 
+      '2':
+        name: entity.name.function
+      '3':
         name: constant.numeric.tplpre
-    push:
-      - match: ^(end\sdefinitions;)
-        captures:
-          1: 
-            name: keyword.control.tplpre
-        pop: true
-      - include: '#comment_line'
-      - include: '#doc_strings'
+    end: ^(end\sdefinitions;)
+    endCaptures:
+      '1':
+        name: keyword.control.tplpre
+    patterns:
       - include: '#define'
       - include: '#alt_define'
+      - include: '#comment_line'
+      - include: '#doc_strings'
       - include: '#lines'
       - include: '#if_addm'
   
@@ -145,28 +146,6 @@ patterns:
       - include: '#keywords_all'
       - include: '#regexes'
       - include: '#keywords_cmd_indentify_trigger'
-      - include: '#if_addm'
-  
-  # SQL Support?
-  - comment: 'Adding SQL support via #lines'
-    begin: '^(definitions)\s(\S+)\s(\d+(?:\.\d+)+)'
-    beginCaptures:
-      '1':
-        name: keyword.control.tplpre
-      '2':
-        name: entity.name.function
-      '3':
-        name: constant.numeric.tplpre
-    end: ^(end\sdefinitions;)
-    endCaptures:
-      '1':
-        name: keyword.control.tplpre
-    patterns:
-      - include: '#define'
-      - include: '#alt_define'
-      - include: '#comment_line'
-      - include: '#doc_strings'
-      - include: '#lines'
       - include: '#if_addm'
 
   # Highlight pattern sections

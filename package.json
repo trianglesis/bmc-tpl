@@ -8,9 +8,13 @@
     },
     "categories": [
         "Programming Languages",
-        "Snippets"
+        "Snippets",
+        "Themes"
     ],
     "contributes": {
+        "themes": [
+            {"label": "BMC Monokai", "uiTheme": "vs-dark", "path": "./themes/BMC Monokai-color-theme.json"}
+        ],
         "languages": [
             {"id": "tpl", "aliases": ["tpl"], "extensions": [".tpl"], "configuration": "./language-configuration.json"},
             {"id": "tplpre", "aliases": ["tplpre"], "extensions": [".tplpre"], "configuration": "./language-configuration.json"},
