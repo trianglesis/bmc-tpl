@@ -8,25 +8,25 @@
   ],
   "patterns": [
     {
-      "include": "doc_strings"
+      "include": "#doc_strings"
     },
     {
-      "include": "comment_TODO_line"
+      "include": "#comment_TODO_line"
     },
     {
-      "include": "comment_line"
+      "include": "#comment_line"
     },
     {
-      "include": "metadata_2"
+      "include": "#metadata_2"
     },
     {
-      "include": "overwiev"
+      "include": "#overwiev"
     },
     {
-      "include": "simple_identifiers"
+      "include": "#simple_identifiers"
     },
     {
-      "include": "if_addm"
+      "include": "#if_addm"
     },
     {
       "match": "tpl\\s+?(\\$\\$TPLVERSION\\$\\$|\\d+\\.\\d+)\\s+?module\\s(.*);",
@@ -83,16 +83,16 @@
           "pop": true
         },
         {
-          "include": "comment_line"
+          "include": "#comment_line"
         },
         {
-          "include": "doc_strings"
+          "include": "#doc_strings"
         },
         {
-          "include": "lines"
+          "include": "#lines"
         },
         {
-          "include": "if_addm"
+          "include": "#if_addm"
         }
       ]
     },
@@ -123,10 +123,10 @@
           "pop": true
         },
         {
-          "include": "comment_line"
+          "include": "#comment_line"
         },
         {
-          "include": "main"
+          "include": "#main"
         },
         {
           "match": ".",
@@ -158,22 +158,22 @@
           "pop": true
         },
         {
-          "include": "comment_line"
+          "include": "#comment_line"
         },
         {
-          "include": "doc_strings"
+          "include": "#doc_strings"
         },
         {
-          "include": "define"
+          "include": "#define"
         },
         {
-          "include": "alt_define"
+          "include": "#alt_define"
         },
         {
-          "include": "lines"
+          "include": "#lines"
         },
         {
-          "include": "if_addm"
+          "include": "#if_addm"
         }
       ]
     },
@@ -198,34 +198,34 @@
           "pop": true
         },
         {
-          "include": "comment_TODO_line"
+          "include": "#comment_TODO_line"
         },
         {
-          "include": "comment_line"
+          "include": "#comment_line"
         },
         {
-          "include": "doc_strings"
+          "include": "#doc_strings"
         },
         {
-          "include": "metadata"
+          "include": "#metadata"
         },
         {
-          "include": "overwiev"
+          "include": "#overwiev"
         },
         {
-          "include": "constants"
+          "include": "#constants"
         },
         {
-          "include": "triggers"
+          "include": "#triggers"
         },
         {
-          "include": "removal"
+          "include": "#removal"
         },
         {
-          "include": "body"
+          "include": "#body"
         },
         {
-          "include": "if_addm"
+          "include": "#if_addm"
         }
       ]
     }
@@ -264,13 +264,13 @@
             "pop": true
           },
           {
-            "include": "comment_line"
+            "include": "#comment_line"
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "if_addm"
+            "include": "#if_addm"
           }
         ]
       }
@@ -294,13 +294,13 @@
             "pop": true
           },
           {
-            "include": "comment_line"
+            "include": "#comment_line"
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "if_addm"
+            "include": "#if_addm"
           }
         ]
       }
@@ -327,16 +327,16 @@
             "pop": true
           },
           {
-            "include": "comment_line"
+            "include": "#comment_line"
           },
           {
-            "include": "tags_TKU"
+            "include": "#tags_TKU"
           },
           {
-            "include": "keywords_all"
+            "include": "#keywords_all"
           },
           {
-            "include": "if_addm"
+            "include": "#if_addm"
           }
         ]
       }
@@ -363,13 +363,13 @@
             "pop": true
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "all_functions"
+            "include": "#all_functions"
           },
           {
-            "include": "if_addm"
+            "include": "#if_addm"
           }
         ]
       }
@@ -396,19 +396,19 @@
             "pop": true
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "all_functions"
+            "include": "#all_functions"
           },
           {
-            "include": "all_controls"
+            "include": "#all_controls"
           },
           {
-            "include": "keywords_cmd_indentify_trigger"
+            "include": "#keywords_cmd_indentify_trigger"
           },
           {
-            "include": "if_addm"
+            "include": "#if_addm"
           }
         ]
       }
@@ -435,22 +435,22 @@
             "pop": true
           },
           {
-            "include": "dev_keys"
+            "include": "#dev_keys"
           },
           {
-            "include": "doc_strings"
+            "include": "#doc_strings"
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "all_functions"
+            "include": "#all_functions"
           },
           {
-            "include": "all_controls"
+            "include": "#all_controls"
           },
           {
-            "include": "if_addm"
+            "include": "#if_addm"
           }
         ]
       }
@@ -477,16 +477,16 @@
             "pop": true
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "all_functions"
+            "include": "#all_functions"
           },
           {
-            "include": "all_controls"
+            "include": "#all_controls"
           },
           {
-            "include": "if_addm"
+            "include": "#if_addm"
           }
         ]
       }
@@ -587,34 +587,34 @@
     ],
     "lines": [
       {
-        "include": "percent_line"
+        "include": "#percent_line"
       },
       {
-        "include": "comment_TODO_line"
+        "include": "#comment_TODO_line"
       },
       {
-        "include": "comment_line"
+        "include": "#comment_line"
       },
       {
-        "include": "qouted_line"
+        "include": "#qouted_line"
       },
       {
-        "include": "double_qouted_line"
+        "include": "#double_qouted_line"
       },
       {
-        "include": "regexes"
+        "include": "#regexes"
       },
       {
-        "include": "square_brackets_line_word"
+        "include": "#square_brackets_line_word"
       },
       {
-        "include": "square_brackets_line_int"
+        "include": "#square_brackets_line_int"
       },
       {
-        "include": "all_keys"
+        "include": "#all_keys"
       },
       {
-        "include": "brackets"
+        "include": "#brackets"
       }
     ],
     "plus": [
@@ -696,34 +696,34 @@
     ],
     "all_keys": [
       {
-        "include": "var_assign"
+        "include": "#var_assign"
       },
       {
-        "include": "equal"
+        "include": "#equal"
       },
       {
-        "include": "less"
+        "include": "#less"
       },
       {
-        "include": "more"
+        "include": "#more"
       },
       {
-        "include": "more_equal"
+        "include": "#more_equal"
       },
       {
-        "include": "less_equal"
+        "include": "#less_equal"
       },
       {
-        "include": "plus"
+        "include": "#plus"
       },
       {
-        "include": "decimal"
+        "include": "#decimal"
       },
       {
-        "include": "minus_decimal"
+        "include": "#minus_decimal"
       },
       {
-        "include": "just_do"
+        "include": "#just_do"
       }
     ],
     "regex": [
@@ -773,13 +773,13 @@
     ],
     "regexes": [
       {
-        "include": "regex_raw"
+        "include": "#regex_raw"
       },
       {
-        "include": "regex"
+        "include": "#regex"
       },
       {
-        "include": "content_raw"
+        "include": "#content_raw"
       }
     ],
     "discovery_functions": [
@@ -807,13 +807,13 @@
             "pop": true
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "all_controls"
+            "include": "#all_controls"
           },
           {
-            "include": "regex"
+            "include": "#regex"
           }
         ]
       }
@@ -846,13 +846,13 @@
             "pop": true
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "all_controls"
+            "include": "#all_controls"
           },
           {
-            "include": "regex"
+            "include": "#regex"
           }
         ]
       }
@@ -885,13 +885,13 @@
             "pop": true
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "all_controls"
+            "include": "#all_controls"
           },
           {
-            "include": "regex"
+            "include": "#regex"
           }
         ]
       }
@@ -924,13 +924,13 @@
             "pop": true
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "all_controls"
+            "include": "#all_controls"
           },
           {
-            "include": "regex"
+            "include": "#regex"
           }
         ]
       }
@@ -1235,76 +1235,76 @@
     ],
     "all_functions": [
       {
-        "include": "discovery_functions"
+        "include": "#discovery_functions"
       },
       {
-        "include": "model_functions"
+        "include": "#model_functions"
       },
       {
-        "include": "model_SI_functions"
+        "include": "#model_SI_functions"
       },
       {
-        "include": "model_rel_functions"
+        "include": "#model_rel_functions"
       },
       {
-        "include": "log_functions"
+        "include": "#log_functions"
       },
       {
-        "include": "log_functions"
+        "include": "#log_functions"
       },
       {
-        "include": "text_functions"
+        "include": "#text_functions"
       },
       {
-        "include": "number_functions"
+        "include": "#number_functions"
       },
       {
-        "include": "regex_functions"
+        "include": "#regex_functions"
       },
       {
-        "include": "xpath_functions"
+        "include": "#xpath_functions"
       },
       {
-        "include": "discovery_manipulation_functions"
+        "include": "#discovery_manipulation_functions"
       },
       {
-        "include": "binary_functions"
+        "include": "#binary_functions"
       },
       {
-        "include": "json_functions"
+        "include": "#json_functions"
       },
       {
-        "include": "related_functions"
+        "include": "#related_functions"
       },
       {
-        "include": "mail_functions"
+        "include": "#mail_functions"
       },
       {
-        "include": "time_functions"
+        "include": "#time_functions"
       },
       {
-        "include": "inference_functions"
+        "include": "#inference_functions"
       },
       {
-        "include": "ConversionFunctions"
+        "include": "#ConversionFunctions"
       },
       {
-        "include": "SearchFunctions"
+        "include": "#SearchFunctions"
       },
       {
-        "include": "rdbms_functions"
+        "include": "#rdbms_functions"
       },
       {
-        "include": "RDBMSFunctions"
+        "include": "#RDBMSFunctions"
       },
       {
-        "include": "DiscoveryFunctions"
+        "include": "#DiscoveryFunctions"
       },
       {
-        "include": "common_functions"
+        "include": "#common_functions"
       },
       {
-        "include": "local_functions"
+        "include": "#local_functions"
       }
     ],
     "if_statement": [
@@ -1395,48 +1395,48 @@
     ],
     "if_addm": [
       {
-        "include": "if_ADDM_statement"
+        "include": "#if_ADDM_statement"
       },
       {
-        "include": "else_ADDM_statement"
+        "include": "#else_ADDM_statement"
       },
       {
-        "include": "end_if_ADDM_statement"
+        "include": "#end_if_ADDM_statement"
       }
     ],
     "all_controls": [
       {
-        "include": "if_statement"
+        "include": "#if_statement"
       },
       {
-        "include": "elif_statement"
+        "include": "#elif_statement"
       },
       {
-        "include": "then_statement"
+        "include": "#then_statement"
       },
       {
-        "include": "else_statement"
+        "include": "#else_statement"
       },
       {
-        "include": "end_if_statement"
+        "include": "#end_if_statement"
       },
       {
-        "include": "for_statement"
+        "include": "#for_statement"
       },
       {
-        "include": "end_for_statement"
+        "include": "#end_for_statement"
       },
       {
-        "include": "if_addm"
+        "include": "#if_addm"
       },
       {
-        "include": "keywords_all"
+        "include": "#keywords_all"
       },
       {
-        "include": "keywords_cmd"
+        "include": "#keywords_cmd"
       },
       {
-        "include": "all_keys"
+        "include": "#all_keys"
       }
     ],
     "doc_strings_block_doulbe_q": [
@@ -1458,7 +1458,7 @@
             "pop": true
           },
           {
-            "include": "main"
+            "include": "#main"
           },
           {
             "match": "(\\d{2,4}\\-\\d{2,4}\\-\\d{2,4})(.*)?(\\d{2,4}\\-\\d{2,4}\\-\\d{2,4})?",
@@ -1473,7 +1473,7 @@
             }
           },
           {
-            "include": "main"
+            "include": "#main"
           },
           {
             "match": ".",
@@ -1501,7 +1501,7 @@
             "pop": true
           },
           {
-            "include": "main"
+            "include": "#main"
           },
           {
             "match": "(\\d{2,4}\\-\\d{2,4}\\-\\d{2,4})(.*)?(\\d{2,4}\\-\\d{2,4}\\-\\d{2,4})?",
@@ -1516,7 +1516,7 @@
             }
           },
           {
-            "include": "main"
+            "include": "#main"
           },
           {
             "match": ".",
@@ -1544,13 +1544,13 @@
     ],
     "doc_strings": [
       {
-        "include": "doc_strings_block_doulbe_q"
+        "include": "#doc_strings_block_doulbe_q"
       },
       {
-        "include": "doc_strings_block_single_q"
+        "include": "#doc_strings_block_single_q"
       },
       {
-        "include": "doc_strings_single_simple"
+        "include": "#doc_strings_single_simple"
       }
     ],
     "define": [
@@ -1584,22 +1584,22 @@
             "pop": true
           },
           {
-            "include": "doc_strings"
+            "include": "#doc_strings"
           },
           {
-            "include": "all_functions"
+            "include": "#all_functions"
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "all_controls"
+            "include": "#all_controls"
           },
           {
-            "include": "if_addm"
+            "include": "#if_addm"
           },
           {
-            "include": "dev_keys"
+            "include": "#dev_keys"
           }
         ]
       }
@@ -1632,22 +1632,22 @@
             "pop": true
           },
           {
-            "include": "doc_strings"
+            "include": "#doc_strings"
           },
           {
-            "include": "all_functions"
+            "include": "#all_functions"
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "all_controls"
+            "include": "#all_controls"
           },
           {
-            "include": "if_addm"
+            "include": "#if_addm"
           },
           {
-            "include": "dev_keys"
+            "include": "#dev_keys"
           }
         ]
       }
@@ -1674,29 +1674,29 @@
             "pop": true
           },
           {
-            "include": "lines"
+            "include": "#lines"
           },
           {
-            "include": "keywords_cmd"
+            "include": "#keywords_cmd"
           },
           {
-            "include": "keywords_all"
+            "include": "#keywords_all"
           },
           {
-            "include": "regexes"
+            "include": "#regexes"
           },
           {
-            "include": "keywords_cmd_indentify_trigger"
+            "include": "#keywords_cmd_indentify_trigger"
           },
           {
-            "include": "if_addm"
+            "include": "#if_addm"
           }
         ]
       }
     ],
     "keywords_attributes": [
       {
-        "include": "keywords_attrs"
+        "include": "#keywords_attrs"
       }
     ],
     "keywords_attrs": [
@@ -1722,10 +1722,10 @@
     ],
     "dev_keys": [
       {
-        "include": "keywords_attributes"
+        "include": "#keywords_attributes"
       },
       {
-        "include": "traverse"
+        "include": "#traverse"
       }
     ]
   }

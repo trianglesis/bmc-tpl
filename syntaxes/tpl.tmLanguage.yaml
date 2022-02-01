@@ -13,13 +13,13 @@ file_extensions:
 patterns:
 # AT FIRST
 # Captures basic parts of pattern and constants
-  - include: doc_strings
-  - include: comment_TODO_line
-  - include: comment_line
-  - include: metadata_2
-  - include: overwiev
-  - include: simple_identifiers
-  - include: if_addm
+  - include: '#doc_strings'
+  - include: '#comment_TODO_line'
+  - include: '#comment_line'
+  - include: '#metadata_2'
+  - include: '#overwiev'
+  - include: '#simple_identifiers'
+  - include: '#if_addm'
 
   # Experimental functions START
   # Experimental functions END
@@ -59,10 +59,10 @@ patterns:
           1: 
             name: keyword.control.tplpre
         pop: true
-      - include: comment_line
-      - include: doc_strings
-      - include: lines
-      - include: if_addm
+      - include: '#comment_line'
+      - include: '#doc_strings'
+      - include: '#lines'
+      - include: '#if_addm'
 
   # Highlight table sections
   - match: ^(table)\s(\S+)\s(\d+(?:\.\d+)+)
@@ -81,8 +81,8 @@ patterns:
           1: 
             name: keyword.control.tplpre
         pop: true
-      - include: comment_line
-      - include: main
+      - include: '#comment_line'
+      - include: '#main'
       - match: .
         scope: comment.block.documentation.tplpre
 
@@ -101,12 +101,12 @@ patterns:
           1: 
             name: keyword.control.tplpre
         pop: true
-      - include: comment_line
-      - include: doc_strings
-      - include: define
-      - include: alt_define
-      - include: lines
-      - include: if_addm
+      - include: '#comment_line'
+      - include: '#doc_strings'
+      - include: '#define'
+      - include: '#alt_define'
+      - include: '#lines'
+      - include: '#if_addm'
 
   # Highlight pattern sections
   - match: ^\b(pattern)\s+(\w+)\s(\d+(?:\.\d+)+)\s+$
@@ -121,16 +121,16 @@ patterns:
           1: 
             name: keyword.control.tplpre
         pop: true
-      - include: comment_TODO_line
-      - include: comment_line
-      - include: doc_strings
-      - include: metadata
-      - include: overwiev
-      - include: constants
-      - include: triggers
-      - include: removal
-      - include: body
-      - include: if_addm
+      - include: '#comment_TODO_line'
+      - include: '#comment_line'
+      - include: '#doc_strings'
+      - include: '#metadata'
+      - include: '#overwiev'
+      - include: '#constants'
+      - include: '#triggers'
+      - include: '#removal'
+      - include: '#body'
+      - include: '#if_addm'
 
 # Back to OLD FORMAT!
 repository:
@@ -156,9 +156,9 @@ repository:
             1: 
               name: keyword.control.tplpre
           pop: true
-        - include: comment_line
-        - include: lines
-        - include: if_addm
+        - include: '#comment_line'
+        - include: '#lines'
+        - include: '#if_addm'
   metadata_2:
     - match: ^(metadata)\s+?$
       captures:
@@ -170,9 +170,9 @@ repository:
             1: 
               name: keyword.control.tplpre
           pop: true
-        - include: comment_line
-        - include: lines
-        - include: if_addm
+        - include: '#comment_line'
+        - include: '#lines'
+        - include: '#if_addm'
 
 # Highlight overview sections
   overwiev:
@@ -187,10 +187,10 @@ repository:
             1: 
               name: keyword.control.tplpre
           pop: true
-        - include: comment_line
-        - include: tags_TKU
-        - include: keywords_all
-        - include: if_addm
+        - include: '#comment_line'
+        - include: '#tags_TKU'
+        - include: '#keywords_all'
+        - include: '#if_addm'
 
 # Highlight constants sections
   constants:
@@ -205,9 +205,9 @@ repository:
             1: 
               name: keyword.control.tplpre
           pop: true
-        - include: lines
-        - include: all_functions
-        - include: if_addm
+        - include: '#lines'
+        - include: '#all_functions'
+        - include: '#if_addm'
 
 # Highlight trigger sections
   triggers:
@@ -222,11 +222,11 @@ repository:
             1: 
               name: keyword.control.tplpre
           pop: true
-        - include: lines
-        - include: all_functions
-        - include: all_controls
-        - include: keywords_cmd_indentify_trigger
-        - include: if_addm
+        - include: '#lines'
+        - include: '#all_functions'
+        - include: '#all_controls'
+        - include: '#keywords_cmd_indentify_trigger'
+        - include: '#if_addm'
 
 # Highlight body sections
   body:
@@ -241,12 +241,12 @@ repository:
             1: 
               name: keyword.control.tplpre
           pop: true
-        - include: dev_keys
-        - include: doc_strings
-        - include: lines
-        - include: all_functions
-        - include: all_controls
-        - include: if_addm
+        - include: '#dev_keys'
+        - include: '#doc_strings'
+        - include: '#lines'
+        - include: '#all_functions'
+        - include: '#all_controls'
+        - include: '#if_addm'
 
 # Highlight removal sections
   removal:
@@ -261,10 +261,10 @@ repository:
             1: 
               name: keyword.control.tplpre
           pop: true
-        - include: lines
-        - include: all_functions
-        - include: all_controls
-        - include: if_addm
+        - include: '#lines'
+        - include: '#all_functions'
+        - include: '#all_controls'
+        - include: '#if_addm'
 
 # Lines and comments and quotes:
   # // THIS LINE
@@ -326,16 +326,16 @@ repository:
         1: 
           name: constant.numeric.tplpre
   lines:
-    - include: percent_line
-    - include: comment_TODO_line
-    - include: comment_line
-    - include: qouted_line
-    - include: double_qouted_line
-    - include: regexes
-    - include: square_brackets_line_word
-    - include: square_brackets_line_int
-    - include: all_keys
-    - include: brackets
+    - include: '#percent_line'
+    - include: '#comment_TODO_line'
+    - include: '#comment_line'
+    - include: '#qouted_line'
+    - include: '#double_qouted_line'
+    - include: '#regexes'
+    - include: '#square_brackets_line_word'
+    - include: '#square_brackets_line_int'
+    - include: '#all_keys'
+    - include: '#brackets'
 
 # Keys
   # plus +
@@ -390,16 +390,16 @@ repository:
         1: 
           name: keyword.operator.tplpre
   all_keys:
-    - include: var_assign
-    - include: equal
-    - include: less
-    - include: more
-    - include: more_equal
-    - include: less_equal
-    - include: plus
-    - include: decimal
-    - include: minus_decimal
-    - include: just_do
+    - include: '#var_assign'
+    - include: '#equal'
+    - include: '#less'
+    - include: '#more'
+    - include: '#more_equal'
+    - include: '#less_equal'
+    - include: '#plus'
+    - include: '#decimal'
+    - include: '#minus_decimal'
+    - include: '#just_do'
 
 # Regex functions:
   regex:
@@ -427,9 +427,9 @@ repository:
         1: 
           name: keyword.control.tplpre
   regexes:
-    - include: regex_raw
-    - include: regex
-    - include: content_raw
+    - include: '#regex_raw'
+    - include: '#regex'
+    - include: '#content_raw'
 
 # Functions
   # Discovery mark
@@ -449,9 +449,9 @@ repository:
             1: 
               name: disabled.tplpre
           pop: true
-        - include: lines
-        - include: all_controls
-        - include: regex
+        - include: '#lines'
+        - include: '#all_controls'
+        - include: '#regex'
   model_functions:
     # name: model.function.tplpre
     - match: ((model)(\.)(addContainment|setContainment|destroy|withdraw|setRemovalGroup|anchorRemovalGroup|suppressRemovalGroup|host|hosts|findPackages|addDisplayAttribute|removeDisplayAttribute|kind))
@@ -470,9 +470,9 @@ repository:
             1: 
               name: disabled.tplpre
           pop: true
-        - include: lines
-        - include: all_controls
-        - include: regex
+        - include: '#lines'
+        - include: '#all_controls'
+        - include: '#regex'
   model_rel_functions:
     # name: model.function.tplpre
     - match: ((model)(\.)(rel|uniquerel)(\.)(Communication|Containment|Dependency|Detail|HostContainment|HostedFile|HostedSoftware|Management|RelatedFile|SoftwareService|SoftwareContainment|StorageUse))
@@ -491,9 +491,9 @@ repository:
             1: 
               name: disabled.tplpre
           pop: true
-        - include: lines
-        - include: all_controls
-        - include: regex
+        - include: '#lines'
+        - include: '#all_controls'
+        - include: '#regex'
   model_SI_functions:
     # name: entity.name.function.tplpre
     - match: ((model)(\.)(SoftwareInstance))
@@ -512,9 +512,9 @@ repository:
             1: 
               name: disabled.tplpre
           pop: true
-        - include: lines
-        - include: all_controls
-        - include: regex
+        - include: '#lines'
+        - include: '#all_controls'
+        - include: '#regex'
   log_functions:
     # name: log.function.tplpre
     - match: (log\.(?:debug|info|warn|error|critical))
@@ -702,30 +702,30 @@ repository:
         3: 
           name: entity.name.function.tplpre
   all_functions:
-    - include: discovery_functions
-    - include: model_functions
-    - include: model_SI_functions
-    - include: model_rel_functions
-    - include: log_functions
-    - include: log_functions
-    - include: text_functions
-    - include: number_functions
-    - include: regex_functions
-    - include: xpath_functions
-    - include: discovery_manipulation_functions
-    - include: binary_functions
-    - include: json_functions
-    - include: related_functions
-    - include: mail_functions
-    - include: time_functions
-    - include: inference_functions
-    - include: ConversionFunctions
-    - include: SearchFunctions
-    - include: rdbms_functions
-    - include: RDBMSFunctions
-    - include: DiscoveryFunctions
-    - include: common_functions
-    - include: local_functions
+    - include: '#discovery_functions'
+    - include: '#model_functions'
+    - include: '#model_SI_functions'
+    - include: '#model_rel_functions'
+    - include: '#log_functions'
+    - include: '#log_functions'
+    - include: '#text_functions'
+    - include: '#number_functions'
+    - include: '#regex_functions'
+    - include: '#xpath_functions'
+    - include: '#discovery_manipulation_functions'
+    - include: '#binary_functions'
+    - include: '#json_functions'
+    - include: '#related_functions'
+    - include: '#mail_functions'
+    - include: '#time_functions'
+    - include: '#inference_functions'
+    - include: '#ConversionFunctions'
+    - include: '#SearchFunctions'
+    - include: '#rdbms_functions'
+    - include: '#RDBMSFunctions'
+    - include: '#DiscoveryFunctions'
+    - include: '#common_functions'
+    - include: '#local_functions'
 
 
 # keyword.control.conditional
@@ -778,22 +778,22 @@ repository:
     - match: '#ENDIFADDM\s+?'
       scope: keyword.control.conditional.tplpre
   if_addm:
-    - include: if_ADDM_statement
-    - include: else_ADDM_statement
-    - include: end_if_ADDM_statement
+    - include: '#if_ADDM_statement'
+    - include: '#else_ADDM_statement'
+    - include: '#end_if_ADDM_statement'
 
   all_controls:
-    - include: if_statement
-    - include: elif_statement
-    - include: then_statement
-    - include: else_statement
-    - include: end_if_statement
-    - include: for_statement
-    - include: end_for_statement
-    - include: if_addm
-    - include: keywords_all
-    - include: keywords_cmd
-    - include: all_keys
+    - include: '#if_statement'
+    - include: '#elif_statement'
+    - include: '#then_statement'
+    - include: '#else_statement'
+    - include: '#end_if_statement'
+    - include: '#for_statement'
+    - include: '#end_for_statement'
+    - include: '#if_addm'
+    - include: '#keywords_all'
+    - include: '#keywords_cmd'
+    - include: '#all_keys'
 
 
 # DOC DOUBLE Q string section:
@@ -811,7 +811,7 @@ repository:
             1: 
               name: comment.block.documentation.tplpre
           pop: true
-        - include: main
+        - include: '#main'
         - match: '(\d{2,4}\-\d{2,4}\-\d{2,4})(.*)?(\d{2,4}\-\d{2,4}\-\d{2,4})?'
           scope: variable.parameter.tplpre
           captures:
@@ -819,7 +819,7 @@ repository:
               name: variable.other.tplpre
             2: 
               name: comment.block.documentation.tplpre
-        - include: main
+        - include: '#main'
         - match: .
           scope: comment.block.documentation.tplpre
   # '''
@@ -836,7 +836,7 @@ repository:
             1: 
               name: comment.block.documentation.tplpre
           pop: true
-        - include: main
+        - include: '#main'
         - match: '(\d{2,4}\-\d{2,4}\-\d{2,4})(.*)?(\d{2,4}\-\d{2,4}\-\d{2,4})?'
           scope: variable.parameter.tplpre
           captures:
@@ -844,7 +844,7 @@ repository:
               name: variable.other.tplpre
             2: 
               name: comment.block.documentation.tplpre
-        - include: main
+        - include: '#main'
         - match: .
           scope: comment.block.documentation.tplpre
   # ''' THIS STRING '''
@@ -859,9 +859,9 @@ repository:
         3: 
           name: string.quoted.triple.tplpre
   doc_strings:
-    - include: doc_strings_block_doulbe_q
-    - include: doc_strings_block_single_q
-    - include: doc_strings_single_simple
+    - include: '#doc_strings_block_doulbe_q'
+    - include: '#doc_strings_block_single_q'
+    - include: '#doc_strings_single_simple'
 
 #  define section
   define:
@@ -882,12 +882,12 @@ repository:
             1: 
               name: keyword.control.tplpre
           pop: true
-        - include: doc_strings
-        - include: all_functions
-        - include: lines
-        - include: all_controls
-        - include: if_addm
-        - include: dev_keys
+        - include: '#doc_strings'
+        - include: '#all_functions'
+        - include: '#lines'
+        - include: '#all_controls'
+        - include: '#if_addm'
+        - include: '#dev_keys'
 
 # Altermate define
   alt_define:
@@ -906,12 +906,12 @@ repository:
             1: 
               name: keyword.control.tplpre
           pop: true
-        - include: doc_strings
-        - include: all_functions
-        - include: lines
-        - include: all_controls
-        - include: if_addm
-        - include: dev_keys
+        - include: '#doc_strings'
+        - include: '#all_functions'
+        - include: '#lines'
+        - include: '#all_controls'
+        - include: '#if_addm'
+        - include: '#dev_keys'
 
 # * Simple Identifiers *
   simple_identifiers:
@@ -927,20 +927,17 @@ repository:
             1: 
               name: keyword.control.tplpre
           pop: true
-        - include: lines
-        - include: keywords_cmd
-        - include: keywords_all
-        - include: regexes
-        - include: keywords_cmd_indentify_trigger
-        - include: if_addm
-
-
+        - include: '#lines'
+        - include: '#keywords_cmd'
+        - include: '#keywords_all'
+        - include: '#regexes'
+        - include: '#keywords_cmd_indentify_trigger'
+        - include: '#if_addm'
 
 # DEVELOPMENT
-
 # Attributes
   keywords_attributes:
-    - include: keywords_attrs
+    - include: '#keywords_attrs'
   keywords_attrs:
     - match: \b(key|name|type|version|short_name|install_root|listening_ports|product_version|full_version)\b
       captures:
@@ -955,8 +952,8 @@ repository:
           name: keyword.control.model
 
   dev_keys:
-    - include: keywords_attributes
-    - include: traverse
+    - include: '#keywords_attributes'
+    - include: '#traverse'
 
 # Experimental functions START
 
@@ -973,11 +970,11 @@ repository:
   #     1: 
   #       name: keyword.control.model
   # brackets_block:
-  # - include: bracket_open
-  # - include: bracket_close
+  # - include: '#bracket_open'
+  # - include: '#bracket_close'
 
   # brackets:
   #   - match: (\))
   #     pop: true
-  #   - include: brackets_block
+  #   - include: '#brackets_block'
 # Experimental functions END
