@@ -1,0 +1,15 @@
+In test env:
+npx js-yaml dev\vscode\snippets\tpl.yaml > snippets/tpl.json
+npx js-yaml dev\vscode\syntaxes\model.tmLanguage.yaml > syntaxes/model.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\regexp.tmLanguage.yaml > syntaxes/regexp.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > syntaxes/test.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\tpl.tmLanguage.yaml > syntaxes/tpl.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > syntaxes/tplpre.tmLanguage.json
+
+Push right into the live plugin:
+npx js-yaml dev\vscode\snippets\tpl.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\snippets\tpl.json
+npx js-yaml dev\vscode\syntaxes\model.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\model.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\regexp.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\regexp.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\test.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\tpl.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\tpl.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\tplpre.tmLanguage.json
