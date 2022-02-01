@@ -3,8 +3,7 @@
   "scope": "source.tplpre",
   "scopeName": "source.tplpre",
   "file_extensions": [
-    "tplpre",
-    "tpl"
+    "tplpre"
   ],
   "patterns": [
     {
@@ -2243,7 +2242,6 @@
     },
     "keywords_attrs": {
       "comment": "Change disabled to \"1\" to turn off.",
-      "disabled": 0,
       "match": "\\b(key_group|key|name|type|version|short_name|install_root|listening_ports|product_version|full_version)\\b",
       "captures": {
         "1": {
@@ -2262,7 +2260,6 @@
     },
     "regular_expressions": {
       "comment": "Changed disabled to 1 to turn off syntax highlighting in “r” strings.",
-      "disabled": 0,
       "patterns": [
         {
           "include": "source.regexp.tplpre"

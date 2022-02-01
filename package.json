@@ -12,39 +12,22 @@
     ],
     "contributes": {
         "languages": [
-            {
-                "id": "tpl",
-                "aliases": [
-                    "tpl"
-                ],
-                "extensions": [
-                    ".tpl"
-                ],
-                "configuration": "./language-configuration.json"
-            },
-            {
-                "id": "tplpre",
-                "aliases": [
-                    "tplpre"
-                ],
-                "extensions": [
-                    ".tplpre"
-                ],
-                "configuration": "./language-configuration.json"
+            {"id": "tpl", "aliases": ["tpl"], "extensions": [".tpl"], "configuration": "./language-configuration.json"},
+            {"id": "tplpre", "aliases": ["tplpre"], "extensions": [".tplpre"], "configuration": "./language-configuration.json"},
+            {"id": "model", "aliases": ["model"], "extensions": [".model"], "configuration": "./language-configuration.json"}
+            ],
+        "grammars": [
+            {"language": "tpl", "scopeName": "source.tpl", "path": "./syntaxes/tplpre.tmLanguage.json"},
+            {"language": "tplpre", "scopeName": "source.tplpre", "path": "./syntaxes/tplpre.tmLanguage.json"},
+            {"language": "model", "scopeName": "source.model", "path": "./syntaxes/model.tmLanguage.json"},
+            {"scopeName": "regexp.injection", "path": "./syntaxes/regexp.tmLanguage.json",
+                "injectTo": ["source.tpl", "source.tplpre", "source.model"]
             }
         ],
-        "grammars": [
-            {
-                "language": "tpl",
-                "scopeName": "source.tpl",
-                "path": "./syntaxes/tpl.tmLanguage.json"
-            },
-            {
-                "language": "tplpre",
-                "scopeName": "source.tplpre",
-                "path": "./syntaxes/tpl.tmLanguage.json"
-            }
-        ]
+        "snippets": [
+            {"language": "tplpre", "path": "./snippets/tpl.json"},
+            {"language": "tpl", "path": "./snippets/tpl.json"}
+          ]
     },
     "devDependencies": {
         "js-yaml": "^4.1.0"
