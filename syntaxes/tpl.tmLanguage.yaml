@@ -1,19 +1,18 @@
 %YAML 1.2
 ---
-# http://www.sublimetext.com/docs/3/syntax.html
 # Olexander Danylchenko
-# BMC model syntax file highligh.
-# 2017-08-14 - Latest version.
+# BMC TPL (language) syntax highligh.
 # Will be used also to convert in VS Code JSON format
 
-name: tplpre
+name: TPL
 file_extensions:
   - tplpre
   - tpl
 scope: source.tplpre
+scopeName: source.tplpre
 
 
-contexts:
+patterns:
 # AT FIRST
 # Captures basic parts of pattern and constants
   main:
