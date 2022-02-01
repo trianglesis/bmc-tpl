@@ -1,14 +1,15 @@
 %YAML 1.2
 ---
 # http://www.sublimetext.com/docs/3/syntax.html
-# Alexander Danylchenko
+# Olexander Danylchenko
 # BMC model syntax file highligh.
 # 2017-08-14 - Latest version.
-# Will be used also to convert in Atom CSON format
+# Will be used also to convert in VS Code JSON format
 
 name: tplpre
 file_extensions:
   - tplpre
+  - tpl
 scope: source.tplpre
 
 

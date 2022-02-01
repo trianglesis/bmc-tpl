@@ -1,41 +1,15 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "tpl",
-	"scopeName": "source.tplpre",
-	"fileTypes": [
-		"tplpre",
-		"tpl"
-	],
-	"firstLineMatch": ".*",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"match": "MongoDB",
-      		"name": "keyword.letter"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.tpl",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.tpl",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.tpl",
-					"match": "\\\\."
-				}
-			]
-		}
-	}
+  "name": "tplpre",
+  "file_extensions": [
+    "tplpre"
+  ],
+  "scope": "source.tplpre",
+  "contexts": {
+    "main": [
+      {
+        "match": "MongoDB",
+        "scope": "keyword.operator.tplpre"
+      }
+    ]
+  }
 }
