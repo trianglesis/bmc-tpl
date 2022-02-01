@@ -1,16 +1,18 @@
 %YAML 1.2
 ---
-# Olexander Danylchenko
-# BMC TPL (language) syntax highligh.
-# Will be used also to convert in VS Code JSON format
+# http://www.sublimetext.com/docs/3/syntax.html
+# Alexander Danylchenko
+# BMC model syntax file highligh.
+# 2017-08-14 - Latest version.
+# Will be used also to convert in Atom CSON format
 
-name: TPL
-scope: source.tplpre
-scopeName: source.tplpre
+name: tplpre
 file_extensions:
   - tplpre
-  - tpl
-patterns:
+scope: source.tplpre
+
+
+contexts:
 # AT FIRST
 # Captures basic parts of pattern and constants
   main:
@@ -22,13 +24,17 @@ patterns:
     - include: simple_identifiers
     - include: if_addm
 
+
 # Experimental functions START
+
 # Experimental functions END
+
   # tpl $$TPLVERSION$$ module NAME;
     - match: tpl\s+?(\$\$TPLVERSION\$\$|\d+\.\d+)\s+?module\s(.*);
       captures:
         1: constant.character.tplpre
         2: constant.character.tplpre
+
   # pattern import section
     - match: from\s(\w+)(?:\.(\w+))?(?:\.(\w+))?\simport\s(\S+)\s(\d+(?:\.\d+)+);
       captures:
@@ -37,6 +43,7 @@ patterns:
         3: variable.parameter.tplpre
         4: entity.name.function.tplpre
         5: constant.numeric.tplpre
+
   # Highlight configuration sections
     - match: ^(configuration)\s(\S+)\s(\d+\.\d+)
       captures:
@@ -109,8 +116,10 @@ patterns:
         - include: body
         - include: if_addm
 
-# Back to OLD FORMAT!
-repository:
+# repository: OLD FORMAT DO NOT UNCOMMENT!
+
+
+
 # Small blocks:
   tags:
     - match: \s+(tags)\s+(.*?);
