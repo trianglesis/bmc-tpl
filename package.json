@@ -3,6 +3,10 @@
     "displayName": "BMC-tpl",
     "description": "BMC TPL (language) Support",
     "version": "0.0.1",
+    "publisher": "trianglesis",
+    "author": {
+        "name": "trianglesis"
+    },
     "engines": {
         "vscode": "^1.63.0"
     },
@@ -35,5 +39,14 @@
     },
     "devDependencies": {
         "js-yaml": "^4.1.0"
+    },
+    "homepage": "https://github.com/trianglesis/bmc-tpl",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/trianglesis/bmc-tpl.git"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/trianglesis/bmc-tpl/issues"
     }
 }
