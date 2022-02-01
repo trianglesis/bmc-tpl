@@ -1,11 +1,11 @@
 {
-  "name": "TPL",
-  "scope": "source.tplpre",
   "scopeName": "source.tplpre",
-  "file_extensions": [
+  "name": "Tplpre",
+  "fileTypes": [
     "tplpre",
     "tpl"
   ],
+  "firstLineMatch": ".*",
   "patterns": [
     {
       "include": "#doc_strings"
@@ -160,49 +160,6 @@
         },
         {
           "include": "#keywords_cmd_indentify_trigger"
-        },
-        {
-          "include": "#if_addm"
-        }
-      ]
-    },
-    {
-      "match": "^(definitions)\\s(\\S+)\\s(\\d+(?:\\.\\d+)+)",
-      "captures": {
-        "1": {
-          "name": "keyword.control.tplpre"
-        },
-        "2": {
-          "name": "entity.name.function.tplpre"
-        },
-        "3": {
-          "name": "constant.numeric.tplpre"
-        }
-      },
-      "push": [
-        {
-          "match": "^(end\\sdefinitions;)",
-          "captures": {
-            "1": {
-              "name": "keyword.control.tplpre"
-            }
-          },
-          "pop": true
-        },
-        {
-          "include": "#comment_line"
-        },
-        {
-          "include": "#doc_strings"
-        },
-        {
-          "include": "#define"
-        },
-        {
-          "include": "#alt_define"
-        },
-        {
-          "include": "#lines"
         },
         {
           "include": "#if_addm"
@@ -1412,36 +1369,6 @@
         }
       }
     },
-    "text_functions": [
-      {
-        "match": "(text)(\\.)(lower|upper|toNumber|replace|join|split|strip|leftStrip|rightStrip|hash|ordinal)",
-        "captures": {
-          "1": {
-            "name": "support.function.tplpre"
-          },
-          "2": {
-            "name": "punctuation.accessor.tplpre"
-          },
-          "3": {
-            "name": "support.constant.tplpre"
-          }
-        }
-      }
-    ],
-    "list_append": {
-      "match": "(list)(\\.)(append)",
-      "captures": {
-        "1": {
-          "name": "entity.name.function.tplpre"
-        },
-        "2": {
-          "name": "punctuation.accessor.tplpre"
-        },
-        "3": {
-          "name": "entity.name.function.tplpre"
-        }
-      }
-    },
     "ConversionFunctions": {
       "match": "(ConversionFunctions)(\\.)(isValidSerialNumber|convertToCharString|convertToBytes)",
       "captures": {
@@ -1531,6 +1458,20 @@
     },
     "local_functions": {
       "match": "(local_functions|localFunctions)(\\.)(\\w+)",
+      "captures": {
+        "1": {
+          "name": "entity.name.function.tplpre"
+        },
+        "2": {
+          "name": "punctuation.accessor.tplpre"
+        },
+        "3": {
+          "name": "entity.name.function.tplpre"
+        }
+      }
+    },
+    "list_append": {
+      "match": "(list)(\\.)(append)",
       "captures": {
         "1": {
           "name": "entity.name.function.tplpre"
