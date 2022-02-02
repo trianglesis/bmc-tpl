@@ -1,17 +1,81 @@
-// A launch configuration that launches the extension inside a new window
-// Use IntelliSense to learn about possible attributes.
-// Hover to view descriptions of existing attributes.
-// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 {
-	"version": "0.2.0",
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
     "configurations": [
         {
-            "name": "Extension",
-            "type": "extensionHost",
+            "name": "Python: Current",
+            "type": "python",
             "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "TPL: Compile current",
+            "type": "python",
+            "request": "launch",
+            // "program": "${workspaceFolder}/.vscode/ide_compiler.py",
+            "program": "${workspaceFolder}\\ide_compiler.py",
             "args": [
-                "--extensionDevelopmentPath=${workspaceFolder}"
-            ]
-        }
+                "-q",
+                "-cce",
+                "-cf", "${file}",
+                // "-cp", "F:\\TUTFramework\\tku_patterns", 
+                // "-ct", "F:\\TUTFramework\\code\\data\\installed\\taxonomy\\00taxonomy.xml"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "TPL: Preprocess current",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}\\ide_compiler.py",
+            "args": [
+                "-cpe",
+                "-cf", "${file}",
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "TPL: Investigate target",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}\\ide_compiler.py",
+            "args": [
+                "-q",
+                "-run",
+                "-tg", "${selectedText}",
+                "-cf", "${file}",
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "TPL: Find target",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}\\ide_compiler.py",
+            "args": [
+                "-q",
+                "-find",
+                "-tg", "${selectedText}",
+                "-cf", "${file}",
+            ],
+            "console": "integratedTerminal"
+        },        
+        // {
+        //     "name": "TPL: Weakchecker",
+        //     "type": "python",
+        //     "request": "launch",
+        //     "program": "${workspaceFolder}\\ide_compiler.py",
+        // 	"args": [
+        // 		"-cwc",
+        //         "-ge", "-gp", "-ae", "-ap", "-lmin", "10", "-dmin", "5",
+        // 		"-cf", "${file}", 
+        // 		"-cp", "F:\\TUTFramework\\experimental", 
+        // 		"-ct", "F:\\TUTFramework\\code\\data\\installed\\taxonomy\\00taxonomy.xml"
+        // 	],
+        //     "console": "integratedTerminal"
+        // }	        	
     ]
 }
