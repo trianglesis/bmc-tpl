@@ -2,8 +2,10 @@
     // Use IntelliSense to learn about possible attributes.
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // https://code.visualstudio.com/docs/editor/variables-reference
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Python: Current",
             "type": "python",
@@ -12,17 +14,36 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "TPL: Compile current",
+            "name": "DEV: Run variables",
             "type": "python",
             "request": "launch",
             // "program": "${workspaceFolder}/.vscode/ide_compiler.py",
-            "program": "${workspaceFolder}\\ide_compiler.py",
+            "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
             "args": [
                 "-q",
                 "-cce",
                 "-cf", "${file}",
-                // "-cp", "F:\\TUTFramework\\tku_patterns", 
-                // "-ct", "F:\\TUTFramework\\code\\data\\installed\\taxonomy\\00taxonomy.xml"
+                "USERNAME=${env:USERNAME}",
+                "TKN_MAIN=${env:TKN_MAIN}",
+                "TKN_CORE=${env:TKN_CORE}",
+                "PYTHONPATH=${env:PYTHONPATH}",
+                // "-cp", "F:${pathSeparator}TUTFramework${pathSeparator}tku_patterns", 
+                // "-ct", "F:${pathSeparator}TUTFramework${pathSeparator}code${pathSeparator}data${pathSeparator}installed${pathSeparator}taxonomy${pathSeparator}00taxonomy.xml"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "TPL: Compile current",
+            "type": "python",
+            "request": "launch",
+            // "program": "${workspaceFolder}/.vscode/ide_compiler.py",
+            "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
+            "args": [
+                "-q",
+                "-cce",
+                "-cf", "${file}",
+                // "-cp", "F:${pathSeparator}TUTFramework${pathSeparator}tku_patterns", 
+                // "-ct", "F:${pathSeparator}TUTFramework${pathSeparator}code${pathSeparator}data${pathSeparator}installed${pathSeparator}taxonomy${pathSeparator}00taxonomy.xml"
             ],
             "console": "integratedTerminal"
         },
@@ -30,7 +51,7 @@
             "name": "TPL: Preprocess current",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\ide_compiler.py",
+            "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
             "args": [
                 "-cpe",
                 "-cf", "${file}",
@@ -41,7 +62,7 @@
             "name": "TPL: Investigate target",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\ide_compiler.py",
+            "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
             "args": [
                 "-q",
                 "-run",
@@ -54,7 +75,7 @@
             "name": "TPL: Find target",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\ide_compiler.py",
+            "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
             "args": [
                 "-q",
                 "-find",
@@ -67,13 +88,13 @@
         //     "name": "TPL: Weakchecker",
         //     "type": "python",
         //     "request": "launch",
-        //     "program": "${workspaceFolder}\\ide_compiler.py",
+        //     "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
         // 	"args": [
         // 		"-cwc",
         //         "-ge", "-gp", "-ae", "-ap", "-lmin", "10", "-dmin", "5",
         // 		"-cf", "${file}", 
-        // 		"-cp", "F:\\TUTFramework\\experimental", 
-        // 		"-ct", "F:\\TUTFramework\\code\\data\\installed\\taxonomy\\00taxonomy.xml"
+        // 		"-cp", "F:${pathSeparator}TUTFramework${pathSeparator}experimental", 
+        // 		"-ct", "F:${pathSeparator}TUTFramework${pathSeparator}code${pathSeparator}data${pathSeparator}installed${pathSeparator}taxonomy${pathSeparator}00taxonomy.xml"
         // 	],
         //     "console": "integratedTerminal"
         // }	        	

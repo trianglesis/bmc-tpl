@@ -1,0 +1,36 @@
+// https://code.visualstudio.com/docs/editor/variables-reference
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "echo",
+        "type": "shell",
+        "command": "echo ${workspaceFolder}",
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "TPL: Preproc as task",
+        "type": "shell",
+        "command": "${workspaceFolder}${pathSeparator}ide_compiler.py",
+        "args": [
+          "-q",
+          "-cce",
+          "-cf", "${file}",
+          "USERNAME=${env:USERNAME}",
+          "TKN_MAIN=${env:TKN_MAIN}",
+          "TKN_CORE=${env:TKN_CORE}",
+          "PYTHONPATH=${env:PYTHONPATH}",
+
+      ],
+        "problemMatcher": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  }
