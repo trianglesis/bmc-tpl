@@ -35,7 +35,47 @@
         "snippets": [
             {"language": "tplpre", "path": "./snippets/tpl.json"},
             {"language": "tpl", "path": "./snippets/tpl.json"}
-          ]
+          ],
+          "configuration": {
+            "title": "BMC Tpl IDE",
+            "properties": {
+              "tplpre.PathToIDE": {
+                "type": "string",
+                "default": false,
+                "description": "Paste here full path to TPL IDE Engine"
+              },
+              "tplpre.PathToPatterns": {
+                "type": "string",
+                "default": false,
+                "description": "Paste here full path to PATTERNS_PATH"
+              },
+              "tplpre.TknCore": {
+                "type": "string",
+                "default": false,
+                "description": "Paste here full path to TKN_CORE"
+              },
+              "tplpre.PythonPath": {
+                "type": "string",
+                "default": false,
+                "description": "Paste here full path to PYTHONPATH"
+              },
+              "tplpre.TaxonomyPath": {
+                "type": "string",
+                "default": false,
+                "description": "Paste here full path to TAXONOMY_PATH"
+              },
+              "tplpre.TidewayPath": {
+                "type": "string",
+                "default": false,
+                "description": "Paste here full path to TIDEWAY"
+              },
+              "tplpre.dummy": {
+                "type": ["string", "null"],
+                "default": null,
+                "description": "Test test test"
+              }
+            }
+          }
     },
     "devDependencies": {
         "js-yaml": "^4.1.0"
