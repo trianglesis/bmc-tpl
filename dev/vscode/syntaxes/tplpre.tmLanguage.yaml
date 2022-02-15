@@ -107,7 +107,7 @@ patterns:
   # Highlight definitions sections
   # SQL Support?
   - comment: 'Pattern defenetions. Adding SQL support via #lines'
-    begin: '^(definitions)\s(\S+)\s(\d+(?:\.\d+)+)'
+    begin: (definitions)\s(\S+)\s(\d+(?:\.\d+)+)
     beginCaptures:
       '1':
         name: keyword.control.tplpre
@@ -115,7 +115,7 @@ patterns:
         name: entity.name.function
       '3':
         name: constant.numeric.tplpre
-    end: ^(end\sdefinitions;)
+    end: (end\sdefinitions;)
     endCaptures:
       '1':
         name: keyword.control.tplpre
@@ -439,7 +439,7 @@ repository:
       '3':
         name: keyword.control.tplpre
 
-# install_root         := '';
+  # install_root         := '';
   qouted_line_empty:
     match: (?<!')(')(('))(?!')
     comment: Still cannot match string like with empty or double quotes
@@ -484,6 +484,9 @@ repository:
     captures:
       '1':
         name: constant.numeric.tplpre
+
+  # table(provider := provider, provider_id := provider_id);
+  # TODO: Add possible catch for table, such as set?
 
   # Additional:
   drdc_jira:
@@ -649,6 +652,8 @@ repository:
 
 
 # Functions
+# TPL Functions internal and customly created.
+
   # Discovery mark
   discovery_functions:
     comment: Discovery functions DEV looks working
@@ -690,20 +695,20 @@ repository:
       - include: '#regex'
 
   # model. functions
+  # There is an issue found when model function is called in if block:
+  # if model.kind(api_source) <> 'LoadBalancerService' then
   model_functions:
-    comment: Model functions DEV looks working
+    comment: Model functions
     begin: >-
-      ((model)(\.)(addDisplayAttribute|removeDisplayAttribute|addContainment|setContainment|destroy|withdraw|setRemovalGroup|anchorRemovalGroup|suppressRemovalGroup|host|hosts|findPackages|addDisplayAttribute|removeDisplayAttribute|kind))
+      (model)(\.)(addDisplayAttribute|removeDisplayAttribute|addContainment|setContainment|destroy|withdraw|setRemovalGroup|anchorRemovalGroup|suppressRemovalGroup|host|hosts|findPackages|addDisplayAttribute|removeDisplayAttribute|kind|SupportDetail|Deployment|Namespace)
     beginCaptures:
       '1':
-        name: entity.name.function.tplpre
-      '2':
         name: support.function.tplpre
-      '3':
+      '2':
         name: punctuation.accessor.tplpre
-      '4':
+      '3':
         name: support.constant.tplpre
-    end: \;
+    end: (\()
     endCaptures:
       '1':
         name: disabled.tplpre
@@ -713,19 +718,21 @@ repository:
       - include: '#regex'
 
   model_rel_functions:
-    comment: Model rel functions DEV looks working
+    comment: Model rel and uniquerel
     begin: >-
-      ((model)(\.)(rel|uniquerel)(\.)(Communication|Containment|Dependency|Detail|HostContainment|HostedFile|HostedSoftware|Management|RelatedFile|SoftwareService|SoftwareContainment|StorageUse))
+      (model)(\.)(rel|uniquerel)(\.)(Communication|Containment|Collection|Dependency|Detail|HostContainment|HostedFile|HostedSoftware|Management|RelatedFile|SoftwareService|SoftwareContainment|StorageUse|SupportDetail|Deployment|Namespace)
     beginCaptures:
       '1':
-        name: entity.name.function.tplpre
-      '2':
         name: support.function.tplpre
-      '3':
+      '2':
         name: punctuation.accessor.tplpre
-      '4':
+      '3':
         name: support.constant.tplpre
-    end: \;
+      '4':
+        name: punctuation.accessor.tplpre
+      '5':
+        name: support.constant.tplpre
+    end: (\()
     endCaptures:
       '1':
         name: disabled.tplpre
@@ -735,20 +742,16 @@ repository:
       - include: '#regex'
 
   model_SI_functions:
-    comment: >-
-      Model SI functions DEV looks working. TODO: upgrage to highlight inr
-      content 2017-08-15
-    begin: ((model)(\.)(SoftwareInstance|SoftwareCluster))
+    comment: Model SI functions
+    begin: (model)(\.)(SoftwareInstance|Cluster|SoftwareCluster|SoftwareContainer|VirtualMachine)
     beginCaptures:
       '1':
-        name: entity.name.function.tplpre
-      '2':
         name: support.function.tplpre
-      '3':
+      '2':
         name: punctuation.accessor.tplpre
-      '4':
-        name: support.constant.tplpre
-    end: \;
+      '3':
+        name: support.function.tplpre
+    end: (\()
     endCaptures:
       '1':
         name: disabled.tplpre
@@ -902,7 +905,7 @@ repository:
 
   DiscoveryFunctions:
     match: >-
-      (DiscoveryFunctions)(\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes)
+      (DiscoveryFunctions)(\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes|addSourceKey)
     captures:
       '1':
         name: entity.name.function.tplpre
@@ -938,6 +941,17 @@ repository:
   SearchFunctions:
     match: >-
       (SearchFunctions)(\.)(getNodeIp|getHostingNodes|getSoftwareNodes|getSI|identifyHostWithUuid|relatedSisSearchOnMultipleHosts)
+    captures:
+      '1':
+        name: entity.name.function.tplpre
+      '2':
+        name: punctuation.accessor.tplpre
+      '3':
+        name: entity.name.function.tplpre
+
+# BHOM Custom functions highlight
+  ImportsFunctions:
+    match: (Imports)(\.)(inferHost|inferCluster|inferNetworkDevice|addExternalId|uniqueList)
     captures:
       '1':
         name: entity.name.function.tplpre
@@ -989,6 +1003,7 @@ repository:
       - include: '#inference_functions'
       - include: '#ConversionFunctions'
       - include: '#SearchFunctions'
+      - include: '#ImportsFunctions'
       - include: '#rdbms_functions'
       - include: '#RDBMSFunctions'
       - include: '#DiscoveryFunctions'
@@ -1001,9 +1016,9 @@ repository:
   # if, else, end if, for, end for
   if_statement:
     comment: >-
-      Match if ..values.. then and include usual lines. #lines can override some
-      marks
-    begin: (?!end if;|then)(\bif)
+      Match if ..values.. then and include usual lines. #lines can override some marks
+      Additionally fix for cases when var if_name is found! If should have at least one space
+    begin: (?!\bend\s\bif;|\bthen)(?<!\w\s)(\bif\s)
     beginCaptures:
       '1':
         name: keyword.control.conditional.tplpre
@@ -1235,7 +1250,7 @@ repository:
 
 #  define section
   define:
-    comment: 'Adding SQL support via #lines'
+    comment: 'Pattern define section main'
     begin: \s+(define)\s+(\S+)\((.*?)\)(\s\S+\s(.*))?
     beginCaptures:
       '1':
@@ -1247,7 +1262,7 @@ repository:
       '4':
         name: constant.numeric.tplpre
     end: \s+(end\sdefine;\s+?$)
-    endCaptures:
+    endCaptures: 
       '1':
         name: keyword.control.tplpre
     patterns:
@@ -1260,7 +1275,7 @@ repository:
 
 # Altermate define
   alt_define:
-    comment: 'Adding SQL support via #lines'
+    comment: 'Pattern define section alternative approach'
     begin: \s+(define)\s+(\S+)(\s\S+\s(.*))?
     beginCaptures:
       '1':

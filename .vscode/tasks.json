@@ -13,24 +13,12 @@
         }
       },
       {
-        "label": "TPL: Preproc as task",
-        "type": "shell",
-        "command": "${workspaceFolder}${pathSeparator}ide_compiler.py",
-        "args": [
-          "-q",
-          "-cce",
-          "-cf", "${file}",
-          "USERNAME=${env:USERNAME}",
-          "TKN_MAIN=${env:TKN_MAIN}",
-          "TKN_CORE=${env:TKN_CORE}",
-          "PYTHONPATH=${env:PYTHONPATH}",
-
-      ],
-        "problemMatcher": [],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        }
-      }
+        "label": "Convert current YAML to live plugin JSON",
+        "command": "npx G:${pathSeparator}Projects${pathSeparator}VSCode${pathSeparator}bmc-tpl${pathSeparator}node_modules${pathSeparator}.bin${pathSeparator}js-yaml",
+        // "args": [
+        //   "js-yaml",
+        //   "${file} > ${workspaceFolder}${pathSeparator}dev${pathSeparator}${fileBasenameNoExtension}_TEST.json", 
+        // ]
+    }	
     ]
   }

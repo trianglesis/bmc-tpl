@@ -168,7 +168,7 @@
     },
     {
       "comment": "Pattern defenetions. Adding SQL support via #lines",
-      "begin": "^(definitions)\\s(\\S+)\\s(\\d+(?:\\.\\d+)+)",
+      "begin": "(definitions)\\s(\\S+)\\s(\\d+(?:\\.\\d+)+)",
       "beginCaptures": {
         "1": {
           "name": "keyword.control.tplpre"
@@ -180,7 +180,7 @@
           "name": "constant.numeric.tplpre"
         }
       },
-      "end": "^(end\\sdefinitions;)",
+      "end": "(end\\sdefinitions;)",
       "endCaptures": {
         "1": {
           "name": "keyword.control.tplpre"
@@ -1109,23 +1109,20 @@
       ]
     },
     "model_functions": {
-      "comment": "Model functions DEV looks working",
-      "begin": "((model)(\\.)(addDisplayAttribute|removeDisplayAttribute|addContainment|setContainment|destroy|withdraw|setRemovalGroup|anchorRemovalGroup|suppressRemovalGroup|host|hosts|findPackages|addDisplayAttribute|removeDisplayAttribute|kind))",
+      "comment": "Model functions",
+      "begin": "(model)(\\.)(addDisplayAttribute|removeDisplayAttribute|addContainment|setContainment|destroy|withdraw|setRemovalGroup|anchorRemovalGroup|suppressRemovalGroup|host|hosts|findPackages|addDisplayAttribute|removeDisplayAttribute|kind|SupportDetail|Deployment|Namespace)",
       "beginCaptures": {
         "1": {
-          "name": "entity.name.function.tplpre"
-        },
-        "2": {
           "name": "support.function.tplpre"
         },
-        "3": {
+        "2": {
           "name": "punctuation.accessor.tplpre"
         },
-        "4": {
+        "3": {
           "name": "support.constant.tplpre"
         }
       },
-      "end": "\\;",
+      "end": "(\\()",
       "endCaptures": {
         "1": {
           "name": "disabled.tplpre"
@@ -1144,23 +1141,26 @@
       ]
     },
     "model_rel_functions": {
-      "comment": "Model rel functions DEV looks working",
-      "begin": "((model)(\\.)(rel|uniquerel)(\\.)(Communication|Containment|Dependency|Detail|HostContainment|HostedFile|HostedSoftware|Management|RelatedFile|SoftwareService|SoftwareContainment|StorageUse))",
+      "comment": "Model rel and uniquerel",
+      "begin": "(model)(\\.)(rel|uniquerel)(\\.)(Communication|Containment|Collection|Dependency|Detail|HostContainment|HostedFile|HostedSoftware|Management|RelatedFile|SoftwareService|SoftwareContainment|StorageUse|SupportDetail|Deployment|Namespace)",
       "beginCaptures": {
         "1": {
-          "name": "entity.name.function.tplpre"
-        },
-        "2": {
           "name": "support.function.tplpre"
         },
-        "3": {
+        "2": {
           "name": "punctuation.accessor.tplpre"
         },
+        "3": {
+          "name": "support.constant.tplpre"
+        },
         "4": {
+          "name": "punctuation.accessor.tplpre"
+        },
+        "5": {
           "name": "support.constant.tplpre"
         }
       },
-      "end": "\\;",
+      "end": "(\\()",
       "endCaptures": {
         "1": {
           "name": "disabled.tplpre"
@@ -1179,23 +1179,20 @@
       ]
     },
     "model_SI_functions": {
-      "comment": "Model SI functions DEV looks working. TODO: upgrage to highlight inr content 2017-08-15",
-      "begin": "((model)(\\.)(SoftwareInstance|SoftwareCluster))",
+      "comment": "Model SI functions",
+      "begin": "(model)(\\.)(SoftwareInstance|Cluster|SoftwareCluster|SoftwareContainer|VirtualMachine)",
       "beginCaptures": {
         "1": {
-          "name": "entity.name.function.tplpre"
-        },
-        "2": {
           "name": "support.function.tplpre"
         },
-        "3": {
+        "2": {
           "name": "punctuation.accessor.tplpre"
         },
-        "4": {
-          "name": "support.constant.tplpre"
+        "3": {
+          "name": "support.function.tplpre"
         }
       },
-      "end": "\\;",
+      "end": "(\\()",
       "endCaptures": {
         "1": {
           "name": "disabled.tplpre"
@@ -1409,7 +1406,7 @@
       }
     },
     "DiscoveryFunctions": {
-      "match": "(DiscoveryFunctions)(\\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes)",
+      "match": "(DiscoveryFunctions)(\\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes|addSourceKey)",
       "captures": {
         "1": {
           "name": "entity.name.function.tplpre"
@@ -1455,6 +1452,20 @@
     },
     "SearchFunctions": {
       "match": "(SearchFunctions)(\\.)(getNodeIp|getHostingNodes|getSoftwareNodes|getSI|identifyHostWithUuid|relatedSisSearchOnMultipleHosts)",
+      "captures": {
+        "1": {
+          "name": "entity.name.function.tplpre"
+        },
+        "2": {
+          "name": "punctuation.accessor.tplpre"
+        },
+        "3": {
+          "name": "entity.name.function.tplpre"
+        }
+      }
+    },
+    "ImportsFunctions": {
+      "match": "(Imports)(\\.)(inferHost|inferCluster|inferNetworkDevice|addExternalId|uniqueList)",
       "captures": {
         "1": {
           "name": "entity.name.function.tplpre"
@@ -1558,6 +1569,9 @@
           "include": "#SearchFunctions"
         },
         {
+          "include": "#ImportsFunctions"
+        },
+        {
           "include": "#rdbms_functions"
         },
         {
@@ -1578,8 +1592,8 @@
       ]
     },
     "if_statement": {
-      "comment": "Match if ..values.. then and include usual lines. #lines can override some marks",
-      "begin": "(?!end if;|then)(\\bif)",
+      "comment": "Match if ..values.. then and include usual lines. #lines can override some marks Additionally fix for cases when var if_name is found! If should have at least one space",
+      "begin": "(?!\\bend\\s\\bif;|\\bthen)(?<!\\w\\s)(\\bif\\s)",
       "beginCaptures": {
         "1": {
           "name": "keyword.control.conditional.tplpre"
@@ -1944,7 +1958,7 @@
       ]
     },
     "define": {
-      "comment": "Adding SQL support via #lines",
+      "comment": "Pattern define section main",
       "begin": "\\s+(define)\\s+(\\S+)\\((.*?)\\)(\\s\\S+\\s(.*))?",
       "beginCaptures": {
         "1": {
@@ -1988,7 +2002,7 @@
       ]
     },
     "alt_define": {
-      "comment": "Adding SQL support via #lines",
+      "comment": "Pattern define section alternative approach",
       "begin": "\\s+(define)\\s+(\\S+)(\\s\\S+\\s(.*))?",
       "beginCaptures": {
         "1": {

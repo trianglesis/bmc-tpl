@@ -5,98 +5,19 @@
     // https://code.visualstudio.com/docs/editor/variables-reference
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "Python: Current",
-            "type": "python",
+            "name": "Convert current YAML to live plugin JSON",
+            "type": "node",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "DEV: Run variables",
-            "type": "python",
-            "request": "launch",
-            // "program": "${workspaceFolder}/.vscode/ide_compiler.py",
-            "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
-            "args": [
-                "-q",
-                "-cce",
-                "-cf", "${file}",
-                "USERNAME=${env:USERNAME}",
-                "TKN_MAIN=${env:TKN_MAIN}",
-                "TKN_CORE=${env:TKN_CORE}",
-                "PYTHONPATH=${env:PYTHONPATH}",
-                // "-cp", "F:${pathSeparator}TUTFramework${pathSeparator}tku_patterns", 
-                // "-ct", "F:${pathSeparator}TUTFramework${pathSeparator}code${pathSeparator}data${pathSeparator}installed${pathSeparator}taxonomy${pathSeparator}00taxonomy.xml"
+            "cwd": "${workspaceFolder}",
+            "autoAttachChildProcesses": true,
+            "runtimeExecutable": "npx",
+            // "program": "node ${workspaceRoot}/node_modules/js-yaml/bin/js-yaml.js",
+            "program": "js-yaml",
+            // "program": "${workspaceFolder}${pathSeparator}node_modules${pathSeparator}.bin${pathSeparator}js-yaml.ps1",
+            "console": "integratedTerminal",
+            "args": ["${file} > ${workspaceFolder}${pathSeparator}dev${pathSeparator}${fileBasenameNoExtension}_TEST.json", 
             ],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "TPL: Compile current",
-            "type": "python",
-            "request": "launch",
-            // "program": "${workspaceFolder}/.vscode/ide_compiler.py",
-            "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
-            "args": [
-                "-q",
-                "-cce",
-                "-cf", "${file}",
-                // "-cp", "F:${pathSeparator}TUTFramework${pathSeparator}tku_patterns", 
-                // "-ct", "F:${pathSeparator}TUTFramework${pathSeparator}code${pathSeparator}data${pathSeparator}installed${pathSeparator}taxonomy${pathSeparator}00taxonomy.xml"
-            ],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "TPL: Preprocess current",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
-            "args": [
-                "-cpe",
-                "-cf", "${file}",
-            ],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "TPL: Investigate target",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
-            "args": [
-                "-q",
-                "-run",
-                "-tg", "${selectedText}",
-                "-cf", "${file}",
-            ],
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "TPL: Find target",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
-            "args": [
-                "-q",
-                "-find",
-                "-tg", "${selectedText}",
-                "-cf", "${file}",
-            ],
-            "console": "integratedTerminal"
-        },        
-        // {
-        //     "name": "TPL: Weakchecker",
-        //     "type": "python",
-        //     "request": "launch",
-        //     "program": "${workspaceFolder}${pathSeparator}ide_compiler.py",
-        // 	"args": [
-        // 		"-cwc",
-        //         "-ge", "-gp", "-ae", "-ap", "-lmin", "10", "-dmin", "5",
-        // 		"-cf", "${file}", 
-        // 		"-cp", "F:${pathSeparator}TUTFramework${pathSeparator}experimental", 
-        // 		"-ct", "F:${pathSeparator}TUTFramework${pathSeparator}code${pathSeparator}data${pathSeparator}installed${pathSeparator}taxonomy${pathSeparator}00taxonomy.xml"
-        // 	],
-        //     "console": "integratedTerminal"
-        // }	        	
+        }	
     ]
 }

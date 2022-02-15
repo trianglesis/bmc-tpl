@@ -15,4 +15,4 @@ npx js-yaml dev\vscode\syntaxes\tpl.tmLanguage.yaml > C:\Users\%USERNAME%\.vscod
 npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\tplpre.tmLanguage.json
 
 
-npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > C:\Users\o.danylchenko\.vscode\extensions\trianglesis.bmc-tpl-0.0.1\syntaxes\tplpre.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > C:\Users\o.danylchenko\.vscode\extensions\trianglesis.bmc-tpl-0.1.0\syntaxes\tplpre.tmLanguage.json
