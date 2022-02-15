@@ -41,6 +41,7 @@
     },
     {
       "match": "(tpl)\\s+(\\$\\$TPLVERSION\\$\\$|\\d+\\.\\d+)\\s+(module)\\s(.*);",
+      "comment": "Head of the tplpre file where tpl version pasted",
       "captures": {
         "1": {
           "name": "support.class.tplpre"
@@ -58,6 +59,7 @@
     },
     {
       "match": "(from)\\s(\\w+)(?:.(\\w+))?(?:.(\\w+))?\\s+(import)\\s(\\S+)\\s(\\d+(?:.\\d+)+);",
+      "comment": "Import of tpl modules and functions",
       "captures": {
         "1": {
           "name": "support.class.tplpre"
@@ -84,6 +86,7 @@
     },
     {
       "begin": "^(configuration)\\s(\\S+)\\s(\\d+\\.\\d+)",
+      "comment": "Pattern configuration",
       "beginCaptures": {
         "1": {
           "name": "keyword.control.tplpre"
@@ -118,6 +121,7 @@
     },
     {
       "begin": "^(table)\\s(\\S+)\\s(\\d+(?:\\.\\d+)+)",
+      "comment": "Pattern table",
       "beginCaptures": {
         "1": {
           "name": "keyword.control.tplpre"
@@ -155,9 +159,6 @@
           "include": "#keywords_all"
         },
         {
-          "include": "#regexes"
-        },
-        {
           "include": "#keywords_cmd_indentify_trigger"
         },
         {
@@ -166,7 +167,7 @@
       ]
     },
     {
-      "comment": "Adding SQL support via #lines",
+      "comment": "Pattern defenetions. Adding SQL support via #lines",
       "begin": "^(definitions)\\s(\\S+)\\s(\\d+(?:\\.\\d+)+)",
       "beginCaptures": {
         "1": {
@@ -246,9 +247,6 @@
         },
         {
           "include": "#keywords_all"
-        },
-        {
-          "include": "#regexes"
         },
         {
           "include": "#keywords_cmd_indentify_trigger"
@@ -708,9 +706,9 @@
         }
       }
     },
-    "qouted_line": {
+    "qouted_line_triple": {
       "match": "(?<!')(')([^']*)(('))(?!')",
-      "comment": "Still cannot match string like with empty or double quotes",
+      "comment": "Match lines where ''' STRING ''' used",
       "captures": {
         "1": {
           "name": "keyword.control.tplpre"
@@ -719,6 +717,21 @@
           "name": "string.quoted.single.tplpre"
         },
         "4": {
+          "name": "keyword.control.tplpre"
+        }
+      }
+    },
+    "qouted_line_single": {
+      "match": "(?<!')(')([^']*)(')(?!')",
+      "comment": "Match lines with a single qoute marks.",
+      "captures": {
+        "1": {
+          "name": "keyword.control.tplpre"
+        },
+        "2": {
+          "name": "string.quoted.single.tplpre"
+        },
+        "3": {
           "name": "keyword.control.tplpre"
         }
       }
@@ -739,14 +752,17 @@
       }
     },
     "double_qouted_line": {
-      "match": "(\\\"((?:[^\\\"]|\\\\\\\\|\\\\\")*)\\\")",
-      "comment": "Still cannot match string like with empty or single quotes",
+      "match": "(?<!\")(\")([^\"]*)(\")(?!\")",
+      "comment": "Simple double qoutes string match, with empty too.",
       "captures": {
         "1": {
           "name": "keyword.control.tplpre"
         },
         "2": {
           "name": "string.quoted.single.tplpre"
+        },
+        "3": {
+          "name": "keyword.control.tplpre"
         }
       }
     },
@@ -801,7 +817,10 @@
     "lines": {
       "patterns": [
         {
-          "include": "#qouted_line"
+          "include": "#qouted_line_triple"
+        },
+        {
+          "include": "#qouted_line_single"
         },
         {
           "include": "#qouted_line_empty"
@@ -832,9 +851,6 @@
         },
         {
           "include": "#comment_line"
-        },
-        {
-          "include": "#regexes"
         },
         {
           "include": "#square_brackets_line_empty"
@@ -942,52 +958,48 @@
     },
     "regex_token_s_quote": {
       "comment": "Catch regex in single quotes",
-      "begin": "(regex)\\s+?(?=')(.+?)",
+      "begin": "(regex)\\s+(?='{1})('{1}(?!'))(.*(?=',))",
       "beginCaptures": {
         "1": {
           "name": "keyword.control.tplpre"
         },
         "2": {
-          "name": "support.function.tplpre"
+          "name": "keyword.control.tplpre"
+        },
+        "3": {
+          "name": "regexp.tplpre"
         }
       },
-      "end": "(')",
+      "end": "(?=')(')",
       "endCaptures": {
         "1": {
-          "name": "support.function.tplpre"
+          "name": "keyword.control.tplpre"
         }
-      },
-      "patterns": [
-        {
-          "include": "#regular_expressions"
-        }
-      ]
+      }
     },
     "regex_token_d_quote": {
       "comment": "Catch regex in double qoutes",
-      "begin": "(regex)\\s+?(?=\")(.+?)",
+      "begin": "(regex)\\s+(?=\"{1})(\"{1}(?!'))(.*(?=\",))",
       "beginCaptures": {
         "1": {
           "name": "keyword.control.tplpre"
         },
         "2": {
-          "name": "support.function.tplpre"
+          "name": "keyword.control.tplpre"
+        },
+        "3": {
+          "name": "regexp.tplpre"
         }
       },
-      "end": "(\")",
+      "end": "(?=\")(\")",
       "endCaptures": {
         "1": {
-          "name": "support.function.tplpre"
+          "name": "keyword.control.tplpre"
         }
-      },
-      "patterns": [
-        {
-          "include": "#regular_expressions"
-        }
-      ]
+      }
     },
     "regex_token_triple_s_quote": {
-      "comment": "Catch regex in double qoutes",
+      "comment": "Catch regex in 3 single qoutes",
       "begin": "(regex)\\s+?('{3})(.+?)",
       "beginCaptures": {
         "1": {
@@ -1002,15 +1014,10 @@
         "1": {
           "name": "support.function.tplpre"
         }
-      },
-      "patterns": [
-        {
-          "include": "#regular_expressions"
-        }
-      ]
+      }
     },
     "regex_token_triple_d_quote": {
-      "comment": "Catch regex in double qoutes",
+      "comment": "Catch regex in 3-double qoutes",
       "begin": "(regex)\\s+?(\"{3})(.+?)",
       "beginCaptures": {
         "1": {
@@ -1025,21 +1032,10 @@
         "1": {
           "name": "support.function.tplpre"
         }
-      },
-      "patterns": [
-        {
-          "include": "#regular_expressions"
-        }
-      ]
+      }
     },
     "regexes": {
       "patterns": [
-        {
-          "include": "#regex_token_triple_s_quote"
-        },
-        {
-          "include": "#regex_token_triple_d_quote"
-        },
         {
           "include": "#regex_token_s_quote"
         },
@@ -1600,9 +1596,6 @@
           "include": "#all_controls"
         },
         {
-          "include": "#regexes"
-        },
-        {
           "include": "#all_keys"
         },
         {
@@ -1633,9 +1626,6 @@
       "patterns": [
         {
           "include": "#all_controls"
-        },
-        {
-          "include": "#regexes"
         },
         {
           "include": "#all_keys"
@@ -1981,6 +1971,9 @@
           "include": "#doc_strings"
         },
         {
+          "include": "#lines"
+        },
+        {
           "include": "#all_functions"
         },
         {
@@ -1991,9 +1984,6 @@
         },
         {
           "include": "#dev_keys"
-        },
-        {
-          "include": "#lines"
         }
       ]
     },
@@ -2022,6 +2012,9 @@
           "include": "#doc_strings"
         },
         {
+          "include": "#lines"
+        },
+        {
           "include": "#all_functions"
         },
         {
@@ -2032,9 +2025,6 @@
         },
         {
           "include": "#dev_keys"
-        },
-        {
-          "include": "#lines"
         }
       ]
     },
@@ -2066,9 +2056,6 @@
         },
         {
           "include": "#keywords_all"
-        },
-        {
-          "include": "#regexes"
         },
         {
           "include": "#keywords_cmd_indentify_trigger"
@@ -2214,14 +2201,6 @@
           "name": "keyword.control.model"
         }
       }
-    },
-    "regular_expressions": {
-      "comment": "Changed disabled to 1 to turn off syntax highlighting in “r” strings.",
-      "patterns": [
-        {
-          "include": "source.regexp.tplpre"
-        }
-      ]
     },
     "dev_keys": {
       "patterns": [

@@ -28,6 +28,7 @@ patterns:
   # Experimental functions END
   # tpl $$TPLVERSION$$ module NAME;
   - match: (tpl)\s+(\$\$TPLVERSION\$\$|\d+\.\d+)\s+(module)\s(.*);
+    comment: 'Head of the tplpre file where tpl version pasted'
     captures:
       '1':
         name: support.class.tplpre
@@ -40,6 +41,7 @@ patterns:
 
   # pattern import section
   - match: '(from)\s(\w+)(?:.(\w+))?(?:.(\w+))?\s+(import)\s(\S+)\s(\d+(?:.\d+)+);'
+    comment: 'Import of tpl modules and functions'
     captures:
       '1':
         name: support.class.tplpre
@@ -55,8 +57,10 @@ patterns:
         name: entity.name.function.tplpre
       '7':
         name: constant.numeric.tplpre
+  
   # Highlight configuration sections
   - begin: ^(configuration)\s(\S+)\s(\d+\.\d+)
+    comment: 'Pattern configuration'
     beginCaptures:
       '1':
         name: keyword.control.tplpre
@@ -76,6 +80,7 @@ patterns:
 
   # Highlight table sections
   - begin: '^(table)\s(\S+)\s(\d+(?:\.\d+)+)'
+    comment: 'Pattern table'
     beginCaptures:
       '1':
         name: keyword.control.tplpre
@@ -95,13 +100,13 @@ patterns:
       - include: '#lines'
       - include: '#keywords_cmd'
       - include: '#keywords_all'
-      - include: '#regexes'
+      # - include: '#regexes'
       - include: '#keywords_cmd_indentify_trigger'
       - include: '#if_addm'
 
   # Highlight definitions sections
   # SQL Support?
-  - comment: 'Adding SQL support via #lines'
+  - comment: 'Pattern defenetions. Adding SQL support via #lines'
     begin: '^(definitions)\s(\S+)\s(\d+(?:\.\d+)+)'
     beginCaptures:
       '1':
@@ -144,7 +149,7 @@ patterns:
       - include: '#lines'
       - include: '#keywords_cmd'
       - include: '#keywords_all'
-      - include: '#regexes'
+      # - include: '#regexes'
       - include: '#keywords_cmd_indentify_trigger'
       - include: '#if_addm'
 
@@ -411,10 +416,10 @@ repository:
       '2':
         name: string.quoted.single.tplpre
   
-  # 'THIS LINE'
-  qouted_line:
+  # '''THIS LINE'''
+  qouted_line_triple:
     match: '(?<!'')('')([^'']*)((''))(?!'')'
-    comment: Still cannot match string like with empty or double quotes
+    comment: Match lines where ''' STRING ''' used
     captures:
       '1':
         name: keyword.control.tplpre
@@ -422,6 +427,19 @@ repository:
         name: string.quoted.single.tplpre
       '4':
         name: keyword.control.tplpre
+
+  qouted_line_single:
+    match: (?<!')(')([^']*)(')(?!')
+    comment: Match lines with a single qoute marks.
+    captures:
+      '1':
+        name: keyword.control.tplpre
+      '2':
+        name: string.quoted.single.tplpre
+      '3':
+        name: keyword.control.tplpre
+
+# install_root         := '';
   qouted_line_empty:
     match: (?<!')(')(('))(?!')
     comment: Still cannot match string like with empty or double quotes
@@ -435,13 +453,15 @@ repository:
   
   # "THIS LINE"
   double_qouted_line:
-    match: '(\"((?:[^\"]|\\\\|\\")*)\")'
-    comment: Still cannot match string like with empty or single quotes
+    match: (?<!")(")([^"]*)(")(?!")
+    comment: Simple double qoutes string match, with empty too.
     captures:
       '1':
         name: keyword.control.tplpre
       '2':
         name: string.quoted.single.tplpre
+      '3':
+        name: keyword.control.tplpre
   
   # [THIS]
   square_brackets_line_empty:
@@ -479,7 +499,9 @@ repository:
 
   lines:
     patterns:
-      - include: '#qouted_line'
+      # - include: '#regexes'
+      - include: '#qouted_line_triple'
+      - include: '#qouted_line_single'
       - include: '#qouted_line_empty'
       - include: '#double_qouted_line'
       - include: '#sql_query'
@@ -490,7 +512,6 @@ repository:
       - include: '#comment_INFO_line'
       - include: '#comment_DEBUG_line'
       - include: '#comment_line'
-      - include: '#regexes'
       - include: '#square_brackets_line_empty'
       - include: '#square_brackets_line_word'
       - include: '#square_brackets_line_int'
@@ -565,36 +586,36 @@ repository:
 # Regex functions:
   regex_token_s_quote:
     comment: Catch regex in single quotes
-    begin: (regex)\s+?(?=')(.+?)
+    begin: (regex)\s+(?='{1})('{1}(?!'))(.*(?=',))
     beginCaptures:
       '1':
         name: keyword.control.tplpre
       '2':
-        name: support.function.tplpre
-    end: (')
+        name: keyword.control.tplpre
+      '3':
+        name: regexp.tplpre
+    end: (?=')(')
     endCaptures:
       '1':
-        name: support.function.tplpre
-    patterns:
-      - include: '#regular_expressions'
+        name: keyword.control.tplpre
   
   regex_token_d_quote:
     comment: Catch regex in double qoutes
-    begin: (regex)\s+?(?=")(.+?)
+    begin: (regex)\s+(?="{1})("{1}(?!'))(.*(?=",))
     beginCaptures:
       '1':
         name: keyword.control.tplpre
       '2':
-        name: support.function.tplpre
-    end: (")
+        name: keyword.control.tplpre
+      '3':
+        name: regexp.tplpre
+    end: (?=")(")
     endCaptures:
       '1':
-        name: support.function.tplpre
-    patterns:
-      - include: '#regular_expressions'
+        name: keyword.control.tplpre
   
   regex_token_triple_s_quote:
-    comment: Catch regex in double qoutes
+    comment: Catch regex in 3 single qoutes
     begin: '(regex)\s+?(''{3})(.+?)'
     beginCaptures:
       '1':
@@ -605,11 +626,9 @@ repository:
     endCaptures:
       '1':
         name: support.function.tplpre
-    patterns:
-      - include: '#regular_expressions'
 
   regex_token_triple_d_quote:
-    comment: Catch regex in double qoutes
+    comment: Catch regex in 3-double qoutes
     begin: '(regex)\s+?("{3})(.+?)'
     beginCaptures:
       '1':
@@ -620,15 +639,14 @@ repository:
     endCaptures:
       '1':
         name: support.function.tplpre
-    patterns:
-      - include: '#regular_expressions'
 
   regexes:
     patterns:
-      - include: '#regex_token_triple_s_quote'
-      - include: '#regex_token_triple_d_quote'
+      # - include: '#regex_token_triple_s_quote'
+      # - include: '#regex_token_triple_d_quote'
       - include: '#regex_token_s_quote'
       - include: '#regex_token_d_quote'
+
 
 # Functions
   # Discovery mark
@@ -995,7 +1013,7 @@ repository:
         name: keyword.control.conditional.tplpre
     patterns:
       - include: '#all_controls'
-      - include: '#regexes'
+      # - include: '#regexes'
       - include: '#all_keys'
       - include: '#lines'
       - include: '#keywords_attributes'
@@ -1015,7 +1033,7 @@ repository:
         name: keyword.control.conditional.tplpre
     patterns:
       - include: '#all_controls'
-      - include: '#regexes'
+      # - include: '#regexes'
       - include: '#all_keys'
       - include: '#lines'
       - include: '#keywords_attributes'
@@ -1234,11 +1252,11 @@ repository:
         name: keyword.control.tplpre
     patterns:
       - include: '#doc_strings'
+      - include: '#lines'
       - include: '#all_functions'
       - include: '#all_controls'
       - include: '#if_addm'
       - include: '#dev_keys'
-      - include: '#lines'
 
 # Altermate define
   alt_define:
@@ -1257,11 +1275,11 @@ repository:
         name: keyword.control.tplpre
     patterns:
       - include: '#doc_strings'
+      - include: '#lines'
       - include: '#all_functions'
       - include: '#all_controls'
       - include: '#if_addm'
       - include: '#dev_keys'
-      - include: '#lines'
 
 # * Simple Identifiers *
   simple_identifiers:
@@ -1281,7 +1299,7 @@ repository:
       - include: '#lines'
       - include: '#keywords_cmd'
       - include: '#keywords_all'
-      - include: '#regexes'
+      # - include: '#regexes'
       - include: '#keywords_cmd_indentify_trigger'
       - include: '#if_addm'
 
@@ -1369,11 +1387,6 @@ repository:
     captures:
       '3':
         name: keyword.control.model
-
-  regular_expressions:
-    comment: Changed disabled to 1 to turn off syntax highlighting in “r” strings.
-    patterns:
-      - include: source.regexp.tplpre
 
   dev_keys:
     patterns:
