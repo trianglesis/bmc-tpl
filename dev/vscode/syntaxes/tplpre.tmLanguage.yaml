@@ -9,6 +9,14 @@ scope: source.tplpre
 scopeName: source.tplpre
 file_extensions:
   - tplpre
+
+# Some stable elements we could reffer to
+# variables:
+#   # definitions BHOM 1.17
+#   definitions_name: (?:definitions\s(\S+)\s)
+#   # define handleNUK_Linux_OS(
+#   define_name: (?:\s{4}define\s(\S+)\()
+
 patterns:
 # AT FIRST
 # Captures basic parts of pattern and constants
@@ -100,7 +108,7 @@ patterns:
       - include: '#lines'
       - include: '#keywords_cmd'
       - include: '#keywords_all'
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#keywords_cmd_indentify_trigger'
       - include: '#if_addm'
 
@@ -149,7 +157,7 @@ patterns:
       - include: '#lines'
       - include: '#keywords_cmd'
       - include: '#keywords_all'
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#keywords_cmd_indentify_trigger'
       - include: '#if_addm'
 
@@ -183,6 +191,7 @@ patterns:
       - include: '#if_addm'
       - include: '#docstrings'
       - include: '#doc_strings_block_doulbe_q'
+      - include: '#dynamic_functions'
 
   # Highlight syncmapping sections
   - begin: '^\b(syncmapping)\s+(\w+)\s(\d+(?:\.\d+)+)\s+$'
@@ -502,7 +511,7 @@ repository:
 
   lines:
     patterns:
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#qouted_line_triple'
       - include: '#qouted_line_single'
       - include: '#qouted_line_empty'
@@ -596,7 +605,7 @@ repository:
       '2':
         name: keyword.control.tplpre
       '3':
-        name: regexp.tplpre
+        name: string.regexp.tplpre
     end: (?=')(')
     endCaptures:
       '1':
@@ -611,7 +620,7 @@ repository:
       '2':
         name: keyword.control.tplpre
       '3':
-        name: regexp.tplpre
+        name: string.regexp.tplpre
     end: (?=")(")
     endCaptures:
       '1':
@@ -650,7 +659,6 @@ repository:
       - include: '#regex_token_s_quote'
       - include: '#regex_token_d_quote'
 
-
 # Functions
 # TPL Functions internal and customly created.
 
@@ -658,7 +666,7 @@ repository:
   discovery_functions:
     comment: Discovery functions DEV looks working
     begin: >-
-      (discovery)(\.)(fileGet|fileInfo|getNames|listDirectory|listRegistry|registryKey|wmiQuery|wbemQuery|wbemEnumInstances|runCommand|snmpGet|snmpGetTable|restfulGet|restfulPost|vSphereFindObjects|vSphereTraverseToObjects|vSphereGetProperties|vSphereGetPropertyTable)
+      (discovery)(\.)(fileGet|fileInfo|getNames|listDirectory|listRegistry|registryKey|wmiQuery|wbemQuery|wbemEnumInstances|runCommand|snmpGetTable|snmpGet|restfulGet|restfulPost|vSphereFindObjects|vSphereTraverseToObjects|vSphereGetProperties|vSphereGetPropertyTable)
     beginCaptures:
       '1':
         name: storage.type.tplpre
@@ -1012,6 +1020,23 @@ repository:
       - include: '#list_append'
 
 
+# Dynamic functions. Attenpt to highlight local definitions -> define function in pattern:
+  # define_functions:
+  #   match: '({{definitions_name}})(\.)(\S+)'
+  #   comment: BHOM.handleNUK_Linux_OS(device[0], mo);
+  #   captures:
+  #     '1':
+  #       name: entity.other.inherited-class
+  #     '2':
+  #       name: punctuation.accessor.tplpre
+  #     '3':
+  #       name: entity.other.inherited-class
+
+  # dynamic_functions:
+  #   paterns:
+  #     - include: '#define_functions'
+
+
 # keyword.control.conditional
   # if, else, end if, for, end for
   if_statement:
@@ -1028,7 +1053,7 @@ repository:
         name: keyword.control.conditional.tplpre
     patterns:
       - include: '#all_controls'
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#all_keys'
       - include: '#lines'
       - include: '#keywords_attributes'
@@ -1048,7 +1073,7 @@ repository:
         name: keyword.control.conditional.tplpre
     patterns:
       - include: '#all_controls'
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#all_keys'
       - include: '#lines'
       - include: '#keywords_attributes'
@@ -1099,6 +1124,15 @@ repository:
       '1':
         name: keyword.operator.tplpre
   
+
+  min_ADDM_statement:
+    match: (#MINADDM)\s+(\d+.\d+)
+    captures:
+      '1':
+        name: keyword.control.conditional.tplpre
+      '2':
+        name: constant.numeric.tplpre
+
   if_ADDM_statement:
     match: (#IFADDM)\s+(\d+.\d+)
     captures:
@@ -1125,6 +1159,7 @@ repository:
   
   if_addm:
     patterns:
+      - include: '#min_ADDM_statement'
       - include: '#if_ADDM_statement'
       - include: '#elif_ADDM_statement'
       - include: '#else_ADDM_statement'
@@ -1314,7 +1349,7 @@ repository:
       - include: '#lines'
       - include: '#keywords_cmd'
       - include: '#keywords_all'
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#keywords_cmd_indentify_trigger'
       - include: '#if_addm'
 
