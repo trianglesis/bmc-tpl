@@ -32,17 +32,16 @@
         ["(", ")"],
         ["\"", "\""],
         ["'", "'"]
-    ]
-    // ,
-    // "indentationRules": {
-    //     "increaseIndentPattern": "(for).*(\\S+\\s+do)\\b.*$",
-    //     "decreaseIndentPattern": "(end\\sif;|end\\sfor;)$",
-    //     "decreaseNextIndentPattern": "^\\s*(pass;|break;)\\b.*$"
-    //   },
-    //   "folding": {
-    //     "markers": {
-    //       "start": "^\\s*//\\s*#?region\\b",
-    //       "end": "^\\s*//\\s*#?endregion\\b"
-    //     }
-    //   },
+    ],
+    "indentationRules": {
+        "increaseIndentPattern": "(for).*(\\S+\\s+do)\\b.*$",
+        "decreaseIndentPattern": "(end\\sif;|end\\sfor;)$",
+        "decreaseNextIndentPattern": "^\\s*(pass;|break;)\\b.*$"
+      },
+      "folding": {
+        "markers": {
+          "start": "^\\s*//\\s*#?region\\b",
+          "end": "^\\s*//\\s*#?endregion\\b"
+        }
+      },
 }
