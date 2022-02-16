@@ -1,4 +1,5 @@
 .source.tplpre:
+
   _Copyright BMC Copyright:
     prefix: _Copyright_BMC_Copyright_
     body: |-
@@ -6,15 +7,20 @@
       // (c) Copyright 2019 BMC Software, Inc. All rights reserved.$0
     description: Copyright info
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/The+Pattern+Language+TPL'
+
   _tpl:
     prefix: _tpl
     body: 'tpl \$\$TPLVERSION\$\$ module ${1:Module}.${2:Name};$0'
     description: Dev option. Header for TPLPreprocessor
+
   _pattern:
     prefix: _pattern
     description: Pattern block template
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/Pattern+Overview'
     body: "\n\npattern ${1:PatternName} 1.0\n\n\t\"\"\"\n\tPattern trigger on ...\n\tPattern also tries to ...\n\n\tSupported platforms:\n\n\tUNIX\n\tWindows\n\n\t\"\"\"\n\n\tmetadata\n\t\tproducts := '';\n\t\turls := '';\n\t\tpublishers  := '';\n\t\tcategories := '';\n\t\tknown_versions := '', '', '';\n\tend metadata;\n\n\toverview\n\t\ttags TKU, TKU_YYYY_MM_DD, Name, Product;\n\tend overview;\n\n\tconstants\n\t\tsi_type := 'Product Name';\n\tend constants;\n\n\ttriggers\n\t\ton process := DiscoveredProcess where cmd matches unix_cmd \"CMD\" and args matches regex \"ARGS\";\n\tend triggers;\n\n\tbody\n\t\thost := model.host(process);\n\n\n\tend body;\nend pattern;\n\n$0"
+
+
+#  Imports most common usages:
   from SearchFunctions:
     prefix: from_SearchFunctions_
     body: |-
@@ -40,6 +46,8 @@
     body: |-
       // INFO: Check the latest version!
       from System import Future ${1:1}.${2:0};$0
+
+# Metadata construction
   metadata pattern:
     prefix: _metadata_pattern
     description: Metadata in pattern body block template
@@ -58,6 +66,9 @@
     description: Metadata in module block template
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/Pattern+Overview'
     body: "metadata\n\torigin := \"TKU\";\n\ttkn_name := \"${1:name}\";\n\ttree_path := '${2:category}', '${3:category}', '${4:category}';\nend metadata;\n$0"
+
+
+# Triggers, most common:
   _triggers unix_cmd:
     prefix: _triggers_unix_cmd_
     description: >-
@@ -151,6 +162,7 @@
                          where instance = ${1:name};
       end triggers;
       $0
+# Identifiers
   _identify Simple Identifiers:
     prefix: _identify_Simple_Identifiers_
     description: >-
@@ -158,6 +170,9 @@
       particular values.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/Identify'
     body: "identify ${1:SOME} 1.0\n\ttags simple_identity, ${2:tag1};\n\tDiscoveredProcess cmd -> simple_identity;\nend identify;\n$0"
+
+
+# Table drafts
   _table Two cols:
     prefix: _table_Two_cols_
     description: >-
@@ -165,6 +180,7 @@
       pattern bodies.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/Static+Tables'
     body: "table ${1:table_name} 1.0\n\t\"one\" -> \"val_name1\", \"val_name2\";\n\t\"two\"    -> \"val_name3\", \"val_name4\";\n\tdefault  -> \"val_name5\", \"val_name6\";\nend table;\n$0"
+  
   _table One col:
     prefix: _table_One_col_
     description: >-
@@ -172,6 +188,9 @@
       pattern bodies.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/Static+Tables'
     body: "table ${1:table_name} 1.0\n\t\"one\"       -> val_1;\n\t\"two\"       -> val_2;\n\tdefault     -> val_100;\nend table;\n$0"
+  
+
+# Definitions examples
   _definitions Small:
     prefix: _definitions_Small_
     description: >-
@@ -180,6 +199,7 @@
       and for data integration with SQL databases.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/Definitions'
     body: "definitions ${1:def_name} 1.0\n\t'''${2:Describe definitions}'''$0\n\nend definitions;\n$0"
+  
   _definitions Big:
     prefix: _definitions_Big_
     description: >-
@@ -188,6 +208,8 @@
       and for data integration with SQL databases.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/Definitions'
     body: "definitions ${1:def_name} 1.0\n\t'''${2:Describe definitions}\n\t   Change History:\n\n\t'''\n\t$0\n\nend definitions;\n$0"
+  
+# Define
   _define Function:
     prefix: _define_Function_
     description: >-
@@ -196,15 +218,21 @@
       set to the value function or omitted.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/User+defined+functions'
     body: "define ${1:function_name}(${2:argument}) -> ${3:return}\n\t'''\n\t${4:Describe function}\n\t'''\n\n\t$0\n\n\treturn ${5:dummy};\n\nend define;\n$0"
+
+# Full version extraction:
   _full_version (\\d*\\.\\d*):
     prefix: _full_version_(\\d*\\.\\d*)_
     description: Template for product version extract when full version is obtained.
     body: "// Assign product version\nif full_version then\n\tproduct_version := regex.extract(full_version, regex '(\\\\d*\\\\.\\\\d*)', raw '\\\\1');\n\tif not product_version then\n\t\tproduct_version := full_version;\n\tend if;\nend if;\n\n$0"
+
+# Packages find
   _packages Find packages:
     prefix: _packages_Find_packages_
     description: Template for find packages and get full version.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/model.findPackages'
     body: "packages := model.findPackages( host, [regex \"${1:PACKAGE_NAME}\"] );\nfor package in packages do\n\tif package.version then\n\t\tfull_version := package.version;\n\t\tbreak;\n\tend if;\nend for;$0"
+
+# OLD Functions we should not use, but should warn about them:
   OLD functions.validate_host_address_format(rel_host_address):
     prefix: _functions.validate_host_address_format
     description: >-
@@ -499,6 +527,10 @@
       (DiscoveryFunctions)
 
       functions.checkCommandList(${1:host}, ${2:command_list});$0
+
+
+# Newer functions:
+# Conversionb function
   ConversionFunctions.isValidSerialNumber(serial) -> valid:
     prefix: ConversionFunctions.isValidSerialNumber
     description: >-
@@ -555,6 +587,7 @@
       converts String To HexaDecimal string;
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/User+defined+functions'
     body: 'ConversionFunctions.convertStringToHex(${1:string}, sep := "");$0'
+
   'cluster_support_functions.getHostingNode(host, fallback_kind := Host, instance := inst, clustered_data_path := path)':
     prefix: cluster_support_functions.getHostingNode
     description: >-
@@ -611,6 +644,9 @@
       or the host known to be actively running the clustered software.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/User+defined+functions'
     body: 'cluster_support_functions.get_si_host(${1:si}, ${2:ip_addr});$0'
+
+
+# Discovery functions:
   discovery.process(node):
     prefix: discovery.process
     description: >-
@@ -813,6 +849,8 @@
     body: >-
       discovery.vSphereGetPropertyTable(${1:host}, "${2:HostSystem}", host_id,
       "config.storageDevice.scsiLun", ["serialNumber", "deviceName"]);$0
+
+# String functions
   binary.toHexString(value):
     prefix: binary.toHexString
     description: >-
@@ -923,6 +961,8 @@
       table or list including nested structures.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/json.decode'
     body: 'json.decode(${1:value});$0'
+
+# DiscoveryFunctions
   'DiscoveryFunctions.escapePath(host, install_root) -> install_root':
     prefix: DiscoveryFunctions.escapePath
     description: >-
@@ -1520,6 +1560,8 @@
       synchronization is enabled.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/'
     body: 'system.cmdbSync(${1:nodes});$0'
+
+# Model functions Built-ins
   'model.addContainment(container, containees)':
     prefix: model.addContainment
     description: >-
@@ -2042,6 +2084,7 @@
     body: >-
       model.uniquerel.StorageUse(Consumer := ${1:virtual_disk}, Provider :=
       ${2:dest_disks});$0
+# Custom model constructions:
   SoftwareInstance Short:
     prefix: SoftwareInstance_Short_
     body: "model.SoftwareInstance(key := key,\n\t$0name := name,\n\t$0short_name := short_name\n\t);$0"
@@ -2059,6 +2102,9 @@
     body: >-
       model.uniquerel.Communication(Server := ${1:related_sis}, Client :=
       ${2:si_node}, type := "${3:%type%}");$0
+
+
+# Number functions -
   number.toChar(number):
     prefix: number.toChar
     description: >-
@@ -2078,6 +2124,9 @@
       list will be empty.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/number.range'
     body: 'number.range(${1:number});$0'
+
+
+# Text functions - built-in
   text.lower(string):
     prefix: text.lower
     description: Returns the lower-cased version of the string argument.
@@ -2171,9 +2220,138 @@
       character in length.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/text.ordinal'
     body: 'text.ordinal(${1:string});$0'
+
+# Time functions, built-in
+  time.current():
+    prefix: time.current
+    description: Returns an internal datetime object representing the current UTC time.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.current'
+    body: time.current();$0
+  'time.delta(days, hours, minutes, seconds)':
+    prefix: time.delta
+    description: >-
+      Creates a time delta that can be added to or subtracted from a time
+      represented by an internal datetime object. 
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.delta'
+    body: 'time.delta(${1:days}, ${2:hours}, ${3:minutes}, ${4:seconds});$0'
+  time.parseLocal(string):
+    prefix: time.parseLocal
+    description: >-
+      Converts a string representing a local time into an internal UTC datetime
+      object. If no time zone is present in the string it will use the time zone
+      of the appliance.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.parseLocal'
+    body: 'time.parseLocal(${1:string});$0'
+  time.parseUTC(string):
+    prefix: time.parseUTC
+    description: >-
+      Take a UTC time string and converts it into an internal datetime object.
+      It is not adjusted for timezones or daylight saving time. 
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.parseUTC'
+    body: 'time.parseUTC(${1:string});$0'
+  'time.formatLocal(datetime [, format ])':
+    prefix: time.formatLocal
+    description: Formats an internal datetime object into a human-readable string.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.formatLocal'
+    body: 'time.formatUTC(${1:lastRebootedDate}, raw "%m/%d/%Y %H:%M:%S");$0'
+  'time.formatUTC(datetime [, format ])':
+    prefix: time.formatUTC
+    description: Formats an internal datetime object into a human-readable string.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.formatUTC'
+    body: 'time.formatUTC(${1:datetime} [, format ]);$0'
+  time.toTicks(datetime):
+    prefix: time.toTicks
+    description: Converts an internal datatime object (UTC) to ticks.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.toTicks'
+    body: 'time.toTicks(${1:datetime});$0'
+  time.fromTicks(ticks):
+    prefix: time.fromTicks
+    description: Converts ticks to an internal datetime object (UTC).
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.fromTicks'
+    body: 'time.fromTicks(${1:ticks});$0'
+  time.deltaFromTicks(ticks):
+    prefix: time.deltaFromTicks
+    description: Converts ticks into a time delta.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.deltaFromTicks'
+    body: 'time.deltaFromTicks(${1:ticks});$0'
+
+# Mail functions, built-in
+  'mail.send(recipients, subject, message)':
+    prefix: mail.send
+    description: >-
+      Sends an email. recipients is a single string containing an email address,
+      or a list of email address strings; subject is the subject line to use in
+      the email; message is the message contents.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/mail.send'
+    body: 'mail.send(${1:recipients}, ${2:subject}, ${3:message});$0'
+
+# X-path functions, built-in
+  'xpath.evaluate(string, expression)':
+    prefix: xpath.evaluate
+    description: >-
+      Returns the result of evaluating the xpath expression against the XML
+      string. Returns a list of strings containing the selected values. The
+      result is always a list, even if the expression is guaranteed to always
+      return just one result.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/xpath.evaluate'
+    body: 'xpath.evaluate(${1:some_file_path}, "${2:xpath_string}");$0'
+  xpath.openDocument(string):
+    prefix: xpath.openDocument
+    description: >-
+      Returns the DOM object resulting from parsing the XML string. The DOM
+      object returned is suitable for passing to xpath.evaluate.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/xpath.openDocument'
+    body: 'xpath.openDocument(${1:some_file_path});$0'
+  xpath.closeDocument(DOM object):
+    prefix: xpath.closeDocument
+    description: Closes the DOM object resulting from xpath.openDocument.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/xpath.closeDocument'
+    body: 'xpath.closeDocument(${1:some_file_path});$0'
+
+# X-path functions, built-in, examples
+  'regex.extract(string, expression [, substitution] [, no_match])':
+    prefix: regex.extract
+    description: >-
+      Returns the result of extracting the regular expression from the string,
+      optionally with a substitution expression and a specified result if no
+      match is found. Returns an empty string, or the string specified in
+      no_match if the expression does not match. 
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/regex.extract'
+    body: >-
+      regex.extract(${1:string}, ${2:expression}, raw '\\1', no_match :=
+      '${3:NoMatch}');$0
+  'regex.extractAll(string, pattern)':
+    prefix: regex.extractAll
+    description: >-
+      Returns a list containing all the non-overlapping matches of the pattern
+      in the string. If the pattern contains more than one group, returns a list
+      of lists containing the groups in order.
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/regex.extract'
+    body: 'regex.extractAll(${1:string}, ${2:pattern});$0'
+  'regex.extract(variable, regex regex_raw, raw ''\\1'')':
+    prefix: regex.extract_Var
+    description: 'Tamplate for regex - extracting from: variable with some content in it.'
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/regex.extract'
+    body: 'regex.extract(${1:variable}, regex "${2:regex_raw}", raw ''\\1'');$0'
+  'regex.extract(node.attrs, regex regex_raw, raw ''\\1'')':
+    prefix: regex.extract_node.attrs
+    description: 'Tamplate for regex - extracting from: node with attribues.'
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/regex.extract'
+    body: 'regex.extract(${1:node}.${2:attrs}, regex "${3:regex_raw}", raw ''\\1'');$0'
+  'regex.extract(variable, regex regex_raw, raw ''\\1'', raw ''\\2)':
+    prefix: 'regex.extract_raw_1,2'
+    description: 'Tamplate for regex - extracting from: variable with two groups to check.'
+    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/regex.extract'
+    body: >-
+      regex.extract(${1:variable}, regex "${2:regex_raw}", raw '\\${3:1}', raw
+      '\\${4:2}');$0
+
+# List functions, built-in
   append list:
     prefix: append_list_
     body: 'list.append(${1:the_list}, ${2:string});$0'
+
+# Searcches examples
   'search(in da ::DiscoveryResult:ProcessList #DiscoveredProcess where pid':
     prefix: _trav_rel_proc_parent
     description: >-
@@ -2273,6 +2451,8 @@
     body: >-
       main_db_sis := search(in ${1:related_si} traverse
       Client:Communication:Server:SoftwareInstance);$0
+
+# DEV log messages
   log.debug("message"):
     prefix: log.debug
     description: >-
@@ -2346,63 +2526,8 @@
   _info log SI:
     prefix: _info_log_SI_
     body: 'log.info("%host.name%: SI created for %${1:si_type}%");$0'
-  'regex.extract(string, expression [, substitution] [, no_match])':
-    prefix: regex.extract
-    description: >-
-      Returns the result of extracting the regular expression from the string,
-      optionally with a substitution expression and a specified result if no
-      match is found. Returns an empty string, or the string specified in
-      no_match if the expression does not match. 
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/regex.extract'
-    body: >-
-      regex.extract(${1:string}, ${2:expression}, raw '\\1', no_match :=
-      '${3:NoMatch}');$0
-  'regex.extractAll(string, pattern)':
-    prefix: regex.extractAll
-    description: >-
-      Returns a list containing all the non-overlapping matches of the pattern
-      in the string. If the pattern contains more than one group, returns a list
-      of lists containing the groups in order.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/regex.extract'
-    body: 'regex.extractAll(${1:string}, ${2:pattern});$0'
-  'regex.extract(variable, regex regex_raw, raw ''\\1'')':
-    prefix: regex.extract_Var
-    description: 'Tamplate for regex - extracting from: variable with some content in it.'
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/regex.extract'
-    body: 'regex.extract(${1:variable}, regex "${2:regex_raw}", raw ''\\1'');$0'
-  'regex.extract(node.attrs, regex regex_raw, raw ''\\1'')':
-    prefix: regex.extract_node.attrs
-    description: 'Tamplate for regex - extracting from: node with attribues.'
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/regex.extract'
-    body: 'regex.extract(${1:node}.${2:attrs}, regex "${3:regex_raw}", raw ''\\1'');$0'
-  'regex.extract(variable, regex regex_raw, raw ''\\1'', raw ''\\2)':
-    prefix: 'regex.extract_raw_1,2'
-    description: 'Tamplate for regex - extracting from: variable with two groups to check.'
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/regex.extract'
-    body: >-
-      regex.extract(${1:variable}, regex "${2:regex_raw}", raw '\\${3:1}', raw
-      '\\${4:2}');$0
-  'xpath.evaluate(string, expression)':
-    prefix: xpath.evaluate
-    description: >-
-      Returns the result of evaluating the xpath expression against the XML
-      string. Returns a list of strings containing the selected values. The
-      result is always a list, even if the expression is guaranteed to always
-      return just one result.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/xpath.evaluate'
-    body: 'xpath.evaluate(${1:some_file_path}, "${2:xpath_string}");$0'
-  xpath.openDocument(string):
-    prefix: xpath.openDocument
-    description: >-
-      Returns the DOM object resulting from parsing the XML string. The DOM
-      object returned is suitable for passing to xpath.evaluate.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/xpath.openDocument'
-    body: 'xpath.openDocument(${1:some_file_path});$0'
-  xpath.closeDocument(DOM object):
-    prefix: xpath.closeDocument
-    description: Closes the DOM object resulting from xpath.openDocument.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/xpath.closeDocument'
-    body: 'xpath.closeDocument(${1:some_file_path});$0'
+
+# Extras
   'table( [ parameters ] )':
     prefix: table
     description: >-
@@ -2438,66 +2563,8 @@
     description: Returns the Host node corresponding to the given node.
     descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/related.host'
     body: 'related.host(${1:node});$0'
-  'mail.send(recipients, subject, message)':
-    prefix: mail.send
-    description: >-
-      Sends an email. recipients is a single string containing an email address,
-      or a list of email address strings; subject is the subject line to use in
-      the email; message is the message contents.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/mail.send'
-    body: 'mail.send(${1:recipients}, ${2:subject}, ${3:message});$0'
-  time.current():
-    prefix: time.current
-    description: Returns an internal datetime object representing the current UTC time.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.current'
-    body: time.current();$0
-  'time.delta(days, hours, minutes, seconds)':
-    prefix: time.delta
-    description: >-
-      Creates a time delta that can be added to or subtracted from a time
-      represented by an internal datetime object. 
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.delta'
-    body: 'time.delta(${1:days}, ${2:hours}, ${3:minutes}, ${4:seconds});$0'
-  time.parseLocal(string):
-    prefix: time.parseLocal
-    description: >-
-      Converts a string representing a local time into an internal UTC datetime
-      object. If no time zone is present in the string it will use the time zone
-      of the appliance.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.parseLocal'
-    body: 'time.parseLocal(${1:string});$0'
-  time.parseUTC(string):
-    prefix: time.parseUTC
-    description: >-
-      Take a UTC time string and converts it into an internal datetime object.
-      It is not adjusted for timezones or daylight saving time. 
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.parseUTC'
-    body: 'time.parseUTC(${1:string});$0'
-  'time.formatLocal(datetime [, format ])':
-    prefix: time.formatLocal
-    description: Formats an internal datetime object into a human-readable string.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.formatLocal'
-    body: 'time.formatUTC(${1:lastRebootedDate}, raw "%m/%d/%Y %H:%M:%S");$0'
-  'time.formatUTC(datetime [, format ])':
-    prefix: time.formatUTC
-    description: Formats an internal datetime object into a human-readable string.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.formatUTC'
-    body: 'time.formatUTC(${1:datetime} [, format ]);$0'
-  time.toTicks(datetime):
-    prefix: time.toTicks
-    description: Converts an internal datatime object (UTC) to ticks.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.toTicks'
-    body: 'time.toTicks(${1:datetime});$0'
-  time.fromTicks(ticks):
-    prefix: time.fromTicks
-    description: Converts ticks to an internal datetime object (UTC).
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.fromTicks'
-    body: 'time.fromTicks(${1:ticks});$0'
-  time.deltaFromTicks(ticks):
-    prefix: time.deltaFromTicks
-    description: Converts ticks into a time delta.
-    descriptionMoreURL: 'https://docs.bmc.com/docs/display/DISCO111/time.deltaFromTicks'
-    body: 'time.deltaFromTicks(${1:ticks});$0'
+
+# ETC Constructions
   _regex Simple Identifiers:
     prefix: _regex_Simple_Identifiers_
     body: '(?1:regex )/}"${1:regex}" -> "${2:product_name}";$0'
