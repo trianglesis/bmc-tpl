@@ -12,28 +12,10 @@
     },
     "categories": [
         "Programming Languages",
-        "Snippets",
-        "Themes"
+        "Snippets"
     ],
     "contributes": {
-        "themes": [
-            {
-                "label": "BMC Monokai",
-                "uiTheme": "vs-dark",
-                "path": "./themes/BMC Monokai-color-theme.json"
-            }
-        ],
         "languages": [
-            {
-                "id": "tpl",
-                "aliases": [
-                    "tpl"
-                ],
-                "extensions": [
-                    ".tpl"
-                ],
-                "configuration": "./language-configuration.json"
-            },
             {
                 "id": "tplpre",
                 "aliases": [
@@ -57,11 +39,6 @@
         ],
         "grammars": [
             {
-                "language": "tpl",
-                "scopeName": "source.tpl",
-                "path": "./syntaxes/tplpre.tmLanguage.json"
-            },
-            {
                 "language": "tplpre",
                 "scopeName": "source.tplpre",
                 "path": "./syntaxes/tplpre.tmLanguage.json"
@@ -75,56 +52,9 @@
         "snippets": [
             {
                 "language": "tplpre",
-                "path": "./snippets/tpl.json"
-            },
-            {
-                "language": "tpl",
-                "path": "./snippets/tpl.json"
+                "path": "./snippets/tplpre.json"
             }
-        ],
-        "configuration": {
-            "title": "BMC Tpl IDE",
-            "properties": {
-                "tplpre.PathToIDE": {
-                    "type": "string",
-                    "default": false,
-                    "description": "Paste here full path to TPL IDE Engine"
-                },
-                "tplpre.PathToPatterns": {
-                    "type": "string",
-                    "default": false,
-                    "description": "Paste here full path to PATTERNS_PATH"
-                },
-                "tplpre.TknCore": {
-                    "type": "string",
-                    "default": false,
-                    "description": "Paste here full path to TKN_CORE"
-                },
-                "tplpre.PythonPath": {
-                    "type": "string",
-                    "default": false,
-                    "description": "Paste here full path to PYTHONPATH"
-                },
-                "tplpre.TaxonomyPath": {
-                    "type": "string",
-                    "default": false,
-                    "description": "Paste here full path to TAXONOMY_PATH"
-                },
-                "tplpre.TidewayPath": {
-                    "type": "string",
-                    "default": false,
-                    "description": "Paste here full path to TIDEWAY"
-                },
-                "tplpre.dummy": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "default": null,
-                    "description": "Test test test"
-                }
-            }
-        }
+        ]
     },
     "devDependencies": {
         "js-yaml": "^4.1.0"

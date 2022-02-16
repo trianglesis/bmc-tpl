@@ -1419,6 +1419,114 @@
       "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/text.ordinal",
       "body": "text.ordinal(${1:string});$0"
     },
+    "time.current()": {
+      "prefix": "time.current",
+      "description": "Returns an internal datetime object representing the current UTC time.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.current",
+      "body": "time.current();$0"
+    },
+    "time.delta(days, hours, minutes, seconds)": {
+      "prefix": "time.delta",
+      "description": "Creates a time delta that can be added to or subtracted from a time represented by an internal datetime object. ",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.delta",
+      "body": "time.delta(${1:days}, ${2:hours}, ${3:minutes}, ${4:seconds});$0"
+    },
+    "time.parseLocal(string)": {
+      "prefix": "time.parseLocal",
+      "description": "Converts a string representing a local time into an internal UTC datetime object. If no time zone is present in the string it will use the time zone of the appliance.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.parseLocal",
+      "body": "time.parseLocal(${1:string});$0"
+    },
+    "time.parseUTC(string)": {
+      "prefix": "time.parseUTC",
+      "description": "Take a UTC time string and converts it into an internal datetime object. It is not adjusted for timezones or daylight saving time. ",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.parseUTC",
+      "body": "time.parseUTC(${1:string});$0"
+    },
+    "time.formatLocal(datetime [, format ])": {
+      "prefix": "time.formatLocal",
+      "description": "Formats an internal datetime object into a human-readable string.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.formatLocal",
+      "body": "time.formatUTC(${1:lastRebootedDate}, raw \"%m/%d/%Y %H:%M:%S\");$0"
+    },
+    "time.formatUTC(datetime [, format ])": {
+      "prefix": "time.formatUTC",
+      "description": "Formats an internal datetime object into a human-readable string.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.formatUTC",
+      "body": "time.formatUTC(${1:datetime} [, format ]);$0"
+    },
+    "time.toTicks(datetime)": {
+      "prefix": "time.toTicks",
+      "description": "Converts an internal datatime object (UTC) to ticks.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.toTicks",
+      "body": "time.toTicks(${1:datetime});$0"
+    },
+    "time.fromTicks(ticks)": {
+      "prefix": "time.fromTicks",
+      "description": "Converts ticks to an internal datetime object (UTC).",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.fromTicks",
+      "body": "time.fromTicks(${1:ticks});$0"
+    },
+    "time.deltaFromTicks(ticks)": {
+      "prefix": "time.deltaFromTicks",
+      "description": "Converts ticks into a time delta.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.deltaFromTicks",
+      "body": "time.deltaFromTicks(${1:ticks});$0"
+    },
+    "mail.send(recipients, subject, message)": {
+      "prefix": "mail.send",
+      "description": "Sends an email. recipients is a single string containing an email address, or a list of email address strings; subject is the subject line to use in the email; message is the message contents.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/mail.send",
+      "body": "mail.send(${1:recipients}, ${2:subject}, ${3:message});$0"
+    },
+    "xpath.evaluate(string, expression)": {
+      "prefix": "xpath.evaluate",
+      "description": "Returns the result of evaluating the xpath expression against the XML string. Returns a list of strings containing the selected values. The result is always a list, even if the expression is guaranteed to always return just one result.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/xpath.evaluate",
+      "body": "xpath.evaluate(${1:some_file_path}, \"${2:xpath_string}\");$0"
+    },
+    "xpath.openDocument(string)": {
+      "prefix": "xpath.openDocument",
+      "description": "Returns the DOM object resulting from parsing the XML string. The DOM object returned is suitable for passing to xpath.evaluate.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/xpath.openDocument",
+      "body": "xpath.openDocument(${1:some_file_path});$0"
+    },
+    "xpath.closeDocument(DOM object)": {
+      "prefix": "xpath.closeDocument",
+      "description": "Closes the DOM object resulting from xpath.openDocument.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/xpath.closeDocument",
+      "body": "xpath.closeDocument(${1:some_file_path});$0"
+    },
+    "regex.extract(string, expression [, substitution] [, no_match])": {
+      "prefix": "regex.extract",
+      "description": "Returns the result of extracting the regular expression from the string, optionally with a substitution expression and a specified result if no match is found. Returns an empty string, or the string specified in no_match if the expression does not match. ",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/regex.extract",
+      "body": "regex.extract(${1:string}, ${2:expression}, raw '\\\\1', no_match := '${3:NoMatch}');$0"
+    },
+    "regex.extractAll(string, pattern)": {
+      "prefix": "regex.extractAll",
+      "description": "Returns a list containing all the non-overlapping matches of the pattern in the string. If the pattern contains more than one group, returns a list of lists containing the groups in order.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/regex.extract",
+      "body": "regex.extractAll(${1:string}, ${2:pattern});$0"
+    },
+    "regex.extract(variable, regex regex_raw, raw '\\\\1')": {
+      "prefix": "regex.extract_Var",
+      "description": "Tamplate for regex - extracting from: variable with some content in it.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/regex.extract",
+      "body": "regex.extract(${1:variable}, regex \"${2:regex_raw}\", raw '\\\\1');$0"
+    },
+    "regex.extract(node.attrs, regex regex_raw, raw '\\\\1')": {
+      "prefix": "regex.extract_node.attrs",
+      "description": "Tamplate for regex - extracting from: node with attribues.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/regex.extract",
+      "body": "regex.extract(${1:node}.${2:attrs}, regex \"${3:regex_raw}\", raw '\\\\1');$0"
+    },
+    "regex.extract(variable, regex regex_raw, raw '\\\\1', raw '\\\\2)": {
+      "prefix": "regex.extract_raw_1,2",
+      "description": "Tamplate for regex - extracting from: variable with two groups to check.",
+      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/regex.extract",
+      "body": "regex.extract(${1:variable}, regex \"${2:regex_raw}\", raw '\\\\${3:1}', raw '\\\\${4:2}');$0"
+    },
     "append list": {
       "prefix": "append_list_",
       "body": "list.append(${1:the_list}, ${2:string});$0"
@@ -1547,54 +1655,6 @@
       "prefix": "_info_log_SI_",
       "body": "log.info(\"%host.name%: SI created for %${1:si_type}%\");$0"
     },
-    "regex.extract(string, expression [, substitution] [, no_match])": {
-      "prefix": "regex.extract",
-      "description": "Returns the result of extracting the regular expression from the string, optionally with a substitution expression and a specified result if no match is found. Returns an empty string, or the string specified in no_match if the expression does not match. ",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/regex.extract",
-      "body": "regex.extract(${1:string}, ${2:expression}, raw '\\\\1', no_match := '${3:NoMatch}');$0"
-    },
-    "regex.extractAll(string, pattern)": {
-      "prefix": "regex.extractAll",
-      "description": "Returns a list containing all the non-overlapping matches of the pattern in the string. If the pattern contains more than one group, returns a list of lists containing the groups in order.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/regex.extract",
-      "body": "regex.extractAll(${1:string}, ${2:pattern});$0"
-    },
-    "regex.extract(variable, regex regex_raw, raw '\\\\1')": {
-      "prefix": "regex.extract_Var",
-      "description": "Tamplate for regex - extracting from: variable with some content in it.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/regex.extract",
-      "body": "regex.extract(${1:variable}, regex \"${2:regex_raw}\", raw '\\\\1');$0"
-    },
-    "regex.extract(node.attrs, regex regex_raw, raw '\\\\1')": {
-      "prefix": "regex.extract_node.attrs",
-      "description": "Tamplate for regex - extracting from: node with attribues.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/regex.extract",
-      "body": "regex.extract(${1:node}.${2:attrs}, regex \"${3:regex_raw}\", raw '\\\\1');$0"
-    },
-    "regex.extract(variable, regex regex_raw, raw '\\\\1', raw '\\\\2)": {
-      "prefix": "regex.extract_raw_1,2",
-      "description": "Tamplate for regex - extracting from: variable with two groups to check.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/regex.extract",
-      "body": "regex.extract(${1:variable}, regex \"${2:regex_raw}\", raw '\\\\${3:1}', raw '\\\\${4:2}');$0"
-    },
-    "xpath.evaluate(string, expression)": {
-      "prefix": "xpath.evaluate",
-      "description": "Returns the result of evaluating the xpath expression against the XML string. Returns a list of strings containing the selected values. The result is always a list, even if the expression is guaranteed to always return just one result.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/xpath.evaluate",
-      "body": "xpath.evaluate(${1:some_file_path}, \"${2:xpath_string}\");$0"
-    },
-    "xpath.openDocument(string)": {
-      "prefix": "xpath.openDocument",
-      "description": "Returns the DOM object resulting from parsing the XML string. The DOM object returned is suitable for passing to xpath.evaluate.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/xpath.openDocument",
-      "body": "xpath.openDocument(${1:some_file_path});$0"
-    },
-    "xpath.closeDocument(DOM object)": {
-      "prefix": "xpath.closeDocument",
-      "description": "Closes the DOM object resulting from xpath.openDocument.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/xpath.closeDocument",
-      "body": "xpath.closeDocument(${1:some_file_path});$0"
-    },
     "table( [ parameters ] )": {
       "prefix": "table",
       "description": "Creates a new table.With no parameters, creates an empty table. If parameters are given, initializes the table with items where the keys are the parameter names and the values are the parameter values.",
@@ -1624,66 +1684,6 @@
       "description": "Returns the Host node corresponding to the given node.",
       "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/related.host",
       "body": "related.host(${1:node});$0"
-    },
-    "mail.send(recipients, subject, message)": {
-      "prefix": "mail.send",
-      "description": "Sends an email. recipients is a single string containing an email address, or a list of email address strings; subject is the subject line to use in the email; message is the message contents.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/mail.send",
-      "body": "mail.send(${1:recipients}, ${2:subject}, ${3:message});$0"
-    },
-    "time.current()": {
-      "prefix": "time.current",
-      "description": "Returns an internal datetime object representing the current UTC time.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.current",
-      "body": "time.current();$0"
-    },
-    "time.delta(days, hours, minutes, seconds)": {
-      "prefix": "time.delta",
-      "description": "Creates a time delta that can be added to or subtracted from a time represented by an internal datetime object. ",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.delta",
-      "body": "time.delta(${1:days}, ${2:hours}, ${3:minutes}, ${4:seconds});$0"
-    },
-    "time.parseLocal(string)": {
-      "prefix": "time.parseLocal",
-      "description": "Converts a string representing a local time into an internal UTC datetime object. If no time zone is present in the string it will use the time zone of the appliance.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.parseLocal",
-      "body": "time.parseLocal(${1:string});$0"
-    },
-    "time.parseUTC(string)": {
-      "prefix": "time.parseUTC",
-      "description": "Take a UTC time string and converts it into an internal datetime object. It is not adjusted for timezones or daylight saving time. ",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.parseUTC",
-      "body": "time.parseUTC(${1:string});$0"
-    },
-    "time.formatLocal(datetime [, format ])": {
-      "prefix": "time.formatLocal",
-      "description": "Formats an internal datetime object into a human-readable string.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.formatLocal",
-      "body": "time.formatUTC(${1:lastRebootedDate}, raw \"%m/%d/%Y %H:%M:%S\");$0"
-    },
-    "time.formatUTC(datetime [, format ])": {
-      "prefix": "time.formatUTC",
-      "description": "Formats an internal datetime object into a human-readable string.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.formatUTC",
-      "body": "time.formatUTC(${1:datetime} [, format ]);$0"
-    },
-    "time.toTicks(datetime)": {
-      "prefix": "time.toTicks",
-      "description": "Converts an internal datatime object (UTC) to ticks.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.toTicks",
-      "body": "time.toTicks(${1:datetime});$0"
-    },
-    "time.fromTicks(ticks)": {
-      "prefix": "time.fromTicks",
-      "description": "Converts ticks to an internal datetime object (UTC).",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.fromTicks",
-      "body": "time.fromTicks(${1:ticks});$0"
-    },
-    "time.deltaFromTicks(ticks)": {
-      "prefix": "time.deltaFromTicks",
-      "description": "Converts ticks into a time delta.",
-      "descriptionMoreURL": "https://docs.bmc.com/docs/display/DISCO111/time.deltaFromTicks",
-      "body": "time.deltaFromTicks(${1:ticks});$0"
     },
     "_regex Simple Identifiers": {
       "prefix": "_regex_Simple_Identifiers_",

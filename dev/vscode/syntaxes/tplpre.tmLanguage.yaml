@@ -1020,23 +1020,6 @@ repository:
       - include: '#list_append'
 
 
-# Dynamic functions. Attenpt to highlight local definitions -> define function in pattern:
-  # define_functions:
-  #   match: '({{definitions_name}})(\.)(\S+)'
-  #   comment: BHOM.handleNUK_Linux_OS(device[0], mo);
-  #   captures:
-  #     '1':
-  #       name: entity.other.inherited-class
-  #     '2':
-  #       name: punctuation.accessor.tplpre
-  #     '3':
-  #       name: entity.other.inherited-class
-
-  # dynamic_functions:
-  #   paterns:
-  #     - include: '#define_functions'
-
-
 # keyword.control.conditional
   # if, else, end if, for, end for
   if_statement:
@@ -1465,4 +1448,23 @@ repository:
   #   - match: (\))
   #     pop: true
   #   - include: '#brackets_block'
+
+
+# Dynamic functions. Attenpt to highlight local definitions -> define function in pattern:
+  # define_functions:
+  #   match: '({{definitions_name}})(\.)(\S+)'
+  #   comment: BHOM.handleNUK_Linux_OS(device[0], mo);
+  #   captures:
+  #     '1':
+  #       name: entity.other.inherited-class
+  #     '2':
+  #       name: punctuation.accessor.tplpre
+  #     '3':
+  #       name: entity.other.inherited-class
+
+  # dynamic_functions:
+  #   paterns:
+  #     - include: '#define_functions'
+
 # Experimental functions END
+

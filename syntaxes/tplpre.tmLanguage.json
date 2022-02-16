@@ -159,6 +159,9 @@
           "include": "#keywords_all"
         },
         {
+          "include": "#regexes"
+        },
+        {
           "include": "#keywords_cmd_indentify_trigger"
         },
         {
@@ -249,6 +252,9 @@
           "include": "#keywords_all"
         },
         {
+          "include": "#regexes"
+        },
+        {
           "include": "#keywords_cmd_indentify_trigger"
         },
         {
@@ -323,6 +329,9 @@
         },
         {
           "include": "#doc_strings_block_doulbe_q"
+        },
+        {
+          "include": "#dynamic_functions"
         }
       ]
     },
@@ -817,6 +826,9 @@
     "lines": {
       "patterns": [
         {
+          "include": "#regexes"
+        },
+        {
           "include": "#qouted_line_triple"
         },
         {
@@ -967,7 +979,7 @@
           "name": "keyword.control.tplpre"
         },
         "3": {
-          "name": "regexp.tplpre"
+          "name": "string.regexp.tplpre"
         }
       },
       "end": "(?=')(')",
@@ -988,7 +1000,7 @@
           "name": "keyword.control.tplpre"
         },
         "3": {
-          "name": "regexp.tplpre"
+          "name": "string.regexp.tplpre"
         }
       },
       "end": "(?=\")(\")",
@@ -1046,7 +1058,7 @@
     },
     "discovery_functions": {
       "comment": "Discovery functions DEV looks working",
-      "begin": "(discovery)(\\.)(fileGet|fileInfo|getNames|listDirectory|listRegistry|registryKey|wmiQuery|wbemQuery|wbemEnumInstances|runCommand|snmpGet|snmpGetTable|restfulGet|restfulPost|vSphereFindObjects|vSphereTraverseToObjects|vSphereGetProperties|vSphereGetPropertyTable)",
+      "begin": "(discovery)(\\.)(fileGet|fileInfo|getNames|listDirectory|listRegistry|registryKey|wmiQuery|wbemQuery|wbemEnumInstances|runCommand|snmpGetTable|snmpGet|restfulGet|restfulPost|vSphereFindObjects|vSphereTraverseToObjects|vSphereGetProperties|vSphereGetPropertyTable)",
       "beginCaptures": {
         "1": {
           "name": "storage.type.tplpre"
@@ -1591,6 +1603,28 @@
         }
       ]
     },
+    "define_functions": {
+      "match": "({{definitions_name}})(\\.)(\\S+)",
+      "comment": "BHOM.handleNUK_Linux_OS(device[0], mo);",
+      "captures": {
+        "1": {
+          "name": "entity.other.inherited-class"
+        },
+        "2": {
+          "name": "punctuation.accessor.tplpre"
+        },
+        "3": {
+          "name": "entity.other.inherited-class"
+        }
+      }
+    },
+    "dynamic_functions": {
+      "paterns": [
+        {
+          "include": "#define_functions"
+        }
+      ]
+    },
     "if_statement": {
       "comment": "Match if ..values.. then and include usual lines. #lines can override some marks Additionally fix for cases when var if_name is found! If should have at least one space",
       "begin": "(?!\\bend\\s\\bif;|\\bthen)(?<!\\w\\s)(\\bif\\s)",
@@ -1608,6 +1642,9 @@
       "patterns": [
         {
           "include": "#all_controls"
+        },
+        {
+          "include": "#regexes"
         },
         {
           "include": "#all_keys"
@@ -1640,6 +1677,9 @@
       "patterns": [
         {
           "include": "#all_controls"
+        },
+        {
+          "include": "#regexes"
         },
         {
           "include": "#all_keys"
@@ -1716,6 +1756,17 @@
         }
       }
     },
+    "min_ADDM_statement": {
+      "match": "(#MINADDM)\\s+(\\d+.\\d+)",
+      "captures": {
+        "1": {
+          "name": "keyword.control.conditional.tplpre"
+        },
+        "2": {
+          "name": "constant.numeric.tplpre"
+        }
+      }
+    },
     "if_ADDM_statement": {
       "match": "(#IFADDM)\\s+(\\d+.\\d+)",
       "captures": {
@@ -1748,6 +1799,9 @@
     },
     "if_addm": {
       "patterns": [
+        {
+          "include": "#min_ADDM_statement"
+        },
         {
           "include": "#if_ADDM_statement"
         },
@@ -2070,6 +2124,9 @@
         },
         {
           "include": "#keywords_all"
+        },
+        {
+          "include": "#regexes"
         },
         {
           "include": "#keywords_cmd_indentify_trigger"
