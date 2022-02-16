@@ -7,12 +7,16 @@ npx js-yaml dev\vscode\syntaxes\tpl.tmLanguage.yaml > syntaxes/tpl.tmLanguage.js
 npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > syntaxes/tplpre.tmLanguage.json
 
 Push right into the live plugin:
-npx js-yaml dev\vscode\snippets\tpl.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\snippets\tpl.json
-npx js-yaml dev\vscode\syntaxes\model.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\model.tmLanguage.json
-npx js-yaml dev\vscode\syntaxes\regexp.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\regexp.tmLanguage.json
-npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\test.tmLanguage.json
-npx js-yaml dev\vscode\syntaxes\tpl.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\tpl.tmLanguage.json
-npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\bmc-tpl\syntaxes\tplpre.tmLanguage.json
+npx js-yaml dev\vscode\snippets\tpl.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\snippets\tpl.json
+npx js-yaml dev\vscode\syntaxes\model.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\model.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\regexp.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\regexp.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\test.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\tpl.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\tpl.tmLanguage.json
 
 
-npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > C:\Users\o.danylchenko\.vscode\extensions\trianglesis.bmc-tpl-0.1.0\syntaxes\tplpre.tmLanguage.json
+
+npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\tplpre.tmLanguage.json
+
+npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\test.tmLanguage.yaml
+
+ 

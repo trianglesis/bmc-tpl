@@ -1,11 +1,16 @@
-scopeName: source.grammar_check
-name: GrammarCheck
-fileTypes:
-  - grammar_check
-firstLineMatch: .*
+%YAML 1.2
+---
+# https://macromates.com/manual/en/language_grammars
+
+name: Check Grammar
+scope: source.check
+scopeName: source.check
+file_extensions:
+  - check
 patterns:
   - include: '#test_colors'
   - include: '#check'
+
 repository:
   test_colors:
     patterns:
@@ -20,35 +25,41 @@ repository:
       - include: '#string_set'
       - include: '#support_set'
       - include: '#variable_set'
+  
   check:
     name: keyword.control
     match: \b(check\.this)\b
+  
+  comment:
+    name: comment
+    match: (comment \— for comments\.)
   line:
     name: comment.line
-    match: \(comment\.line\)
+    match: (line \— line comments)
   double_slash:
     name: comment.line.double-slash
-    match: \(comment\.line\.double-slash\)
+    match: (double\-slash)
   double_dash:
     name: comment.line.double-dash
-    match: \(comment\.line\.double-dash\)
+    match: (double\-dash)
   number_sign:
     name: comment.line.number-sign
-    match: \(comment\.line\.number-sign\)
+    match: (number\-sign)
   percentage:
     name: comment.line.percentage
-    match: \(comment\.line\.percentage\)
+    match: (percentage)
   character:
     name: comment.line.character
-    match: \(comment\.line\.character\)
+    match: (character \— other types of line comments)
   block_multi-line:
     name: comment.block.multiline
-    match: \(comment\.block\.multiline\)
+    match: (block \— multi\-line comments)
   block_multi-line_doc:
-    name: comment.block.multiline.documentation
-    match: \(comment\.block\.multiline\.documentation\)
+    name: comment.block.documentation
+    match: (documentation \— embedded documentation.)
   line_set:
     patterns:
+      - include: '#comment'
       - include: '#line'
       - include: '#double_slash'
       - include: '#double_dash'
@@ -57,24 +68,31 @@ repository:
       - include: '#character'
       - include: '#block_multi-line'
       - include: '#block_multi-line_doc'
+
   constant:
     name: constant
-    match: \(constant\)
+    match: (constant \— various)
+
   constant_numeric:
     name: constant.numeric
-    match: \(constant\.numeric\)
+    match: (numeric \— those)
+
   constant_character:
     name: constant.character
-    match: \(constant\.character\)
+    match: (character \— those)
+
   constant_character_escape:
     name: constant.character.escape
-    match: \(constant\.character\.escape\)
+    match: (escape \— escape)
+
   constant_language:
     name: constant.language
-    match: \(constant\.language\)
+    match: (language \— constants)
+
   constant_other:
     name: constant.other
-    match: \(constant\.other\)
+    match: (other \— other)
+
   constant_set:
     patterns:
       - include: '#constant'
@@ -83,33 +101,34 @@ repository:
       - include: '#constant_character_escape'
       - include: '#constant_language'
       - include: '#constant_other'
+
   entity:
     name: entity
-    match: \(entity\)
+    match: (entity \— an entity)
   entity_name:
     name: entity.name
-    match: \(entity\.name\)
+    match: (name \— we are)
   entity_function:
     name: entity.name.function
-    match: \(entity\.name\.function\)
+    match: (function \— the name)
   entity_type:
     name: entity.name.type
-    match: \(entity\.name\.type\)
+    match: (type \— the name)
   entity_tag:
     name: entity.name.tag
-    match: \(entity\.name\.tag\)
+    match: (tag \— a tag)
   entity_section:
     name: entity.name.section
-    match: \(entity\.name\.section\)
+    match: (section \— the name)
   entity_other:
     name: entity.other
-    match: \(entity\.other\)
+    match: (other \— other entities)
   entity_inherited-class:
     name: entity.other.inherited-class
-    match: \(entity\.other\.inherited-class\)
+    match: (inherited\-class)
   entity_attribute-name:
     name: entity.other.attribute-name
-    match: \(entity\.other\.attribute-name\)
+    match: (attribute\-name)
   entity_set:
     patterns:
       - include: '#entity'
@@ -121,74 +140,79 @@ repository:
       - include: '#entity_other'
       - include: '#entity_inherited-class'
       - include: '#entity_attribute-name'
+
   invalid:
     name: invalid
-    match: \(invalid\)
+    match: (invalid \— stuff)
   invalid_illegal:
     name: invalid.illegal
-    match: \(invalid\.illegal\)
+    match: (illegal \— illegal)
   invalid_deprecated:
     name: invalid.deprecated
-    match: \(invalid\.deprecated\)
+    match: (deprecated \— for deprecated)
   invalid_set:
     patterns:
       - include: '#invalid'
       - include: '#invalid_illegal'
       - include: '#invalid_deprecated'
+
+
   keyword:
     name: keyword
-    match: \(keyword\)
+    match: (keyword \— keywords)
   keyword_control:
     name: keyword.control
-    match: \(keyword\.control\)
+    match: (control \— mainly)
   keyword_operator:
     name: keyword.operator
-    match: \(keyword\.operator\)
+    match: (operator \— operators)
   keyword_other:
     name: keyword.other
-    match: \(keyword\.other\)
+    match: (other \— other keywords\.)
   keyword_set:
     patterns:
       - include: '#keyword'
       - include: '#keyword_control'
       - include: '#keyword_operator'
       - include: '#keyword_other'
+
+
   markup:
     name: markup
-    match: \(markup\)
+    match: (markup \— this)
   markup_underline:
     name: markup.underline
-    match: \(markup\.underline\)
+    match: (underline \— underlined)
   markup_underline_link:
     name: markup.underline.link
-    match: \(markup\.underline\.link\)
+    match: (link \— this is for links)
   markup_bold:
     name: markup.bold
-    match: \(markup\.bold\)
+    match: (bold \— bold text)
   markup_heading:
     name: markup.heading
-    match: \(markup\.heading\)
+    match: (heading \— a section header)
   markup_italic:
     name: markup.italic
-    match: \(markup\.italic\)
+    match: (italic \— italic text)
   markup_list:
     name: markup.list
-    match: \(markup\.list\)
+    match: (list \— list)
   markup_list_numbered:
     name: markup.list.numbered
-    match: \(markup\.list\.numbered\)
+    match: (numbered \— numbered)
   markup_list_unnumbered:
     name: markup.list.unnumbered
-    match: \(markup\.list\.unnumbered\)
+    match: (unnumbered \— unnumbered)
   markup_quote:
     name: markup.quote
-    match: \(markup\.quote\)
+    match: (quote \— quoted)
   markup_raw:
     name: markup.raw
-    match: \(markup\.raw\)
+    match: (raw \— text)
   markup_other:
     name: markup.other
-    match: \(markup\.other\)
+    match: (other \— other markup)
   markup_set:
     patterns:
       - include: '#markup'
@@ -203,64 +227,69 @@ repository:
       - include: '#markup_quote'
       - include: '#markup_raw'
       - include: '#markup_other'
+
+
   meta:
     name: meta
-    match: \(meta\)
+    match: (meta \— the meta)
   meta_function:
     name: meta.function
-    match: \(meta.function\)
+    match: (meta.function)
   meta_empty-string_single:
     name: meta.empty-string.single
-    match: \(meta.empty-string\.single\)
+    match: (meta.empty-string\.single)
   meta_set:
     patterns:
       - include: '#meta'
       - include: '#meta_function'
       - include: '#string_single'
+  
+  
   storage:
     name: storage
-    match: \(storage\)
+    match: (storage \— things)
   storage_type:
     name: storage.type
-    match: \(storage\.type\)
+    match: (type \— the type of something)
   storage_modifier:
     name: storage.modifier
-    match: \(storage\.modifier\)
+    match: (modifier \— a storage)
   storage_set:
     patterns:
       - include: '#storage'
       - include: '#storage_type'
       - include: '#storage_modifier'
+  
   string:
     name: string
-    match: \(string\)
+    match: (string \— strings\.)
   string_quoted:
     name: string.quoted
-    match: \(string\.quoted\)
+    match: (quoted \— quoted strings)
   string_quoted_single:
     name: string.quoted.single
-    match: \(string.\quoted\.single\)
+    match: (single \— single quoted strings)
   string_quoted_double:
     name: string.quoted.double
-    match: \(string.\quoted\.double\)
+    match: (double \— double quoted strings)
   string_quoted_triple:
     name: string.quoted.triple
-    match: \(string.\quoted\.triple\)
+    match: (triple \— triple quoted strings)
   string_quoted_other:
     name: string.quoted.other
-    match: \(string\.quoted\.other\)
+    match: (other \— other types of quoting)
   string_unquoted:
     name: string.unquoted
-    match: \(string\.unquoted\)
+    match: (unquoted \— for things)
   string_interpolated:
     name: string.interpolated
-    match: \(string\.interpolated\)
+    match: (interpolated \— strings)
   string_regexp:
     name: string.regexp
-    match: \(string\.regexp\)
+    match: (regexp \— regular)
   string_other:
     name: string.other
-    match: \(string\.other\)
+    match: (other \— other types of strings)
   string_set:
     patterns:
       - include: '#string'
@@ -273,27 +302,29 @@ repository:
       - include: '#string_interpolated'
       - include: '#string_regexp'
       - include: '#string_other'
+  
+  
   support:
     name: support
-    match: \(support\)
+    match: (support \— things)
   support_function:
     name: support.function
-    match: \(support\.function\)
+    match: (function \— functions provided)
   support_class:
     name: support.class
-    match: \(support\.class\)
+    match: (class \— when the)
   support_type:
     name: support.type
-    match: \(support\.type\)
+    match: (type \— types provided)
   support_constant:
     name: support.constant
-    match: \(support\.constant\)
+    match: (constant \— constants)
   support_variable:
     name: support.variable
-    match: \(support\.variable\)
+    match: (variable \— variables)
   support_other:
     name: support.other
-    match: \(support\.other\)
+    match: (other \— the above should)
   support_set:
     patterns:
       - include: '#support'
@@ -303,18 +334,20 @@ repository:
       - include: '#support_constant'
       - include: '#support_variable'
       - include: '#support_other'
+  
+  
   variable:
     name: variable
-    match: \(variable\)
+    match: (variable \— variables.)
   variable_parameter:
     name: variable.parameter
-    match: \(variable\.parameter\)
+    match: (parameter \— when the)
   variable_language:
     name: variable.language
-    match: \(variable\.language\)
+    match: (language \— reserved language)
   variable_other:
     name: variable.other
-    match: \(variable\.other\)
+    match: (other \— other variables)
   variable_set:
     patterns:
       - include: '#variable'
