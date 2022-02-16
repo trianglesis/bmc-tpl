@@ -8,9 +8,7 @@ Originally re-made from the [Atom bundle](https://github.com/trianglesis/languag
 
 - Go to your VS Code Extensions and type "bmc-tpl" in search!
 
-## Use:
-
-####  Set syntax: Ctrl+Shift+P -> "Change language mode" type 'tpl' or 'tplpre'
+####  Set syntax: Ctrl+Shift+P -> "Change language mode" type 'tplpre'
 
 #### Syntax highlighting:
 
@@ -32,11 +30,9 @@ Regex expressions:
 (uses python regex grammar from "language-python")
 - ![more_regexes](https://trianglesis.github.io/Atom_language_tpl_pics/TPL_Syntax_example_4.png)
 
-
 Syntax broken
 (highlighting will show it)
 - ![syntax_broken](https://trianglesis.github.io/Atom_language_tpl_pics/tpl_syntax_broken.gif)
-
 
 #### Autocomplete and Doc links:
 
@@ -55,9 +51,6 @@ Link to BMC official docs:
 Extra developers helping code:
 - ![dev_examples](https://trianglesis.github.io/Atom_language_tpl_pics/tpl_autocomplete_debug.gif)
 
-
 ####  Automation, syntax check, upload pattern, etc:
-
 To be added, maybe.
-
 Contributions are greatly appreciated. Please fork this repository and open a pull request to add snippets, make grammar tweaks, etc.
