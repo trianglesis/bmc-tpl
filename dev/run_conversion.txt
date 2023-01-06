@@ -23,3 +23,5 @@ npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > C:\Users\%USERNAME%\.vsco
 
 https://code.visualstudio.com/api/working-with-extensions/publishing-extension
 vsce publish 0.1.2
+
+vsce publish patch
