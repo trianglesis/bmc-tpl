@@ -1,8 +1,6 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
-
 ## [0.1.3] - 2023-01-06
 ### Added
 - Added tpl support (actually the same as tplpre)
@@ -25,3 +23,5 @@ All notable changes to this project will be documented in this file.
 ## [0.0.1] [0.1.0] - 2022-01-21 - 2022-02-01
 ### Added
 - Converted old plugins for tpl syntax highlight from Atom and Sublime to one VS Code supported.
+
+## [Unreleased]
