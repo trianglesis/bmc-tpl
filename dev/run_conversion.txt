@@ -1,5 +1,6 @@
 In test env:
 npx js-yaml dev\vscode\snippets\tpl.yaml > snippets/tpl.json
+npx js-yaml dev\vscode\snippets\tpl.yaml > snippets/tplpre.json
 npx js-yaml dev\vscode\syntaxes\model.tmLanguage.yaml > syntaxes/model.tmLanguage.json
 npx js-yaml dev\vscode\syntaxes\regexp.tmLanguage.yaml > syntaxes/regexp.tmLanguage.json
 npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > syntaxes/test.tmLanguage.json
@@ -21,4 +22,4 @@ npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > C:\Users\%USERNAME%\.vsco
 
 
 https://code.visualstudio.com/api/working-with-extensions/publishing-extension
- vsce publish 2.0.1
+vsce publish 0.1.2

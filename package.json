@@ -17,6 +17,16 @@
     "contributes": {
         "languages": [
             {
+                "id": "tpl",
+                "aliases": [
+                    "tpl"
+                ],
+                "extensions": [
+                    ".tpl"
+                ],
+                "configuration": "./language-configuration.json"
+            },
+            {
                 "id": "tplpre",
                 "aliases": [
                     "tplpre"
@@ -39,6 +49,11 @@
         ],
         "grammars": [
             {
+                "language": "tpl",
+                "scopeName": "source.tpl",
+                "path": "./syntaxes/tpl.tmLanguage.json"
+            },
+            {
                 "language": "tplpre",
                 "scopeName": "source.tplpre",
                 "path": "./syntaxes/tplpre.tmLanguage.json"
@@ -52,7 +67,11 @@
         "snippets": [
             {
                 "language": "tplpre",
-                "path": "./snippets/tplpre.json"
+                "path": "./snippets/tpl.json"
+            },
+            {
+                "language": "tpl",
+                "path": "./snippets/tpl.json"
             }
         ]
     },
