@@ -9,9 +9,9 @@ See Docs: [BMC Discovery official documentation page.](https://docs.bmc.com/docs
 
 Ask somebody: [BMC Discovery community page.](https://community.bmc.com/s/topic/0TO3n000000WJUFGA4/discovery).
 
-My profile: [Developer contant.](https://community.bmc.com/s/profile/0051400000BLS8hAAH).
+My profile: [Contact developer officially](https://community.bmc.com/s/profile/0051400000BLS8hAAH).
  
-Contant team: [Ask the team.](https://community.bmc.com/s/profile/00530000003nmjaAAA).
+Contant team: [Contact the team officially](https://community.bmc.com/s/profile/00530000003nmjaAAA).
 
 ## Installation:
 
