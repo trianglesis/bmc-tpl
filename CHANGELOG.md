@@ -1,11 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.1.3] - 2023-01-06
+## [0.1.3] - [0.1.4] - 2023-01-06
 ### Added
 - Added tpl support (actually the same as tplpre)
 - Mention tpl support too.
 - Icon
+- Readme updated
 
 ## [0.1.2] - 2022-02-16
 ### Deleted
