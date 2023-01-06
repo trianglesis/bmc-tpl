@@ -1,17 +1,21 @@
-# BMC tpl or tplpre language support in VS Code
+# BMC The Pattern Language TPL support in VS Code
+
+[The Pattern Language TPL](https://docs.bmc.com/docs/dosearchsite.action?queryString=The+Pattern+Language+TPL&type=page&where=)
 
 Adds syntax highlighting and snippets The Pattern Language TPL: [tpl](https://docs.bmc.com/docs/discovery/213/the-pattern-language-tpl-1024739589.html) in VS Code.
+Includes .tpl, .tplpre and .model files support.
 
 Originally re-made from the [Atom bundle](https://github.com/trianglesis/language-tplpre).
+Old extensions are valid, but not updated often.
 
 ##
-See Docs: [BMC Discovery official documentation page.](https://docs.bmc.com/docs/productsupport/bmc-discovery).
+- See Docs: [BMC Discovery official documentation page.](https://docs.bmc.com/docs/productsupport/bmc-discovery).
 
-Ask somebody: [BMC Discovery community page.](https://community.bmc.com/s/topic/0TO3n000000WJUFGA4/discovery).
+- Ask somebody: [BMC Discovery community page.](https://community.bmc.com/s/topic/0TO3n000000WJUFGA4/discovery).
 
-My profile: [Contact developer officially](https://community.bmc.com/s/profile/0051400000BLS8hAAH).
+- My profile: [Contact developer officially](https://community.bmc.com/s/profile/0051400000BLS8hAAH).
  
-Contant team: [Contact the team officially](https://community.bmc.com/s/profile/00530000003nmjaAAA).
+- Contant team: [Contact the team officially](https://community.bmc.com/s/profile/00530000003nmjaAAA).
 
 ## Installation:
 
@@ -61,5 +65,4 @@ Extra developers helping code:
 - ![dev_examples](https://trianglesis.github.io/Atom_language_tpl_pics/tpl_autocomplete_debug.gif)
 
 ####  Automation, syntax check, upload pattern, etc:
-To be added, maybe.
-Contributions are greatly appreciated. Please fork this repository and open a pull request to add snippets, make grammar tweaks, etc.
+For IDE related support, such as syntax check and testing, please raise a request or topic on official community: [BMC Discovery community page.](https://community.bmc.com/s/topic/0TO3n000000WJUFGA4/discovery).
