@@ -4,6 +4,15 @@ Adds syntax highlighting and snippets The Pattern Language TPL: [tpl](https://do
 
 Originally re-made from the [Atom bundle](https://github.com/trianglesis/language-tplpre).
 
+##
+See Docs: [BMC Discovery official documentation page.](https://docs.bmc.com/docs/productsupport/bmc-discovery).
+
+Ask somebody: [BMC Discovery community page.](https://community.bmc.com/s/topic/0TO3n000000WJUFGA4/discovery).
+
+My profile: [Developer contant.](https://community.bmc.com/s/profile/0051400000BLS8hAAH).
+ 
+Contant team: [Ask the team.](https://community.bmc.com/s/profile/00530000003nmjaAAA).
+
 ## Installation:
 
 - Go to your VS Code Extensions and type "bmc-tpl" in search!
