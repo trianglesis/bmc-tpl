@@ -9,7 +9,6 @@ scope: source.tplpre
 scopeName: source.tplpre
 file_extensions:
   - tplpre
-
 # Some stable elements we could reffer to
 # variables:
 #   # definitions BHOM 1.17
@@ -162,7 +161,7 @@ patterns:
       - include: '#if_addm'
 
   # Highlight pattern sections
-  - begin: '^\b(pattern)\s+(\w+)\s(\d+(?:\.\d+)+)\s+$'
+  - begin: '^\b(pattern)\s+(\w+)\s(\d+(?:\.\d+)+)'
     beginCaptures:
       '1':
         name: keyword.control.tplpre
@@ -238,11 +237,11 @@ repository:
 
 # Highlight metadata sections
   metadata:
-    begin: '^\s{4}(metadata)\s+?$'
+    begin: '^\s{4}\b(metadata)\s'
     beginCaptures:
       '1':
         name: keyword.control.tplpre
-    end: '^\s{4}(end\smetadata;)\s+?$'
+    end: '^\s{4}(end\smetadata;)\s'
     endCaptures:
       '1':
         name: keyword.control.tplpre
@@ -902,7 +901,7 @@ repository:
   # TPL Functions:
   ConversionFunctions:
     match: >-
-      (ConversionFunctions)(\.)(isValidSerialNumber|convertToCharString|convertToBytes)
+      (ConversionFunctions)(\.)(isValidSerialNumber|convertToCharString|convertToBytes|parseJavaArgs|_checkForDecimal)
     captures:
       '1':
         name: entity.name.function.tplpre
@@ -913,7 +912,7 @@ repository:
 
   DiscoveryFunctions:
     match: >-
-      (DiscoveryFunctions)(\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes|addSourceKey)
+      (DiscoveryFunctions)(\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes|addSourceKey|trimEmptyDisplayAttrs|addTags|_normalizePathWithoutExpanding)
     captures:
       '1':
         name: entity.name.function.tplpre
@@ -948,7 +947,7 @@ repository:
 
   SearchFunctions:
     match: >-
-      (SearchFunctions)(\.)(getNodeIp|getHostingNodes|getSoftwareNodes|getSI|identifyHostWithUuid|relatedSisSearchOnMultipleHosts)
+      (SearchFunctions)(\.)(getNodeIp|getHostingNodes|getSoftwareNodes|getSI|identifyHostWithUuid|relatedSisSearchOnMultipleHosts|_validateHostAddressFormat)
     captures:
       '1':
         name: entity.name.function.tplpre
@@ -1191,12 +1190,17 @@ repository:
           '1':
             name: variable.other.tplpre
       - name: variable.parameter.tplpre
-        match: \((DRDC1-\d+)\)
+        match: (DRDC1-\d+)
         captures:
           '1':
             name: variable.other.tplpre
       - name: variable.parameter.tplpre
         match: \((TKU-\d+)\)
+        captures:
+          '1':
+            name: variable.other.tplpre
+      - name: variable.parameter.tplpre
+        match: (TKU_\d+_\d+_\d+)
         captures:
           '1':
             name: variable.other.tplpre
@@ -1233,12 +1237,17 @@ repository:
           '1':
             name: variable.other.tplpre
       - name: variable.parameter.tplpre
-        match: \((DRDC1-\d+)\)
+        match: (DRDC1-\d+)
         captures:
           '1':
             name: variable.other.tplpre
       - name: variable.parameter.tplpre
         match: \((TKU-\d+)\)
+        captures:
+          '1':
+            name: variable.other.tplpre
+      - name: variable.parameter.tplpre
+        match: (TKU_\d+_\d+_\d+)
         captures:
           '1':
             name: variable.other.tplpre

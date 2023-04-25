@@ -263,7 +263,7 @@
       ]
     },
     {
-      "begin": "^\\b(pattern)\\s+(\\w+)\\s(\\d+(?:\\.\\d+)+)\\s+$",
+      "begin": "^\\b(pattern)\\s+(\\w+)\\s(\\d+(?:\\.\\d+)+)",
       "beginCaptures": {
         "1": {
           "name": "keyword.control.tplpre"
@@ -418,13 +418,13 @@
       "name": "constant.other.tplpre"
     },
     "metadata": {
-      "begin": "^\\s{4}(metadata)\\s+?$",
+      "begin": "^\\s{4}\\b(metadata)\\s",
       "beginCaptures": {
         "1": {
           "name": "keyword.control.tplpre"
         }
       },
-      "end": "^\\s{4}(end\\smetadata;)\\s+?$",
+      "end": "^\\s{4}(end\\smetadata;)\\s",
       "endCaptures": {
         "1": {
           "name": "keyword.control.tplpre"
@@ -1404,7 +1404,7 @@
       }
     },
     "ConversionFunctions": {
-      "match": "(ConversionFunctions)(\\.)(isValidSerialNumber|convertToCharString|convertToBytes)",
+      "match": "(ConversionFunctions)(\\.)(isValidSerialNumber|convertToCharString|convertToBytes|parseJavaArgs|_checkForDecimal)",
       "captures": {
         "1": {
           "name": "entity.name.function.tplpre"
@@ -1418,7 +1418,7 @@
       }
     },
     "DiscoveryFunctions": {
-      "match": "(DiscoveryFunctions)(\\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes|addSourceKey)",
+      "match": "(DiscoveryFunctions)(\\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes|addSourceKey|trimEmptyDisplayAttrs|addTags|_normalizePathWithoutExpanding)",
       "captures": {
         "1": {
           "name": "entity.name.function.tplpre"
@@ -1463,7 +1463,7 @@
       }
     },
     "SearchFunctions": {
-      "match": "(SearchFunctions)(\\.)(getNodeIp|getHostingNodes|getSoftwareNodes|getSI|identifyHostWithUuid|relatedSisSearchOnMultipleHosts)",
+      "match": "(SearchFunctions)(\\.)(getNodeIp|getHostingNodes|getSoftwareNodes|getSI|identifyHostWithUuid|relatedSisSearchOnMultipleHosts|_validateHostAddressFormat)",
       "captures": {
         "1": {
           "name": "entity.name.function.tplpre"
@@ -1600,28 +1600,6 @@
         },
         {
           "include": "#list_append"
-        }
-      ]
-    },
-    "define_functions": {
-      "match": "({{definitions_name}})(\\.)(\\S+)",
-      "comment": "BHOM.handleNUK_Linux_OS(device[0], mo);",
-      "captures": {
-        "1": {
-          "name": "entity.other.inherited-class"
-        },
-        "2": {
-          "name": "punctuation.accessor.tplpre"
-        },
-        "3": {
-          "name": "entity.other.inherited-class"
-        }
-      }
-    },
-    "dynamic_functions": {
-      "paterns": [
-        {
-          "include": "#define_functions"
         }
       ]
     },
@@ -1886,7 +1864,7 @@
         },
         {
           "name": "variable.parameter.tplpre",
-          "match": "\\((DRDC1-\\d+)\\)",
+          "match": "(DRDC1-\\d+)",
           "captures": {
             "1": {
               "name": "variable.other.tplpre"
@@ -1896,6 +1874,15 @@
         {
           "name": "variable.parameter.tplpre",
           "match": "\\((TKU-\\d+)\\)",
+          "captures": {
+            "1": {
+              "name": "variable.other.tplpre"
+            }
+          }
+        },
+        {
+          "name": "variable.parameter.tplpre",
+          "match": "(TKU_\\d+_\\d+_\\d+)",
           "captures": {
             "1": {
               "name": "variable.other.tplpre"
@@ -1952,7 +1939,7 @@
         },
         {
           "name": "variable.parameter.tplpre",
-          "match": "\\((DRDC1-\\d+)\\)",
+          "match": "(DRDC1-\\d+)",
           "captures": {
             "1": {
               "name": "variable.other.tplpre"
@@ -1962,6 +1949,15 @@
         {
           "name": "variable.parameter.tplpre",
           "match": "\\((TKU-\\d+)\\)",
+          "captures": {
+            "1": {
+              "name": "variable.other.tplpre"
+            }
+          }
+        },
+        {
+          "name": "variable.parameter.tplpre",
+          "match": "(TKU_\\d+_\\d+_\\d+)",
           "captures": {
             "1": {
               "name": "variable.other.tplpre"

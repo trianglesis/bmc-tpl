@@ -9,6 +9,13 @@ scope: source.tpl
 scopeName: source.tpl
 file_extensions:
   - tpl
+  # Some stable elements we could reffer to
+# variables:
+#   # definitions BHOM 1.17
+#   definitions_name: (?:definitions\s(\S+)\s)
+#   # define handleNUK_Linux_OS(
+#   define_name: (?:\s{4}define\s(\S+)\()
+
 patterns:
 # AT FIRST
 # Captures basic parts of pattern and constants
@@ -100,7 +107,7 @@ patterns:
       - include: '#lines'
       - include: '#keywords_cmd'
       - include: '#keywords_all'
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#keywords_cmd_indentify_trigger'
       - include: '#if_addm'
 
@@ -149,7 +156,7 @@ patterns:
       - include: '#lines'
       - include: '#keywords_cmd'
       - include: '#keywords_all'
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#keywords_cmd_indentify_trigger'
       - include: '#if_addm'
 
@@ -229,11 +236,11 @@ repository:
 
 # Highlight metadata sections
   metadata:
-    begin: '^\s{4}(metadata)\s+?$'
+    begin: '^\s{4}\b(metadata)\s'
     beginCaptures:
       '1':
         name: keyword.control.tpl
-    end: '^\s{4}(end\smetadata;)\s+?$'
+    end: '^\s{4}(end\smetadata;)\s'
     endCaptures:
       '1':
         name: keyword.control.tpl
@@ -499,7 +506,7 @@ repository:
 
   lines:
     patterns:
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#qouted_line_triple'
       - include: '#qouted_line_single'
       - include: '#qouted_line_empty'
@@ -647,13 +654,14 @@ repository:
       - include: '#regex_token_s_quote'
       - include: '#regex_token_d_quote'
 
-
 # Functions
+# TPL Functions internal and customly created.
+
   # Discovery mark
   discovery_functions:
     comment: Discovery functions DEV looks working
     begin: >-
-      (discovery)(\.)(fileGet|fileInfo|getNames|listDirectory|listRegistry|registryKey|wmiQuery|wbemQuery|wbemEnumInstances|runCommand|snmpGet|snmpGetTable|restfulGet|restfulPost|vSphereFindObjects|vSphereTraverseToObjects|vSphereGetProperties|vSphereGetPropertyTable)
+      (discovery)(\.)(fileGet|fileInfo|getNames|listDirectory|listRegistry|registryKey|wmiQuery|wbemQuery|wbemEnumInstances|runCommand|snmpGetTable|snmpGet|restfulGet|restfulPost|vSphereFindObjects|vSphereTraverseToObjects|vSphereGetProperties|vSphereGetPropertyTable)
     beginCaptures:
       '1':
         name: storage.type.tpl
@@ -690,20 +698,20 @@ repository:
       - include: '#regex'
 
   # model. functions
+  # There is an issue found when model function is called in if block:
+  # if model.kind(api_source) <> 'LoadBalancerService' then
   model_functions:
-    comment: Model functions DEV looks working
+    comment: Model functions
     begin: >-
-      ((model)(\.)(addDisplayAttribute|removeDisplayAttribute|addContainment|setContainment|destroy|withdraw|setRemovalGroup|anchorRemovalGroup|suppressRemovalGroup|host|hosts|findPackages|addDisplayAttribute|removeDisplayAttribute|kind))
+      (model)(\.)(addDisplayAttribute|removeDisplayAttribute|addContainment|setContainment|destroy|withdraw|setRemovalGroup|anchorRemovalGroup|suppressRemovalGroup|host|hosts|findPackages|addDisplayAttribute|removeDisplayAttribute|kind|SupportDetail|Deployment|Namespace)
     beginCaptures:
       '1':
-        name: entity.name.function.tpl
-      '2':
         name: support.function.tpl
-      '3':
+      '2':
         name: punctuation.accessor.tpl
-      '4':
+      '3':
         name: support.constant.tpl
-    end: \;
+    end: (\()
     endCaptures:
       '1':
         name: disabled.tpl
@@ -713,19 +721,21 @@ repository:
       - include: '#regex'
 
   model_rel_functions:
-    comment: Model rel functions DEV looks working
+    comment: Model rel and uniquerel
     begin: >-
-      ((model)(\.)(rel|uniquerel)(\.)(Communication|Containment|Dependency|Detail|HostContainment|HostedFile|HostedSoftware|Management|RelatedFile|SoftwareService|SoftwareContainment|StorageUse))
+      (model)(\.)(rel|uniquerel)(\.)(Communication|Containment|Collection|Dependency|Detail|HostContainment|HostedFile|HostedSoftware|Management|RelatedFile|SoftwareService|SoftwareContainment|StorageUse|SupportDetail|Deployment|Namespace)
     beginCaptures:
       '1':
-        name: entity.name.function.tpl
-      '2':
         name: support.function.tpl
-      '3':
+      '2':
         name: punctuation.accessor.tpl
-      '4':
+      '3':
         name: support.constant.tpl
-    end: \;
+      '4':
+        name: punctuation.accessor.tpl
+      '5':
+        name: support.constant.tpl
+    end: (\()
     endCaptures:
       '1':
         name: disabled.tpl
@@ -735,20 +745,16 @@ repository:
       - include: '#regex'
 
   model_SI_functions:
-    comment: >-
-      Model SI functions DEV looks working. TODO: upgrage to highlight inr
-      content 2017-08-15
-    begin: ((model)(\.)(SoftwareInstance|SoftwareCluster))
+    comment: Model SI functions
+    begin: (model)(\.)(SoftwareInstance|Cluster|SoftwareCluster|SoftwareContainer|VirtualMachine)
     beginCaptures:
       '1':
-        name: entity.name.function.tpl
-      '2':
         name: support.function.tpl
-      '3':
+      '2':
         name: punctuation.accessor.tpl
-      '4':
-        name: support.constant.tpl
-    end: \;
+      '3':
+        name: support.function.tpl
+    end: (\()
     endCaptures:
       '1':
         name: disabled.tpl
@@ -891,7 +897,7 @@ repository:
   # TPL Functions:
   ConversionFunctions:
     match: >-
-      (ConversionFunctions)(\.)(isValidSerialNumber|convertToCharString|convertToBytes)
+      (ConversionFunctions)(\.)(isValidSerialNumber|convertToCharString|convertToBytes|parseJavaArgs|_checkForDecimal)
     captures:
       '1':
         name: entity.name.function.tpl
@@ -902,7 +908,7 @@ repository:
 
   DiscoveryFunctions:
     match: >-
-      (DiscoveryFunctions)(\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes)
+      (DiscoveryFunctions)(\.)(escapeArg|expandWindowsPath|normalizePath|escapePath|pathNormalization|getCleanedupPath|getMaxVersion|getExeCwdPath|sortList|runActiveCommand|runFutureActiveCommand|locateCommands|checkCommandList|getErrorRegexes|addSourceKey|trimEmptyDisplayAttrs|addTags|_normalizePathWithoutExpanding)
     captures:
       '1':
         name: entity.name.function.tpl
@@ -937,7 +943,18 @@ repository:
 
   SearchFunctions:
     match: >-
-      (SearchFunctions)(\.)(getNodeIp|getHostingNodes|getSoftwareNodes|getSI|identifyHostWithUuid|relatedSisSearchOnMultipleHosts)
+      (SearchFunctions)(\.)(getNodeIp|getHostingNodes|getSoftwareNodes|getSI|identifyHostWithUuid|relatedSisSearchOnMultipleHosts|_validateHostAddressFormat)
+    captures:
+      '1':
+        name: entity.name.function.tpl
+      '2':
+        name: punctuation.accessor.tpl
+      '3':
+        name: entity.name.function.tpl
+
+# BHOM Custom functions highlight
+  ImportsFunctions:
+    match: (Imports)(\.)(inferHost|inferCluster|inferNetworkDevice|addExternalId|uniqueList)
     captures:
       '1':
         name: entity.name.function.tpl
@@ -989,6 +1006,7 @@ repository:
       - include: '#inference_functions'
       - include: '#ConversionFunctions'
       - include: '#SearchFunctions'
+      - include: '#ImportsFunctions'
       - include: '#rdbms_functions'
       - include: '#RDBMSFunctions'
       - include: '#DiscoveryFunctions'
@@ -1001,9 +1019,9 @@ repository:
   # if, else, end if, for, end for
   if_statement:
     comment: >-
-      Match if ..values.. then and include usual lines. #lines can override some
-      marks
-    begin: (?!end if;|then)(\bif)
+      Match if ..values.. then and include usual lines. #lines can override some marks
+      Additionally fix for cases when var if_name is found! If should have at least one space
+    begin: (?!\bend\s\bif;|\bthen)(?<!\w\s)(\bif\s)
     beginCaptures:
       '1':
         name: keyword.control.conditional.tpl
@@ -1013,7 +1031,7 @@ repository:
         name: keyword.control.conditional.tpl
     patterns:
       - include: '#all_controls'
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#all_keys'
       - include: '#lines'
       - include: '#keywords_attributes'
@@ -1033,7 +1051,7 @@ repository:
         name: keyword.control.conditional.tpl
     patterns:
       - include: '#all_controls'
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#all_keys'
       - include: '#lines'
       - include: '#keywords_attributes'
@@ -1084,6 +1102,15 @@ repository:
       '1':
         name: keyword.operator.tpl
   
+
+  min_ADDM_statement:
+    match: (#MINADDM)\s+(\d+.\d+)
+    captures:
+      '1':
+        name: keyword.control.conditional.tpl
+      '2':
+        name: constant.numeric.tpl
+  
   if_ADDM_statement:
     match: (#IFADDM)\s+(\d+.\d+)
     captures:
@@ -1110,6 +1137,7 @@ repository:
   
   if_addm:
     patterns:
+      - include: '#min_ADDM_statement'
       - include: '#if_ADDM_statement'
       - include: '#elif_ADDM_statement'
       - include: '#else_ADDM_statement'
@@ -1210,6 +1238,11 @@ repository:
           '1':
             name: variable.other.tpl
       - name: variable.parameter.tpl
+        match: (TKU_\d+_\d+_\d+)
+        captures:
+          '1':
+            name: variable.other.tpl
+      - name: variable.parameter.tpl
         match: \((esc\s+?\d+)\)
         captures:
           '1':
@@ -1235,7 +1268,7 @@ repository:
 
 #  define section
   define:
-    comment: 'Adding SQL support via #lines'
+    comment: 'Pattern define section main'
     begin: \s+(define)\s+(\S+)\((.*?)\)(\s\S+\s(.*))?
     beginCaptures:
       '1':
@@ -1260,7 +1293,7 @@ repository:
 
 # Altermate define
   alt_define:
-    comment: 'Adding SQL support via #lines'
+    comment: 'Pattern define section alternative approach'
     begin: \s+(define)\s+(\S+)(\s\S+\s(.*))?
     beginCaptures:
       '1':
@@ -1299,7 +1332,7 @@ repository:
       - include: '#lines'
       - include: '#keywords_cmd'
       - include: '#keywords_all'
-      # - include: '#regexes'
+      - include: '#regexes'
       - include: '#keywords_cmd_indentify_trigger'
       - include: '#if_addm'
 
@@ -1403,7 +1436,7 @@ repository:
   #   push: brackets
   # bracket_close:
   # - match: (\))
-  #   scope: invalid.illegal.stray-bracket-end.tpl
+  #   scope: invalid.illegal.stray-bracket-end.tplpre
   #   captures:
   #     1: 
   #       name: keyword.control.model
@@ -1415,4 +1448,23 @@ repository:
   #   - match: (\))
   #     pop: true
   #   - include: '#brackets_block'
+
+
+# Dynamic functions. Attenpt to highlight local definitions -> define function in pattern:
+  # define_functions:
+  #   match: '({{definitions_name}})(\.)(\S+)'
+  #   comment: BHOM.handleNUK_Linux_OS(device[0], mo);
+  #   captures:
+  #     '1':
+  #       name: entity.other.inherited-class
+  #     '2':
+  #       name: punctuation.accessor.tplpre
+  #     '3':
+  #       name: entity.other.inherited-class
+
+  # dynamic_functions:
+  #   paterns:
+  #     - include: '#define_functions'
+
 # Experimental functions END
+

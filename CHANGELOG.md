@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.1.5] - 2023-04-25
+### Added
+- New functions markup
+- Inline comments in some places
+- Fix diff between tpl and tplpre syntaxes - they are mostly the same.
+- Fix doc JIRA ticket highlighting
+
+
 ## [0.1.3] - [0.1.4] - 2023-01-06
 ### Added
 - Added tpl support (actually the same as tplpre)

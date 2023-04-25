@@ -9,19 +9,19 @@ npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > syntaxes/tplpre.tmLangu
 npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > syntaxes/test.tmLanguage.yaml
 
 Push right into the live plugin:
-npx js-yaml dev\vscode\snippets\tpl.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\snippets\tpl.json
-npx js-yaml dev\vscode\syntaxes\model.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\model.tmLanguage.json
-npx js-yaml dev\vscode\syntaxes\regexp.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\regexp.tmLanguage.json
-npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\test.tmLanguage.json
-npx js-yaml dev\vscode\syntaxes\tpl.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\tpl.tmLanguage.json
+npx js-yaml dev\vscode\snippets\tpl.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.4\snippets\tpl.json
+npx js-yaml dev\vscode\syntaxes\model.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.4\syntaxes\model.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\regexp.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.4\syntaxes\regexp.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.4\syntaxes\test.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\tpl.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.4\syntaxes\tpl.tmLanguage.json
 
 
-npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\tplpre.tmLanguage.json
-npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.1\syntaxes\test.tmLanguage.yaml
+npx js-yaml dev\vscode\syntaxes\tplpre.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.4\syntaxes\tplpre.tmLanguage.json
+npx js-yaml dev\vscode\syntaxes\test.tmLanguage.yaml > C:\Users\%USERNAME%\.vscode\extensions\trianglesis.bmc-tpl-0.1.4\syntaxes\test.tmLanguage.yaml
 
 
 
 https://code.visualstudio.com/api/working-with-extensions/publishing-extension
-vsce publish 0.1.2
+vsce publish 0.1.5
 
 vsce publish patch
