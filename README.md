@@ -2,10 +2,7 @@
 
 [The Pattern Language TPL](https://docs.bmc.com/docs/dosearchsite.action?queryString=The+Pattern+Language+TPL&type=page&where=)
 
-Adds syntax highlighting and snippets for the
-- The Pattern Language TPL: [tpl](https://docs.bmc.com/docs/discovery/213/the-pattern-language-tpl-1024739589.html)
-in VS Code
-
+Adds syntax highlighting and snippets The Pattern Language TPL: [tpl](https://docs.bmc.com/docs/discovery/213/the-pattern-language-tpl-1024739589.html) in VS Code
 Includes .tpl, .tplpre and .model files support.
 
 Originally re-made from the [Atom bundle](https://github.com/trianglesis/language-tplpre)
